@@ -1,3 +1,11 @@
+
+footer a,
+footer a:visited,
+footer a:hover,
+footer a:active {
+  color: #fff !important;
+  text-decoration: none !important;
+}
 .video-wrapper {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 ratio */
@@ -153,13 +161,6 @@ body {
   header h1 a:hover {
     text-decoration: underline;
     color: #00894c; /* Optionally change color on hover */
-  }
-  footer a,
-  footer a:visited,
-  footer a:hover,
-  footer a:active {
-    color: #fff !important;
-    text-decoration: none !important;
   }
   /* Tags Section */
 .tags-section {
