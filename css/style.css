@@ -188,3 +188,14 @@ footer a:active {
   background-color: #00894c;
   color: #fff;
 }
+footer p a {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+footer p a:hover,
+footer p a:visited,
+footer p a:active {
+  color: #fff !important;
+  text-decoration: none !important;
+}
