@@ -16,6 +16,16 @@ layout: default
   <section class="description-section">
     <p>{{ page.description }}</p>
   </section>
+  <!-- Tags Section -->
+  <section class="tags-section">
+    {% if page.tags.size > 0 %}
+    <h2>Tags</h2>
+    Tags: 
+    {% for tag in page.tags %}
+    <a href="/tags/{{ tag | slugify }}/">{{ tag }}</a>
+    {% endfor %}
+    {% endif %}
+  </section>
   <!-- Citations Section -->
   <section class="citations-section">
     <h2>Citations</h2>
@@ -24,14 +34,5 @@ layout: default
       <li><a href="{{ citation.url }}" target="_blank">{{ citation.title }}</a></li>
       {% endfor %}
     </ol>
-  </section>
-  <!-- Tags Section -->
-  <section class="tags-section">
-    {% if page.tags.size > 0 %}
-    <h2>Tags</h2>
-    {% for tag in page.tags %}
-    <a href="/tags/{{ tag | slugify }}/">{{ tag }}</a>
-    {% endfor %}
-    {% endif %}
   </section>
 </article>

@@ -152,3 +152,33 @@ body {
   footer a:visited:hover {
     color: #fff !important;
   }
+  /* Tags Section */
+.tags-section {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.tags-section h2 {
+  color: #00894c;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.tags-section a {
+  background-color: #fbd335; /* Primary color */
+  color: #00894c; /* Secondary color */
+  padding: 5px 10px;
+  border: 1px solid #00894c;
+  border-radius: 15px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  text-decoration: none;
+  font-size: 0.9em;
+  display: inline-block;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tags-section a:hover {
+  background-color: #00894c;
+  color: #fff;
+}
