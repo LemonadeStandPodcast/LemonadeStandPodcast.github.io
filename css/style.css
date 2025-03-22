@@ -12,6 +12,7 @@ footer a:active {
   height: 0;
   overflow: hidden;
   max-width: 100%;
+  min-width: 100%;
 }
 
 .video-wrapper iframe {
