@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<article class="episode-container">
+  <header>
+    <h1>{{ page.title }}</h1>
+  </header>
+  <!-- Video Section -->
+  <section class="video-section">
+    <h2>Watch Episode</h2>
+    <div class="video-wrapper">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ page.video_id }}" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+  <!-- Description Section -->
+  <section class="description-section">
+    <p>{{ page.description }}</p>
+  </section>
+  <!-- Citations Section -->
+  <section class="citations-section">
+    <h2>Citations</h2>
+    <ol class="citation-list">
+      {% for citation in page.citations %}
+      <li><a href="{{ citation.url }}" target="_blank">{{ citation.title }}</a></li>
+      {% endfor %}
+    </ol>
+  </section>
+</article>

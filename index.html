@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<h2>Episodes</h2>
+<ol class="episode-list">
+  {% assign episodes_sorted = site.episodes | sort: "number" | reverse %}
+  {% for episode in episodes_sorted %}
+  <li>
+    <a href="{{ episode.url }}">
+      <span class="ep-number">#{{ episode.number }}</span>
+      <span class="ep-title">{{ episode.title | remove: "Episode " }}</span>
+    </a>
+  </li>
+  {% endfor %}
+</ol>
