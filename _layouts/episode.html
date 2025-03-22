@@ -22,9 +22,11 @@ layout: default
     <h2>Tags</h2>
     Tags: 
     {% for tag in page.tags %}
-    <a href="/tags/{{ tag | slugify }}/">{{ tag }}</a>
+    {{ tag }}
     {% endfor %}
     {% endif %}
+    
+    (Coming soon!)
   </section>
   <!-- Citations Section -->
   <section class="citations-section">
