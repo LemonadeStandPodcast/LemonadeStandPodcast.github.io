@@ -138,19 +138,12 @@ body {
     text-decoration: underline;
     color: #00894c; /* Optionally change color on hover */
   }
-  footer a {
-    color: #fbd335 !important; /* Primary accent for links */
-    text-decoration: none !important;
-  }
-  footer a:hover {
-    color: #fff !important; /* Change to white on hover for contrast */
-    text-decoration: underline !important;
-  }
-  footer a:visited {
-    color: #fbd335 !important; /* Force visited link color */
-  }
-  footer a:visited:hover {
+  footer a,
+  footer a:visited,
+  footer a:hover,
+  footer a:active {
     color: #fff !important;
+    text-decoration: none !important;
   }
   /* Tags Section */
 .tags-section {
