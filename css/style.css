@@ -146,3 +146,9 @@ body {
     color: #fff; /* Change to white on hover for contrast */
     text-decoration: underline;
   }
+  footer a:visited {
+    color: #fff; /* Change visited link color */
+  }
+  footer a:visited:hover {
+    color: #fbd335; /* Change visited link color on hover */
+  }
