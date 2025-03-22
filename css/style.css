@@ -138,3 +138,11 @@ body {
     text-decoration: underline;
     color: #00894c; /* Optionally change color on hover */
   }
+
+  p a {
+    color: #00894c;
+    text-decoration: none;
+  }
+  p a:hover {
+    text-decoration: underline;
+  }
