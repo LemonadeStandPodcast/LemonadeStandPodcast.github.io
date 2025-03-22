@@ -1,3 +1,4 @@
+
 /* Global Styles */
 body {
   background-color: #fff;
@@ -188,14 +189,12 @@ footer a:active {
   background-color: #00894c;
   color: #fff;
 }
-footer p a {
-  color: #fff !important;
-  text-decoration: none !important;
+
+.footer-link, .footer-link:visited .footer-link:active {
+  color: #fff;
+  text-decoration: none;
 }
 
-footer p a:hover,
-footer p a:visited,
-footer p a:active {
-  color: #fff !important;
-  text-decoration: none !important;
+.footer-link:hover {
+  text-decoration: underline;
 }
