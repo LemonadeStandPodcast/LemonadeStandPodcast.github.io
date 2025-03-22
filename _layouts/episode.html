@@ -21,7 +21,7 @@ layout: default
     <h2>Citations</h2>
     <ol class="citation-list">
       {% for citation in page.citations %}
-      <li><a href="{{ citation.url }}" target="_blank">{{ citation.title }}</a></li>
+      <li><a href="/site{{ citation.url }}" target="_blank">{{ citation.title }}</a></li>
       {% endfor %}
     </ol>
   </section>
