@@ -5,6 +5,11 @@ number: 2
 video_id: "HOYy_jmzUSg"
 description: >
   This week the boys debate if Tesla is really worth 800 billion dollars, how many lanes we actually need, and if the Saudis are OK buying Pokémon Go.
+tags:
+  - Tesla
+  - Elon Musk
+  - Saudi Arabia
+  - Pokémon Go
 citations:
   - title: "Waymo Driver"
     url: "https://waymo.com/waymo-driver/"
