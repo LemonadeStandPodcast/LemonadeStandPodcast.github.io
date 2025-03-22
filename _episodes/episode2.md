@@ -6,10 +6,10 @@ video_id: "HOYy_jmzUSg"
 description: >
   This week the boys debate if Tesla is really worth 800 billion dollars, how many lanes we actually need, and if the Saudis are OK buying Pokémon Go.
 citations:
-  - title: "Article Title 1"
-    url: "https://example.com/article1"
-  - title: "Article Title 2"
-    url: "https://example.com/article2"
-  - title: "Reference Video"
-    url: "https://example.com/video1"
+  - title: "Waymo Driver"
+    url: "https://waymo.com/waymo-driver/"
+  - title: "Tesla: We, Robot"
+    url: "https://www.tesla.com/we-robot"
+  - title: "Tesla smashes its own records with big increase in energy storage deployments in 2024"
+    url: "https://www.ess-news.com/2025/01/03/tesla-smashes-its-own-records-with-big-increase-in-energy-storage-deployments-in-2024/"
 ---
