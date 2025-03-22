@@ -139,16 +139,16 @@ body {
     color: #00894c; /* Optionally change color on hover */
   }
   footer a {
-    color: #fbd335; /* Primary accent for links */
-    text-decoration: none;
+    color: #fbd335 !important; /* Primary accent for links */
+    text-decoration: none !important;
   }
   footer a:hover {
-    color: #fff; /* Change to white on hover for contrast */
-    text-decoration: underline;
+    color: #fff !important; /* Change to white on hover for contrast */
+    text-decoration: underline !important;
   }
   footer a:visited {
-    color: #fff; /* Change visited link color */
+    color: #fbd335 !important; /* Force visited link color */
   }
   footer a:visited:hover {
-    color: #fbd335; /* Change visited link color on hover */
+    color: #fff !important;
   }
