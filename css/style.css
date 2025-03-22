@@ -138,3 +138,11 @@ body {
     text-decoration: underline;
     color: #00894c; /* Optionally change color on hover */
   }
+  footer a {
+    color: #fbd335; /* Primary accent for links */
+    text-decoration: none;
+  }
+  footer a:hover {
+    color: #fff; /* Change to white on hover for contrast */
+    text-decoration: underline;
+  }
