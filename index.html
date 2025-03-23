@@ -4,9 +4,9 @@ layout: default
 {% assign episodes_sorted = site.episodes | sort: "number" | reverse %}
 {% assign latest_episode = episodes_sorted.first %}
 
-<h1>Latest Episode</h1>
+<h1 id="latestEpisode">Latest Episode</h1>
 
-<article class="episode-container" id="latestEpisode">
+<article class="episode-container">
   <header>
     <h1>{{ latest_episode.title }}</h1>
   </header>
