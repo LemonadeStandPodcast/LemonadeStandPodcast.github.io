@@ -222,3 +222,19 @@ nav ul li a:hover {
   background-color: #00894c;
   color: #fff;
 }
+
+.links {
+  text-align: center;
+  margin-top: 20px;
+}
+.links a {
+  display: inline-block;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 18px;
+}
+.links a:hover {
+  color: #00894c;
+  text-decoration: underline;
+}
