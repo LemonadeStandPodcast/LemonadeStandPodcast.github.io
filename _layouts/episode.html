@@ -11,13 +11,14 @@ layout: default
     <div class="video-wrapper">
       <iframe src="https://www.youtube.com/embed/{{ page.video_id }}"
         title="YouTube video player" frameborder="0"
-        width="640" height="360"
+        width="80%"
+        style="aspect-ratio: 16 / 9;"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </section>
   <!-- Description Section -->
-  <section class="description-section">
+  <section class="description-section" style="margin-top: 40px;">
     <p><strong>Description:</strong> {{ page.description }}</p>
     <p><strong>Recorded on:</strong> {{ page.recorded_at | date: "%B %d, %Y" }}</p>
   </section>
@@ -42,4 +43,5 @@ layout: default
       {% endfor %}
     </ol>
   </section>
+  <p class="links">Missing citations? <a href="https://github.com/LemonadeStandPodcast/LemonadeStandPodcast.github.io/issues" target="_blank">Check GitHub Issues</a> or <a href="https://x.com/swapsha96" target="_blank">DM on Twitter</a></p>
 </article>
