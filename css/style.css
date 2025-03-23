@@ -56,5 +56,13 @@ main h2 {
   color: #00894c;
   text-align: center;
 }
+.tags-section p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
 
-/* ... rest of your CSS ... */
+.tags-section p::before {
+  content: "Tags: ";
+  font-weight: bold;
+}
