@@ -110,6 +110,7 @@ main .episode-list li a:hover {
   font-size: 1.5em;
   margin-bottom: 10px;
   text-align: center;
+  color: #333
 }
 
 .episode-container img {
