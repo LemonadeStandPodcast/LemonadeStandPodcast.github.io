@@ -3,6 +3,7 @@ layout: episode
 title: "Are We All Getting Dumber?"
 number: 3
 video_id: "UkwjiYzNRw8"
+recorded_at: "2025-03-19"
 description: >
   This week the boys deliberate whether our cognitive capabilities are declining, analyze Mark Rober's Tesla video, and solve America's issues with The Jones Act.
 tags:

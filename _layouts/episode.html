@@ -19,6 +19,7 @@ layout: default
   <!-- Description Section -->
   <section class="description-section">
     <p><strong>Description:</strong> {{ page.description }}</p>
+    <p><strong>Recorded on:</strong> {{ page.recorded_at | date: "%B %d, %Y" }}</p>
   </section>
   <!-- Tags Section -->
   <section class="tags-section">
