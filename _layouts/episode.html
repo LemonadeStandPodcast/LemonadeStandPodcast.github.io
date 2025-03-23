@@ -9,24 +9,15 @@ layout: default
   <section class="video-section">
     <h2>Watch Episode</h2>
     <div class="video-wrapper">
-      <iframe width="560" height="315"  src="https://www.youtube.com/embed/{{ page.video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ page.video_id }}"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </section>
   <!-- Description Section -->
   <section class="description-section">
     <p>{{ page.description }}</p>
-  </section>
-  <!-- Tags Section -->
-  <section class="tags-section">
-    {% if page.tags.size > 0 %}
-    <!-- <h2>Tags</h2>
-    Tags: 
-    {% for tag in page.tags %}
-    {{ tag }}
-    {% endfor %}
-    {% endif %}
-     -->
-    (Tags coming soon!)
   </section>
   <!-- Citations Section -->
   <section class="citations-section">
@@ -36,5 +27,11 @@ layout: default
       <li><a href="{{ citation.url }}" target="_blank">{{ citation.title }}</a></li>
       {% endfor %}
     </ol>
+  </section>
+  <!-- Tags Section -->
+  <section class="tags-section">
+    {% if page.tags %}
+    <p>Tags: {{ page.tags | join: ", " }}</p>
+    {% endif %}
   </section>
 </article>
