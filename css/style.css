@@ -237,3 +237,25 @@ nav ul li a:hover {
 .links a:hover {
   text-decoration: underline;
 }
+
+.ai-summary-section {
+  margin-bottom: 20px;
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.ai-summary-section h3 {
+  margin-bottom: 10px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.ai-summary-section p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+  font-family: times new roman;
+  line-height: 1.5;
+  text-align: justify;
+}

@@ -49,6 +49,12 @@ layout: default
       {% endfor %}
     </ol>
   </section>
+  <section class="ai-summary-section">
+  {% if latest_episode.ai_summary %}
+    <h2>AI SUMMARY</h2>
+    <p>{{ latest_episode.ai_summary }}</p>
+  {% endif %}
+  </section>
 </article>
 
 <h1 id="previousEpisodes">Previous Episodes</h1>
