@@ -44,4 +44,10 @@ layout: default
     </ol>
     <p class="links">Missing citations? <a href="https://github.com/LemonadeStandPodcast/LemonadeStandPodcast.github.io/issues" target="_blank">Check GitHub Issues</a> or <a href="https://x.com/swapsha96" target="_blank">DM on Twitter</a></p>
   </section>
+  <section class="ai-summary-section">
+  {% if page.ai_summary %}
+    <h2>AI SUMMARY</h2>
+    <p>{{ page.ai_summary }}</p>
+  {% endif %}
+  </section>
 </article>
