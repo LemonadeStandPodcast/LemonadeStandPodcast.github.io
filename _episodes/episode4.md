@@ -1,6 +1,6 @@
 ---
 layout: episode
-title: "Are We All Getting Dumber?"
+title: "We are moving to Japan"
 number: 4
 video_id: "vuIy6MobkIY"
 recorded_at: "2025-03-26"
