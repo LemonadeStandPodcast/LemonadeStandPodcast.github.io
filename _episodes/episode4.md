@@ -18,6 +18,8 @@ citations:
     url: "https://www.independent.co.uk/arts-entertainment/films/news/disney-snow-white-box-office-republicans-b2720918.html"
   - title: "The 2025 box office is off to a terrible start. Is the problem supply or demand?"
     url: "https://www.latimes.com/entertainment-arts/business/newsletter/2025-03-25/wide-shot-the-2025-box-office-is-off-to-a-horrendous-start-the-wide-shot"
+  - title: "In Warning Sign for Hollywood, Younger Consumers Are Choosing Creator Content Over Premium TV and Movies"
+    url: "https://www.hollywoodreporter.com/business/business-news/deloitte-gen-z-creator-content-streaming-price-1236171227/"
 ai_summary: |
   <h3>Japan Housing Market Overview</h3>
   <ul>
