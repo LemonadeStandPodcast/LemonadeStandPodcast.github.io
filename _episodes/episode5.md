@@ -21,6 +21,8 @@ citations:
     url: "dougdoug.com/stocks"
   - title: "Abundance by Azra Klein and Derek Thompson (Book has citations for the facts reported in this episode)"
     url: "https://www.goodreads.com/book/show/176444106-abundance"
+  - title: "Derek Thompson and Ezra Klein on Abundance - Good on Paper"
+    url: "https://podcasts.apple.com/us/podcast/derek-thompson-and-ezra-klein-on-abundance/id1746176654?i=1000699626689"
   - title: "Why Can't We Have Nice Things with Ezra Klein | The Weekly Show with Jon Stewart"
     url: "https://www.youtube.com/watch?v=NcZxaFfxloo"
   - title: "How Progressives Froze the American Dream"
