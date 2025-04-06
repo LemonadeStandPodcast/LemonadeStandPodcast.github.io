@@ -36,10 +36,9 @@ const recentEpisodes = sortedEpisodes.slice(1, 4);
 							/>
 						</div>
 						<div>
-							<div class="text-lime dark:text-lime-400 font-bold mb-2">#{latestEpisode.data.episodeNumber}</div>
 							<h1 class="text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
 								<a href={`/episodes/${latestEpisode.slug}/`} class="hover:text-lime dark:hover:text-lime-400">
-									{latestEpisode.data.title}
+									#{latestEpisode.data.episodeNumber} {latestEpisode.data.title}
 								</a>
 							</h1>
 							<p class="text-gray-600 dark:text-gray-400 mb-4">
@@ -72,27 +71,24 @@ const recentEpisodes = sortedEpisodes.slice(1, 4);
 					<h2 class="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-8">Previous Episodes</h2>
 					<div class="grid gap-8">
 						{recentEpisodes.map((episode) => (
-							<article class="flex flex-col md:flex-row bg-white dark:bg-gray-700/50 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
-								<div class="md:w-64 shrink-0">
-									<div class="aspect-video overflow-hidden">
-										<img
-											src={`https://img.youtube.com/vi/${episode.data.youtubeId}/hqdefault.jpg`}
-											alt={episode.data.title}
-											class="w-full h-full object-cover"
-										/>
-									</div>
+							<article class="flex flex-row bg-white dark:bg-gray-700/50 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
+								<div class="w-1/4 flex items-stretch">
+									<img
+										src={`https://img.youtube.com/vi/${episode.data.youtubeId}/hqdefault.jpg`}
+										alt={episode.data.title}
+										class="w-full h-full object-cover"
+									/>
 								</div>
-								<div class="flex-1 p-6">
-									<div class="text-lime dark:text-lime-400 font-semibold text-sm mb-2">EPISODE #{episode.data.episodeNumber}</div>
-									<h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-										<a href={`/episodes/${episode.slug}/`} class="hover:text-lime dark:hover:text-lime-400">
-											{episode.data.title}
+								<div class="flex-1 p-4">
+									<h3 class="text-xl font-bold text-white dark:text-white mb-2">
+										<a href={`/episodes/${episode.slug}/`} class="text-white hover:text-lime-300 dark:hover:text-lime-300">
+											#{episode.data.episodeNumber} {episode.data.title}
 										</a>
 									</h3>
 									<p class="text-gray-500 dark:text-gray-300 text-sm mb-3">
 										Recorded on: <FormattedDate date={episode.data.pubDate} />
 									</p>
-									<p class="text-gray-700 dark:text-gray-200 mb-4 line-clamp-2">
+									<p class="text-gray-700 dark:text-gray-200 mb-4">
 										{episode.data.description}
 									</p>
 									<div class="flex flex-wrap gap-2">
