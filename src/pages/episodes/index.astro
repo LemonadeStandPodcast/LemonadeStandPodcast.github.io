@@ -35,21 +35,47 @@ const filteredEpisodes = selectedTag
 						{selectedTag ? `Episodes tagged with "${selectedTag}"` : 'All Episodes'}
 					</h1>
 
-					<div class="flex flex-wrap gap-2">
+					<div class="flex items-center gap-3 mb-6">
 						<a 
 							href="/episodes" 
 							class={`btn ${!selectedTag ? 'btn-primary' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'}`}
 						>
-							All
+								All Episodes
 						</a>
-						{allTags.map(tag => (
-							<a
-								href={`/episodes?tag=${tag}`}
-								class={`btn ${selectedTag === tag ? 'btn-primary' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'}`}
+						
+						<div class="relative">
+							<select 
+								id="tagSelect" 
+								class="appearance-none bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 pr-8 rounded-lg border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-lime-500 cursor-pointer"
+								onchange="if(this.value) window.location.href=this.value;"
 							>
-								{tag}
-							</a>
-						))}
+								<option value="" disabled selected>Filter by tag...</option>
+								{allTags.map(tag => (
+									<option 
+										value={`/episodes?tag=${tag}`} 
+										selected={selectedTag === tag}
+									>
+										{tag}
+									</option>
+								))}
+							</select>
+							<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-200">
+								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+								</svg>
+							</div>
+						</div>
+						
+						{selectedTag && (
+							<div class="bg-lime-100 dark:bg-lime-900/30 text-lime-800 dark:text-lime-200 px-3 py-1 rounded-full text-sm flex items-center gap-1">
+								<span>Current filter: {selectedTag}</span>
+								<a href="/episodes" class="ml-1 hover:text-lime-600 dark:hover:text-lime-400">
+									<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+									</svg>
+								</a>
+							</div>
+						)}
 					</div>
 				</div>
 
