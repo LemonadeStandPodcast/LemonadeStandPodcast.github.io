@@ -47,13 +47,13 @@ const filteredEpisodes = selectedTag
 							<select 
 								id="tagSelect" 
 								class="appearance-none bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 pr-8 rounded-lg border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-lime-500 cursor-pointer"
+								value={selectedTag ? `/episodes?tag=${selectedTag}` : ""}
 								onchange="if(this.value) window.location.href=this.value;"
 							>
-								<option value="" disabled selected>Filter by tag...</option>
+								<option value="" disabled>Filter by tag...</option>
 								{allTags.map(tag => (
 									<option 
-										value={`/episodes?tag=${tag}`} 
-										selected={selectedTag === tag}
+										value={`/episodes?tag=${tag}`}
 									>
 										{tag}
 									</option>
@@ -90,8 +90,8 @@ const filteredEpisodes = selectedTag
 								/>
 							</div>
 							<div class="flex-1 p-4 md:p-6 md:pl-8">
-								<h3 class="text-xl font-bold text-white dark:text-white mb-2">
-									<a href={`/episodes/${episode.slug}/`} class="text-white hover:text-lime-300 dark:hover:text-lime-300">
+								<h3 class="text-xl font-bold text-gray-900 dark:text-gray-50 mb-2">
+									<a href={`/episodes/${episode.slug}/`} class="text-gray-900 dark:text-gray-50 hover:text-lime-600 dark:hover:text-lime-300">
 										#{episode.data.episodeNumber} {episode.data.title}
 									</a>
 								</h3>

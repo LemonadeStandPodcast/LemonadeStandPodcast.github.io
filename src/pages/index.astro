@@ -37,7 +37,7 @@ const recentEpisodes = sortedEpisodes.slice(1, 4);
 						</div>
 						<div>
 							<h1 class="text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-								<a href={`/episodes/${latestEpisode.slug}/`} class="hover:text-lime dark:hover:text-lime-400">
+								<a href={`/episodes/${latestEpisode.slug}/`} class="text-gray-900 dark:text-gray-50 hover:text-lime dark:hover:text-lime-400">
 									#{latestEpisode.data.episodeNumber} {latestEpisode.data.title}
 								</a>
 							</h1>
@@ -80,8 +80,8 @@ const recentEpisodes = sortedEpisodes.slice(1, 4);
 									/>
 								</div>
 								<div class="flex-1 p-4 md:p-6 md:pl-8">
-									<h3 class="text-xl font-bold text-white dark:text-white mb-2">
-										<a href={`/episodes/${episode.slug}/`} class="text-white hover:text-lime-300 dark:hover:text-lime-300">
+									<h3 class="text-xl font-bold text-gray-900 dark:text-gray-50 mb-2">
+										<a href={`/episodes/${episode.slug}/`} class="text-gray-900 dark:text-gray-50 hover:text-lime-600 dark:hover:text-lime-300">
 											#{episode.data.episodeNumber} {episode.data.title}
 										</a>
 									</h3>
