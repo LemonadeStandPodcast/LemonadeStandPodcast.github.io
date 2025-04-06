@@ -1,9 +1,10 @@
 ---
+layout: episode
 title: 'We are moving to Japan'
 description: 'We discuss the implications of relocating to Japan, exploring international business opportunities, and the future of remote work in the tech industry.'
-pubDate: '2025-03-26'
-youtubeId: 'dQw4w9WgXcQ'
-episodeNumber: 4
+recorded_at: '2025-03-26'
+video_id: 'L0MK7qz13bU'
+number: 4
 tags:
   - 'Japan'
   - 'International Business'
@@ -14,7 +15,6 @@ citations:
     url: 'https://www.example.com/japan-startup-visa'
   - title: 'Cost of Living Comparison: SF vs Tokyo'
     url: 'https://www.example.com/sf-tokyo-cost'
-summary: 'An exciting announcement and deep dive into the opportunities and challenges of running an international business from Japan, featuring discussions on visa programs, tech ecosystem differences, and cultural adaptation.'
 ---
 
 ## Big News

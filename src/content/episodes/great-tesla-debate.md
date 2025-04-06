@@ -6,10 +6,6 @@ video_id: "HOYy_jmzUSg"
 recorded_at: "2025-03-12"
 description: >
   This week the boys debate if Tesla is really worth 800 billion dollars, how many lanes we actually need, and if the Saudis are OK buying Pokémon Go.
-pubDate: "2025-03-12"
-youtubeId: "HOYy_jmzUSg"
-episodeNumber: 2
-summary: "A debate on Tesla's valuation, infrastructure needs, and unexpected acquisitions."
 tags:
   - Tesla
   - Elon Musk

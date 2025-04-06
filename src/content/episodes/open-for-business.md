@@ -1,13 +1,11 @@
 ---
 layout: episode
 title: "We're Open for Business"
-episodeNumber: 1
-youtubeId: "3QjyKlomqKg"
-pubDate: "2025-03-05"
+number: 1
+video_id: "3QjyKlomqKg"
+recorded_at: "2025-03-05"
 description: >
   This week we are discussing Canadian-US relations, AI's effects on the job market, and why you maybe shouldn't cancel those plans.
-summary: >
-  In our first episode, we explore Canadian-US relations, AI's impact on jobs, and the importance of keeping your plans.
 tags:
   - Canada
   - US

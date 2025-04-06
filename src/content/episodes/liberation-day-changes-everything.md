@@ -1,9 +1,10 @@
 ---
+layout: episode
 title: "Liberation Day Changes Everything"
 description: "This week Atrioc gives us the low-down on \"Liberation Day\" tariffs, Aiden institutes the Lemonade Stand lightening round, and Doug gets fired up about why we aren't building things."
-pubDate: "2025-04-02"
-youtubeId: "dQw4w9WgXcQ"
-episodeNumber: 5
+recorded_at: "2025-04-02"
+video_id: "9bZkp7q19f0"
+number: 5
 tags:
   - "Liberation Day"
   - "Tariffs"
@@ -27,7 +28,6 @@ citations:
     url: "https://www.example.com/progressives-american-dream"
   - title: "Deficit Tracker - Bipartisan Policy Center"
     url: "https://bipartisanpolicy.org/deficit-tracker"
-summary: "A deep dive into the economic implications of Liberation Day tariffs and their potential impact on international trade relations, featuring insights on recent tech industry developments and construction challenges in America."
 ---
 
 This week we cover several major developments in business and politics:
