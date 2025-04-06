@@ -13,5 +13,11 @@
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.3.0",
     "astro": "^5.6.1"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/typography": "^0.5.16",
+    "postcss-nesting": "^13.0.1",
+    "tailwindcss": "^3.4.17"
   }
 }

@@ -1,0 +1,46 @@
+---
+interface Props {
+	title: string;
+	url: string;
+}
+
+const { title, url } = Astro.props;
+
+const encodedUrl = encodeURIComponent(url);
+const encodedTitle = encodeURIComponent(title);
+
+const shareLinks = [
+	{
+		name: 'Twitter',
+		url: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+		icon: '🐦'
+	},
+	{
+		name: 'LinkedIn',
+		url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+		icon: '💼'
+	},
+	{
+		name: 'Email',
+		url: `mailto:?subject=${encodedTitle}&body=${encodedUrl}`,
+		icon: '📧'
+	}
+];
+---
+
+<div class="flex gap-2">
+	{
+		shareLinks.map(({ name, url, icon }) => (
+			<a
+				href={url}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors"
+				aria-label={`Share on ${name}`}
+			>
+				<span>{icon}</span>
+				<span>{name}</span>
+			</a>
+		))
+	}
+</div>
