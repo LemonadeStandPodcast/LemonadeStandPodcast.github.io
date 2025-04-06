@@ -32,10 +32,12 @@ const { data, slug } = Astro.props;
 					/>
 				</div>
 				<div class="px-6 pb-6">
-					<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">#{data.episodeNumber} {data.title}</h1>
-					<p class="text-gray-500 dark:text-gray-400 mb-6">
-						Recorded on: <FormattedDate date={data.pubDate} />
-					</p>
+					<div class="flex justify-between items-start mb-4">
+						<h1 class="text-4xl font-bold text-gray-900 dark:text-white">#{data.episodeNumber} {data.title}</h1>
+						<p class="text-lime-600 dark:text-lime-400 font-medium whitespace-nowrap ml-4">
+							<FormattedDate date={data.pubDate} />
+						</p>
+					</div>
 					
 					<div class="flex flex-wrap gap-2 mb-8">
 						{data.tags.map((tag) => (

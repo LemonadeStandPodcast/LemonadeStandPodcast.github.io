@@ -36,14 +36,16 @@ const recentEpisodes = sortedEpisodes.slice(1, 4);
 							/>
 						</div>
 						<div>
-							<h1 class="text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
-								<a href={`/episodes/${latestEpisode.slug}/`} class="text-gray-900 dark:text-gray-50 hover:text-lime dark:hover:text-lime-400">
-									#{latestEpisode.data.episodeNumber} {latestEpisode.data.title}
-								</a>
-							</h1>
-							<p class="text-gray-600 dark:text-gray-400 mb-4">
-								Recorded on: <FormattedDate date={latestEpisode.data.pubDate} />
-							</p>
+							<div class="flex justify-between items-start mb-4">
+								<h1 class="text-4xl font-bold text-gray-900 dark:text-gray-50">
+									<a href={`/episodes/${latestEpisode.slug}/`} class="text-gray-900 dark:text-gray-50 hover:text-lime dark:hover:text-lime-400">
+										#{latestEpisode.data.episodeNumber} {latestEpisode.data.title}
+									</a>
+								</h1>
+								<p class="text-lime-600 dark:text-lime-400 font-medium whitespace-nowrap ml-4">
+									<FormattedDate date={latestEpisode.data.pubDate} />
+								</p>
+							</div>
 							<p class="text-lg text-gray-700 dark:text-gray-300 mb-6">{latestEpisode.data.description}</p>
 							<div class="flex flex-wrap gap-2 mb-6">
 								{latestEpisode.data.tags.map((tag) => (
@@ -81,14 +83,16 @@ const recentEpisodes = sortedEpisodes.slice(1, 4);
 									/>
 								</div>
 								<div class="flex-1 p-4 md:p-6 md:pl-8">
-									<h3 class="text-xl font-bold text-gray-900 dark:text-gray-50 mb-2">
-										<a href={`/episodes/${episode.slug}/`} class="text-gray-900 dark:text-gray-50 hover:text-lime-600 dark:hover:text-lime-300">
-											#{episode.data.episodeNumber} {episode.data.title}
-										</a>
-									</h3>
-									<p class="text-gray-500 dark:text-gray-300 text-sm mb-3">
-										Recorded on: <FormattedDate date={episode.data.pubDate} />
-									</p>
+									<div class="flex justify-between items-start mb-2">
+										<h3 class="text-xl font-bold text-gray-900 dark:text-gray-50">
+											<a href={`/episodes/${episode.slug}/`} class="text-gray-900 dark:text-gray-50 hover:text-lime-600 dark:hover:text-lime-300">
+												#{episode.data.episodeNumber} {episode.data.title}
+											</a>
+										</h3>
+										<p class="text-lime-600 dark:text-lime-400 font-medium whitespace-nowrap text-sm ml-4">
+											<FormattedDate date={episode.data.pubDate} />
+										</p>
+									</div>
 									<p class="text-gray-700 dark:text-gray-200 mb-4">
 										{episode.data.description}
 									</p>
