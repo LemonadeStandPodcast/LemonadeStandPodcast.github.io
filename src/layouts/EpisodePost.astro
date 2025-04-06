@@ -18,10 +18,10 @@ const { data, slug } = Astro.props;
 		<BaseHead title={data.title} description={data.description} />
 	</head>
 
-	<body>
+	<body class="bg-white dark:bg-gray-900">
 		<Header />
 		<main class="container max-w-4xl mx-auto px-4 py-8">
-			<article class="bg-white rounded-lg shadow-sm overflow-hidden">
+			<article class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
 				<div class="w-full aspect-video mb-6">
 					<iframe
 						src={`https://www.youtube.com/embed/${data.youtubeId}`}
@@ -34,8 +34,8 @@ const { data, slug } = Astro.props;
 				</div>
 				<div class="px-6 pb-6">
 					<div class="text-lime font-semibold mb-2">EPISODE #{data.episodeNumber}</div>
-					<h1 class="text-4xl font-bold text-gray-900 mb-4">{data.title}</h1>
-					<p class="text-gray-500 mb-6">
+					<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">{data.title}</h1>
+					<p class="text-gray-500 dark:text-gray-400 mb-6">
 						Recorded on: <FormattedDate date={data.pubDate} />
 					</p>
 					
@@ -43,20 +43,20 @@ const { data, slug } = Astro.props;
 						{data.tags.map((tag) => (
 							<a
 								href={`/episodes?tag=${tag}`}
-								class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 transition-colors"
+								class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
 							>
 								{tag}
 							</a>
 						))}
 					</div>
 
-					<div class="prose prose-lg max-w-none mb-8">
+					<div class="prose prose-lg max-w-none mb-8 dark:prose-invert">
 						<slot />
 					</div>
 
 					{data.citations && (
-						<div class="border-t border-gray-200 pt-6 mb-8">
-							<h2 class="text-xl font-bold text-gray-900 mb-4">Sources & References</h2>
+						<div class="border-t border-gray-200 dark:border-gray-700 pt-6 mb-8">
+							<h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Sources & References</h2>
 							<ul class="space-y-2">
 								{data.citations.map((citation) => (
 									<li>
