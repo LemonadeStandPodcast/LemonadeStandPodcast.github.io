@@ -1,9 +1,8 @@
 ---
-layout: episode
 title: "We're Open for Business"
-number: 1
-video_id: "3QjyKlomqKg"
-recorded_at: "2025-03-05"
+episodeNumber: 1
+youtubeId: "3QjyKlomqKg"
+pubDate: 2025-03-05
 description: >
   This week we are discussing Canadian-US relations, AI's effects on the job market, and why you maybe shouldn't cancel those plans.
 tags:
@@ -14,6 +13,8 @@ tags:
 citations:
   - title: "Toronto 'shack' on sale for $2.5 million — but there's more to the story"
     url: "https://ca.finance.yahoo.com/news/toronto-shack-sale-2-5-million-theres-story-192739524.html"
+summary: |
+  In our inaugural episode, we introduce the Lemonade Stand Podcast and cover a range of topics including Canadian-US relations, the impact of AI on jobs, and the social importance of keeping commitments. We explore the changing dynamics between these North American neighbors, discuss whether AI will replace human jobs or create new opportunities, and examine the psychology behind commitment-keeping in modern society.
 ---
 
 ## Welcome to the Stand

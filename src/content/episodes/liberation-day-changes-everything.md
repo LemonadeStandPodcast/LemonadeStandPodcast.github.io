@@ -1,10 +1,11 @@
 ---
-layout: episode
 title: "Liberation Day Changes Everything"
 description: "This week Atrioc gives us the low-down on \"Liberation Day\" tariffs, Aiden institutes the Lemonade Stand lightening round, and Doug gets fired up about why we aren't building things."
-recorded_at: "2025-04-02"
-video_id: "9bZkp7q19f0"
-number: 5
+pubDate: 2025-04-02
+youtubeId: "9bZkp7q19f0"
+episodeNumber: 5
+summary: |
+  In this episode, we discuss the implications of the new "Liberation Day" tariffs on international trade, the coordinated response from Asian economies, and potential market impacts. We also cover the latest in the Deel vs. Rippling lawsuit drama, examine America's infrastructure challenges through the lens of the Abundance book, and introduce a new lightning round segment for rapid-fire debates on current events.
 tags:
   - "Liberation Day"
   - "Tariffs"

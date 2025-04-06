@@ -1,10 +1,11 @@
 ---
-layout: episode
 title: 'We are moving to Japan'
 description: 'We discuss the implications of relocating to Japan, exploring international business opportunities, and the future of remote work in the tech industry.'
-recorded_at: '2025-03-26'
-video_id: 'L0MK7qz13bU'
-number: 4
+pubDate: 2025-03-26
+youtubeId: 'L0MK7qz13bU'
+episodeNumber: 4
+summary: |
+  The hosts announce their upcoming relocation to Japan and discuss the business implications of this major move. They explore Japan's tech ecosystem, cost of living advantages compared to San Francisco, visa considerations for foreign entrepreneurs, and how this international perspective will enhance the podcast. The conversation covers practical aspects of running a business from Japan and strategies for managing remote teams across time zones.
 tags:
   - 'Japan'
   - 'International Business'
