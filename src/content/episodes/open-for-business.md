@@ -1,16 +1,21 @@
 ---
+layout: episode
 title: "We're Open for Business"
-description: 'In our inaugural episode, we introduce the Lemonade Stand Podcast and set the stage for our journey through business, tech, and politics.'
-pubDate: '2025-03-12'
-youtubeId: 'dQw4w9WgXcQ'  # Replace with actual YouTube ID
 episodeNumber: 1
-tags: ['Introduction', 'Business', 'Tech', 'Politics']
+youtubeId: "3QjyKlomqKg"
+pubDate: "2025-03-05"
+description: >
+  This week we are discussing Canadian-US relations, AI's effects on the job market, and why you maybe shouldn't cancel those plans.
+summary: >
+  In our first episode, we explore Canadian-US relations, AI's impact on jobs, and the importance of keeping your plans.
+tags:
+  - Canada
+  - US
+  - AI
+  - Job Market
 citations:
-  - title: 'State of Tech 2025 Report'
-    url: 'https://www.example.com/tech-2025'
-  - title: 'Global Business Trends Analysis'
-    url: 'https://www.example.com/business-trends'
-summary: 'Welcome to the Lemonade Stand Podcast! Meet your hosts and discover what we have planned for this journey through the intersections of business, technology, and politics.'
+  - title: "Toronto 'shack' on sale for $2.5 million — but there's more to the story"
+    url: "https://ca.finance.yahoo.com/news/toronto-shack-sale-2-5-million-theres-story-192739524.html"
 ---
 
 ## Welcome to the Stand

@@ -4,11 +4,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 export async function GET(context) {
 	const episodes = await getCollection('episodes');
+	const sortedEpisodes = episodes.sort((a, b) => b.data.episodeNumber - a.data.episodeNumber);
+
 	return rss({
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
 		site: context.site,
-		items: episodes.map((episode) => ({
+		items: sortedEpisodes.map((episode) => ({
 			title: episode.data.title,
 			pubDate: episode.data.pubDate,
 			description: episode.data.description,

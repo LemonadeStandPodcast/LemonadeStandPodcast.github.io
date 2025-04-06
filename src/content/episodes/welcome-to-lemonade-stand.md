@@ -1,7 +1,7 @@
 ---
 title: 'Welcome to The Lemonade Stand Podcast'
 description: 'In our inaugural episode, we introduce The Lemonade Stand Podcast and discuss our mission to share inspiring stories of entrepreneurship and innovation.'
-pubDate: '2025-04-06'
+pubDate: '2025-03-05'
 youtubeId: 'dQw4w9WgXcQ'
 episodeNumber: 1
 tags: ['introduction', 'entrepreneurship', 'innovation']

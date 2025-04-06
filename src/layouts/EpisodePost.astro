@@ -5,95 +5,80 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import ShareButtons from '../components/ShareButtons.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 
 type Props = CollectionEntry<'episodes'>;
 
-const { title, description, pubDate, updatedDate, youtubeId, episodeNumber, tags, citations } = Astro.props.data;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const { data, slug } = Astro.props;
 ---
 
+<!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={data.title} description={data.description} />
 	</head>
+
 	<body>
 		<Header />
-		<main>
-			<article class="container py-8">
-				<header class="mb-8">
-					<div class="text-lime font-bold mb-2">#{episodeNumber}</div>
-					<h1 class="text-4xl font-bold mb-4">{title}</h1>
-					<div class="text-gray-600">
-						Recorded on: <FormattedDate date={pubDate} />
-						{updatedDate && (
-							<div class="mt-1">
-								Updated on: <FormattedDate date={updatedDate} />
-							</div>
-						)}
-					</div>
-				</header>
-
-				<div class="mb-8">
-					<div class="aspect-video w-full">
-						<iframe
-							src={`https://www.youtube.com/embed/${youtubeId}`}
-							title={title}
-							class="w-full h-full"
-							frameborder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowfullscreen
-						/>
-					</div>
+		<main class="container max-w-4xl mx-auto px-4 py-8">
+			<article class="bg-white rounded-lg shadow-sm overflow-hidden">
+				<div class="w-full aspect-video mb-6">
+					<iframe
+						src={`https://www.youtube.com/embed/${data.youtubeId}`}
+						title={data.title}
+						class="w-full h-full"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen
+					/>
 				</div>
-
-				<div class="prose max-w-none mb-8">
-					<p class="text-lg text-gray-700">{description}</p>
-				</div>
-
-				{tags.length > 0 && (
+				<div class="px-6 pb-6">
+					<div class="text-lime font-semibold mb-2">EPISODE #{data.episodeNumber}</div>
+					<h1 class="text-4xl font-bold text-gray-900 mb-4">{data.title}</h1>
+					<p class="text-gray-500 mb-6">
+						Recorded on: <FormattedDate date={data.pubDate} />
+					</p>
+					
 					<div class="flex flex-wrap gap-2 mb-8">
-						{tags.map((tag) => (
-							<a href={`/episodes?tag=${tag}`} class="tag">
+						{data.tags.map((tag) => (
+							<a
+								href={`/episodes?tag=${tag}`}
+								class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 transition-colors"
+							>
 								{tag}
 							</a>
 						))}
 					</div>
-				)}
 
-				{citations.length > 0 ? (
-					<div class="bg-gray-50 rounded-lg p-6 mb-8">
-						<h2 class="text-2xl font-bold mb-4">CITATIONS</h2>
-						<ul class="space-y-2">
-							{citations.map((citation, index) => (
-								<li class="flex gap-2">
-									<span class="text-gray-600 font-semibold">{index + 1}.</span>
-									<a 
-										href={citation.url} 
-										class="text-lime hover:underline"
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										{citation.title}
-									</a>
-								</li>
-							))}
-						</ul>
+					<div class="prose prose-lg max-w-none mb-8">
+						<slot />
 					</div>
-				) : (
-					<div class="bg-lemonade bg-opacity-10 rounded-lg p-6 mb-8">
-						<h2 class="text-xl font-bold mb-2">Missing citations?</h2>
-						<p>
-							<a href="https://github.com/lemonadestandpodcast/lemonadestandpodcast.github.io/issues" class="text-lime hover:underline">Check GitHub Issues</a>
-							{' '}or{' '}
-							<a href="https://twitter.com" class="text-lime hover:underline">DM on Twitter</a>
-						</p>
-					</div>
-				)}
 
-				<div class="prose max-w-none">
-					<slot />
+					{data.citations && (
+						<div class="border-t border-gray-200 pt-6 mb-8">
+							<h2 class="text-xl font-bold text-gray-900 mb-4">Sources & References</h2>
+							<ul class="space-y-2">
+								{data.citations.map((citation) => (
+									<li>
+										<a
+											href={citation.url}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="text-lime hover:underline"
+										>
+											{citation.title}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					)}
+
+					<ShareButtons title={data.title} url={`/episodes/${slug}`} />
 				</div>
 			</article>
+
+			<NewsletterSignup />
 		</main>
 		<Footer />
 	</body>

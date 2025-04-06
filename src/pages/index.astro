@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 
 const allEpisodes = await getCollection('episodes');
-const sortedEpisodes = allEpisodes.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const sortedEpisodes = allEpisodes.sort((a, b) => b.data.episodeNumber - a.data.episodeNumber);
 const latestEpisode = sortedEpisodes[0];
 const recentEpisodes = sortedEpisodes.slice(1, 4);
 ---
@@ -21,6 +21,9 @@ const recentEpisodes = sortedEpisodes.slice(1, 4);
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
+				}
+			.episode-title {
+				color: #111827; /* Use a darker color for better readability */
 			}
 		</style>
 	</head>
@@ -44,7 +47,7 @@ const recentEpisodes = sortedEpisodes.slice(1, 4);
 						</div>
 						<div>
 							<div class="text-lime font-bold mb-2">#{latestEpisode.data.episodeNumber}</div>
-							<h1 class="text-4xl font-bold text-gray-900 mb-4">
+							<h1 class="text-4xl font-bold episode-title mb-4">
 								<a href={`/episodes/${latestEpisode.slug}/`} class="hover:text-lime">
 									{latestEpisode.data.title}
 								</a>
@@ -65,7 +68,7 @@ const recentEpisodes = sortedEpisodes.slice(1, 4);
 							</div>
 							<a
 								href={`/episodes/${latestEpisode.slug}/`}
-								class="inline-block bg-lime text-white px-6 py-3 rounded-md hover:bg-opacity-90 transition-colors"
+								class="inline-block bg-gray-900 text-white px-6 py-3 rounded-md font-medium hover:bg-lime hover:text-white transition-all duration-200 focus:ring-2 focus:ring-lime/50 focus:outline-none"
 							>
 								Watch Episode
 							</a>
@@ -79,22 +82,24 @@ const recentEpisodes = sortedEpisodes.slice(1, 4);
 					<h2 class="text-2xl font-bold text-gray-900 mb-8">Previous Episodes</h2>
 					<div class="grid gap-8">
 						{recentEpisodes.map((episode) => (
-							<article class="flex flex-col md:flex-row gap-6 bg-white rounded-lg overflow-hidden hover:shadow-md transition-shadow">
-								<div class="md:w-48 shrink-0">
-									<img
-										src={`https://img.youtube.com/vi/${episode.data.youtubeId}/maxresdefault.jpg`}
-										alt={episode.data.title}
-										class="episode-thumbnail aspect-video"
-									/>
+							<article class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
+								<div class="md:w-64 shrink-0">
+									<div class="aspect-video overflow-hidden">
+										<img
+											src={`https://img.youtube.com/vi/${episode.data.youtubeId}/hqdefault.jpg`}
+											alt={episode.data.title}
+											class="w-full h-full object-cover"
+										/>
+									</div>
 								</div>
-								<div class="flex-1 p-4">
-									<div class="text-lime font-bold mb-1">#{episode.data.episodeNumber}</div>
-									<h3 class="text-2xl font-bold text-gray-900 mb-2 hover:text-lime">
+								<div class="flex-1 p-6">
+									<div class="text-lime font-semibold text-sm mb-2">EPISODE #{episode.data.episodeNumber}</div>
+									<h3 class="text-2xl font-bold text-gray-900 mb-2 hover:text-lime transition-colors">
 										<a href={`/episodes/${episode.slug}/`}>
 											{episode.data.title}
 										</a>
 									</h3>
-									<p class="text-gray-600 mb-2">
+									<p class="text-gray-500 text-sm mb-3">
 										Recorded on: <FormattedDate date={episode.data.pubDate} />
 									</p>
 									<p class="text-gray-700 mb-4 line-clamp-2">
@@ -104,7 +109,7 @@ const recentEpisodes = sortedEpisodes.slice(1, 4);
 										{episode.data.tags.map((tag) => (
 											<a 
 												href={`/episodes?tag=${tag}`}
-												class="bg-lemonade bg-opacity-20 text-gray-800 px-3 py-1 rounded-md text-sm hover:bg-opacity-30 transition-colors"
+												class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 transition-colors"
 											>
 												{tag}
 											</a>

@@ -1,22 +1,27 @@
 ---
+layout: episode
 title: "The Great Tesla Debate"
-description: "A heated discussion on Tesla's market position, autonomous driving progress, and the future of electric vehicles. Plus, we tackle the broader implications for the automotive industry."
-pubDate: "2025-03-19"
-youtubeId: "dQw4w9WgXcQ"
+number: 2
+video_id: "HOYy_jmzUSg"
+recorded_at: "2025-03-12"
+description: >
+  This week the boys debate if Tesla is really worth 800 billion dollars, how many lanes we actually need, and if the Saudis are OK buying Pokémon Go.
+pubDate: "2025-03-12"
+youtubeId: "HOYy_jmzUSg"
 episodeNumber: 2
+summary: "A debate on Tesla's valuation, infrastructure needs, and unexpected acquisitions."
 tags:
-  - "Tesla"
-  - "Electric Vehicles"
-  - "Autonomous Driving"
-  - "Automotive Industry"
+  - Tesla
+  - Elon Musk
+  - Saudi Arabia
+  - Pokémon Go
 citations:
-  - title: "Tesla Q4 2024 Earnings Report"
-    url: "https://www.example.com/tesla-q4-2024"
-  - title: "Autonomous Driving Progress Report 2025"
-    url: "https://www.example.com/autonomous-report"
-  - title: "EV Market Share Analysis"
-    url: "https://www.example.com/ev-market-share"
-summary: "We dive deep into Tesla's current market position, analyzing recent developments in autonomous driving technology, competition in the EV space, and what it all means for the future of transportation."
+  - title: "Waymo Driver"
+    url: "https://waymo.com/waymo-driver/"
+  - title: "Tesla: We, Robot"
+    url: "https://www.tesla.com/we-robot"
+  - title: "Tesla smashes its own records with big increase in energy storage deployments in 2024"
+    url: "https://www.ess-news.com/2025/01/03/tesla-smashes-its-own-records-with-big-increase-in-energy-storage-deployments-in-2024/"
 ---
 
 ## The Tesla Question

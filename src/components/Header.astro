@@ -3,20 +3,21 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
-<header class="border-b border-gray-200">
+<header class="border-b-2 border-gray-300 text-center">
 	<div class="container">
 		<div class="py-6">
-			<div class="mb-4">
-				<h1 class="text-3xl font-bold text-lime-600">
+			<div class="mb-4 flex items-center justify-center">
+				<img src="/logo.png" alt="Lemonade Stand Logo" class="h-16 w-auto mr-4" />
+				<h1 class="text-4xl font-bold text-lime-800">
 					<a href="/">{SITE_TITLE}</a>
 				</h1>
-				<p class="text-gray-600">{SITE_DESCRIPTION}</p>
 			</div>
+			<p class="text-gray-800 font-bold mb-6">{SITE_DESCRIPTION}</p>
 			<nav>
-				<div class="flex gap-8">
-					<HeaderLink href="/">Home</HeaderLink>
-					<HeaderLink href="/episodes">Episodes</HeaderLink>
-					<HeaderLink href="/about">Links</HeaderLink>
+				<div class="flex gap-8 justify-center">
+					<HeaderLink href="/" class="text-lime-800 hover:bg-lime-100 px-2 py-1 rounded">Home</HeaderLink>
+					<HeaderLink href="/episodes" class="text-lime-800 hover:bg-lime-100 px-2 py-1 rounded">Episodes</HeaderLink>
+					<HeaderLink href="/links" class="text-lime-800 hover:bg-lime-100 px-2 py-1 rounded">Links</HeaderLink>
 				</div>
 			</nav>
 		</div>
