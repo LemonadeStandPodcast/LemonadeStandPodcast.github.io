@@ -56,17 +56,15 @@ const filteredEpisodes = selectedTag
 				<div class="grid gap-8">
 					{filteredEpisodes.map((episode) => (
 						<article class="flex flex-col md:flex-row bg-white dark:bg-gray-700/50 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
-							<div class="md:w-64 shrink-0">
-								<div class="aspect-video overflow-hidden">
-									<img
-										src={`https://img.youtube.com/vi/${episode.data.youtubeId}/hqdefault.jpg`}
-										alt={episode.data.title}
-										class="w-full h-full object-cover"
-									/>
-								</div>
+							<div class="md:w-1/3 shrink-0 flex items-stretch">
+								<img
+									src={`https://img.youtube.com/vi/${episode.data.youtubeId}/maxresdefault.jpg`}
+									alt={episode.data.title}
+									class="w-full h-full object-cover"
+								/>
 							</div>
-							<div class="flex-1 p-6">
-								<h3 class="text-xl font-bold text-white dark:text-white mb-2 group">
+							<div class="flex-1 p-4 md:p-6 md:pl-8">
+								<h3 class="text-xl font-bold text-white dark:text-white mb-2">
 									<a href={`/episodes/${episode.slug}/`} class="text-white hover:text-lime-300 dark:hover:text-lime-300">
 										#{episode.data.episodeNumber} {episode.data.title}
 									</a>
@@ -74,7 +72,7 @@ const filteredEpisodes = selectedTag
 								<p class="text-gray-500 dark:text-gray-300 text-sm mb-3">
 									Recorded on: <FormattedDate date={episode.data.pubDate} />
 								</p>
-								<p class="text-gray-700 dark:text-gray-200 mb-4 line-clamp-2">
+								<p class="text-gray-700 dark:text-gray-200 mb-4">
 									{episode.data.description}
 								</p>
 								<div class="flex flex-wrap gap-2">
