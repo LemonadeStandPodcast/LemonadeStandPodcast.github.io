@@ -59,7 +59,7 @@ const recentEpisodes = sortedEpisodes.slice(1, 4);
 								href={`/episodes/${latestEpisode.slug}/`}
 								class="inline-block bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-lime hover:text-white dark:hover:bg-lime dark:hover:text-white transition-all duration-200"
 							>
-								Watch Episode
+								Episode Details
 							</a>
 						</div>
 					</div>
@@ -104,6 +104,15 @@ const recentEpisodes = sortedEpisodes.slice(1, 4);
 								</div>
 							</article>
 						))}
+					</div>
+					
+					<div class="mt-12 text-center">
+						<a 
+							href="/episodes" 
+							class="inline-block bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-lime hover:text-white dark:hover:bg-lime dark:hover:text-white transition-all duration-200"
+						>
+							View All Episodes
+						</a>
 					</div>
 				</section>
 			)}
