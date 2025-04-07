@@ -45,58 +45,158 @@ const recentEpisodes = sortedEpisodes.slice(1, 3);
 			.metric-card:hover {
 				transform: translateY(-10px);
 			}
+
+			.floating-lemons {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				z-index: 0;
+			}
+			
+			.lemon {
+				position: absolute;
+				animation: floatAround 15s infinite;
+				opacity: 0.1;
+			}
+			
+			@keyframes floatAround {
+				0%, 100% { transform: translate(0, 0) rotate(0deg); }
+				25% { transform: translate(100px, 50px) rotate(90deg); }
+				50% { transform: translate(50px, 100px) rotate(180deg); }
+				75% { transform: translate(-50px, 50px) rotate(270deg); }
+			}
+			
+			.glow-effect {
+				animation: softGlow 3s ease-in-out infinite;
+				background: linear-gradient(90deg, #FFD166, #06D6A0);
+				-webkit-background-clip: text;
+				background-clip: text;
+				position: relative;
+			}
+
+			.funding-badge {
+				position: relative;
+				overflow: hidden;
+				background: linear-gradient(90deg, #FFD166, #06D6A0);
+				transition: transform 0.3s ease;
+			}
+
+			.funding-badge:hover {
+				transform: translateY(-2px);
+			}
+
+			.funding-badge::before {
+				content: '';
+				position: absolute;
+				top: -50%;
+				left: -50%;
+				width: 200%;
+				height: 200%;
+				background: linear-gradient(
+					45deg,
+					transparent,
+					rgba(255, 255, 255, 0.3),
+					transparent
+				);
+				transform: rotate(45deg);
+				animation: shine 3s infinite;
+			}
+
+			@keyframes shine {
+				0% { transform: translateX(-100%) rotate(45deg); }
+				100% { transform: translateX(100%) rotate(45deg); }
+			}
+
+			@keyframes softGlow {
+				0%, 100% { text-shadow: 0 0 10px rgba(255, 209, 102, 0.5); }
+				50% { text-shadow: 0 0 20px rgba(6, 214, 160, 0.5); }
+			}
+			
+			.spin-slowly {
+				animation: spin 20s linear infinite;
+			}
+			
+			@keyframes spin {
+				from { transform: rotate(0deg); }
+				to { transform: rotate(360deg); }
+			}
 		</style>
 	</head>
 	<body class="min-h-screen bg-white dark:bg-gray-900">
 		<Header />
 		
 		<main>
+			<!-- Floating Lemons Background -->
+			<div class="floating-lemons">
+				{[...Array(5)].map((_, i) => (
+					<div 
+						class="lemon" 
+						style={`top: ${Math.random() * 100}%; left: ${Math.random() * 100}%; animation-delay: -${i * 3}s;`}
+					>
+										🍋
+					</div>
+				))}
+			</div>
+
 			<!-- Hero Section -->
-			<section class="hero-gradient py-24 border-b border-gray-200 dark:border-gray-700">
+			<section class="hero-gradient py-24 border-b border-gray-200 dark:border-gray-700 relative overflow-hidden">
 				<div class="container max-w-6xl mx-auto px-4">
 					<div class="flex flex-col md:flex-row items-center">
-						<div class="md:w-1/2 mb-10 md:mb-0">
-							<h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-gray-900 dark:text-white">
+						<div class="md:w-1/2 mb-10 md:mb-0 relative z-10">
+							<div class="mb-4">
+								<span class="funding-badge text-gray-900 px-4 py-2 rounded-full text-sm font-bold inline-block">
+												🚀 Series A Funded!
+								</span>
+							</div>
+							<h1 class="text-5xl md:text-7xl font-extrabold mb-4 text-gray-900 dark:text-white">
 								<span class="gradient-text">Disrupting</span> the 
-								<br>Lemonade Industry
+								<br><span class="glow-effect">Lemonade</span> Industry
+								<br>with <span class="gradient-text">AGI</span>
 							</h1>
 							<p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
-								Three entrepreneurs. $10M in VC funding. One lemonade stand.
-								What could possibly go wrong?
+								Revolutionizing the $187B lemonade market with GPT-5 powered taste prediction and autonomous robotic squeezing.
 							</p>
 							<div class="flex flex-wrap gap-4">
-								<a href="/episodes" class="px-8 py-3 bg-gradient-to-r from-yellow-400 to-lime-500 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-									Listen Now
+								<a href="/episodes" class="px-8 py-4 bg-gradient-to-r from-yellow-400 via-lime-500 to-yellow-400 bg-size-200 animate-gradient-x text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+									Taste the Future 🤖
 								</a>
-								<a href="#latestEpisode" class="px-8 py-3 border-2 border-gray-800 dark:border-gray-200 text-gray-800 dark:text-gray-200 font-medium rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
-									Latest Episode
+								<a href="#latestEpisode" class="px-8 py-4 border-2 border-gray-800 dark:border-gray-200 text-gray-800 dark:text-gray-200 font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1">
+									Latest Episode 🎙️
 								</a>
 							</div>
-							<div class="flex items-center gap-6 mt-8">
-								<div class="flex -space-x-2">
-									<img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800" src="/public/avatar-1.png" alt="Co-founder" onerror="this.src='/public/blog-placeholder-1.jpg'">
-									<img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800" src="/public/avatar-2.png" alt="Co-founder" onerror="this.src='/public/blog-placeholder-2.jpg'">
-									<img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800" src="/public/avatar-3.png" alt="Co-founder" onerror="this.src='/public/blog-placeholder-3.jpg'">
+							<div class="mt-8 p-4 bg-white/10 backdrop-blur-lg rounded-xl border border-gray-200 dark:border-gray-700">
+								<div class="flex items-center gap-4 mb-2">
+									<div class="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
+									<p class="text-sm text-gray-600 dark:text-gray-400">AI Stats (Live)</p>
 								</div>
-								<p class="text-sm text-gray-600 dark:text-gray-400">
-									Join <span class="font-semibold">10,000+</span> listeners revolutionizing lemonade
-								</p>
+								<div class="grid grid-cols-2 gap-4">
+									<div>
+										<p class="text-2xl font-bold text-gray-900 dark:text-white">1.2M</p>
+										<p class="text-sm text-gray-500">Parameters/Lemon</p>
+									</div>
+									<div>
+										<p class="text-2xl font-bold text-gray-900 dark:text-white">99.9%</p>
+										<p class="text-sm text-gray-500">AI Confidence*</p>
+									</div>
+								</div>
+								<p class="text-xs text-gray-400 mt-2">*May not reflect actual lemonade quality</p>
 							</div>
 						</div>
 						<div class="md:w-1/2 relative">
+							<div class="absolute inset-0 bg-gradient-to-br from-yellow-300 to-lime-400 rounded-full blur-3xl opacity-20 animate-pulse"></div>
 							<div class="relative w-full max-w-md mx-auto animate-float">
-								<div class="absolute inset-0 bg-gradient-to-br from-yellow-300 to-lime-400 rounded-3xl blur-xl opacity-30"></div>
-								<div class="relative bg-white dark:bg-gray-800 rounded-3xl p-1 shadow-2xl overflow-hidden">
+								<div class="relative bg-white dark:bg-gray-800 rounded-3xl p-1 shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
 									{latestEpisode && (
 										<img
 											src={`https://img.youtube.com/vi/${latestEpisode.data.youtubeId}/maxresdefault.jpg`}
 											alt={latestEpisode.data.title}
 											class="w-full aspect-video object-cover rounded-2xl"
 										/>
-									)}
-								</div>
-								<div class="absolute -bottom-4 -right-4 bg-yellow-400 text-gray-900 font-bold px-4 py-2 rounded-lg shadow-lg">
-									NEW!
+										)}
+									<div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full animate-pulse">
+										LIVE
+									</div>
 								</div>
 							</div>
 						</div>
@@ -104,26 +204,49 @@ const recentEpisodes = sortedEpisodes.slice(1, 3);
 				</div>
 			</section>
 
-			<!-- Metrics Section -->
+			<!-- Ridiculous Metrics Section -->
 			<section class="py-16 bg-gray-50 dark:bg-gray-800/50">
 				<div class="container max-w-6xl mx-auto px-4">
-					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Our <span class="gradient-text">AI-Powered</span> Metrics</h2>
+					<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 						<div class="metric-card bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
-							<div class="text-5xl font-bold mb-2 gradient-text">$10M</div>
-							<p class="text-gray-600 dark:text-gray-400">Series A Funding</p>
-							<p class="text-sm text-gray-500 dark:text-gray-500 mt-2">For a single lemonade stand</p>
+							<div class="text-4xl font-bold mb-2 gradient-text">42</div>
+							<p class="text-gray-600 dark:text-gray-400">LLMs Deployed</p>
+							<p class="text-sm text-gray-500 dark:text-gray-500 mt-2">Just for sugar measurement</p>
 						</div>
 						<div class="metric-card bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
-							<div class="text-5xl font-bold mb-2 gradient-text">3254%</div>
-							<p class="text-gray-600 dark:text-gray-400">Growth Potential</p>
-							<p class="text-sm text-gray-500 dark:text-gray-500 mt-2">According to our completely real data</p>
+							<div class="text-4xl font-bold mb-2 gradient-text">7.3B</div>
+							<p class="text-gray-600 dark:text-gray-400">Parameters</p>
+							<p class="text-sm text-gray-500 dark:text-gray-500 mt-2">To squeeze one lemon</p>
 						</div>
 						<div class="metric-card bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
-							<div class="text-5xl font-bold mb-2 gradient-text">0</div>
-							<p class="text-gray-600 dark:text-gray-400">Cups Sold</p>
-							<p class="text-sm text-gray-500 dark:text-gray-500 mt-2">But we're focusing on user acquisition first</p>
+							<div class="text-4xl font-bold mb-2 gradient-text">0</div>
+							<p class="text-gray-600 dark:text-gray-400">Human Input</p>
+							<p class="text-sm text-gray-500 dark:text-gray-500 mt-2">100% autonomous operation</p>
+						</div>
+						<div class="metric-card bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
+							<div class="text-4xl font-bold mb-2 gradient-text">∞</div>
+							<p class="text-gray-600 dark:text-gray-400">Computing Power</p>
+							<p class="text-sm text-gray-500 dark:text-gray-500 mt-2">Required per glass</p>
 						</div>
 					</div>
+				</div>
+			</section>
+
+			<!-- AI Features Banner -->
+			<section class="py-8 bg-gradient-to-r from-yellow-400 via-lime-500 to-yellow-400 bg-size-200 relative overflow-hidden">
+				<div class="absolute inset-0 flex items-center whitespace-nowrap marquee">
+					<div class="animate-marquee flex gap-8 text-white/20 text-4xl font-bold">
+						NEURAL NETWORKS • DEEP LEARNING • GPT-5 • AUTONOMOUS JUICING • QUANTUM TASTE PREDICTION • ROBOTIC GARNISHING • SENTIMENT-BASED PRICING •&nbsp;
+					</div>
+					<div class="animate-marquee flex gap-8 text-white/20 text-4xl font-bold" aria-hidden="true">
+						NEURAL NETWORKS • DEEP LEARNING • GPT-5 • AUTONOMOUS JUICING • QUANTUM TASTE PREDICTION • ROBOTIC GARNISHING • SENTIMENT-BASED PRICING •&nbsp;
+					</div>
+				</div>
+				<div class="container max-w-6xl mx-auto px-4 py-8 relative">
+					<h2 class="text-3xl md:text-4xl font-bold text-white text-center glow-effect">
+						The World's First AGI-Powered Lemonade Stand
+					</h2>
 				</div>
 			</section>
 
@@ -184,8 +307,8 @@ const recentEpisodes = sortedEpisodes.slice(1, 3);
 			<section class="py-16 bg-gray-50 dark:bg-gray-800/50">
 				<div class="container max-w-6xl mx-auto px-4">
 					<div class="text-center mb-12">
-						<h2 class="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Meet Our <span class="gradient-text">Visionaries</span></h2>
-						<p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Three entrepreneurs on a mission to disrupt the lemonade industry with tech-enabled, blockchain-verified, AI-optimized lemonade.</p>
+						<h2 class="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Meet Our <span class="gradient-text">AI Pioneers</span></h2>
+						<p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Three entrepreneurs on a mission to disrupt the lemonade industry with neural-network-optimized, quantum-computed, robotically-crafted lemonade.</p>
 					</div>
 					
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -201,8 +324,18 @@ const recentEpisodes = sortedEpisodes.slice(1, 3);
 								<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Aiden Calvin</h3>
 								<p class="text-lime-600 dark:text-lime-400 font-medium text-sm mb-3">CEO & Lemonade Visionary</p>
 								<div class="flex gap-4">
-									<a href="https://x.com/aidencalvin" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline">Twitter</a>
-									<a href="https://www.twitch.tv/calvinaiden" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline">Twitch</a>
+									<a href="https://x.com/aidencalvin" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline flex items-center gap-1">
+										<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+											<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+										</svg>
+										Twitter
+									</a>
+									<a href="https://www.twitch.tv/calvinaiden" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline flex items-center gap-1">
+										<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+											<path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
+										</svg>
+										Twitch
+									</a>
 								</div>
 							</div>
 						</div>
@@ -219,8 +352,18 @@ const recentEpisodes = sortedEpisodes.slice(1, 3);
 								<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Atrioc</h3>
 								<p class="text-lime-600 dark:text-lime-400 font-medium text-sm mb-3">CMO & Meme Strategist</p>
 								<div class="flex gap-4">
-									<a href="https://x.com/Atrioc" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline">Twitter</a>
-									<a href="https://www.twitch.tv/atrioc" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline">Twitch</a>
+									<a href="https://x.com/Atrioc" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline flex items-center gap-1">
+										<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+											<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+										</svg>
+										Twitter
+									</a>
+									<a href="https://www.twitch.tv/atrioc" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline flex items-center gap-1">
+										<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+											<path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
+										</svg>
+										Twitch
+									</a>
 								</div>
 							</div>
 						</div>
@@ -235,8 +378,21 @@ const recentEpisodes = sortedEpisodes.slice(1, 3);
 							</div>
 							<div class="p-6">
 								<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">DougDoug</h3>
-								<p class="text-lime-600 dark:text-lime-400 font-medium text-sm mb-3">CTO & Algorithm Whisperer</p>
-								<a href="https://x.com/dougdougfood" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline">Follow on Twitter</a>
+								<p class="text-lime-600 dark:text-lime-400 font-medium text-sm mb-3">CTO & Quantum Lemonade Engineer</p>
+								<div class="flex gap-4">
+									<a href="https://x.com/dougdougfood" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline flex items-center gap-1">
+										<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+											<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+										</svg>
+										Twitter
+									</a>
+									<a href="https://www.twitch.tv/dougdoug" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline flex items-center gap-1">
+										<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+											<path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
+										</svg>
+										Twitch
+									</a>
+								</div>
 							</div>
 						</div>
 					</div>

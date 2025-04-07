@@ -8,74 +8,211 @@ import BaseHead from '../components/BaseHead.astro';
 <html lang="en">
 <head>
   <BaseHead title="Links" description="Explore useful links related to the Lemonade Stand Podcast." />
+  <style>
+    .link-card {
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+    
+    .link-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255,209,102,0.1), rgba(0,137,76,0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .link-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .link-card:hover::before {
+      opacity: 1;
+    }
+
+    .social-link {
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+    }
+
+    .social-link::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #FFD166, #00894c);
+      border-radius: 9999px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    .social-link:hover {
+      color: white;
+      transform: translateX(5px);
+    }
+
+    .social-link:hover::before {
+      opacity: 1;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .floating-icon {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
 </head>
 <body class="min-h-screen bg-white dark:bg-gray-900">
   <Header />
-  <main class="container mx-auto py-8 max-w-4xl">
-    <h1 class="text-3xl font-bold text-center text-gray-900 dark:text-gray-50 mb-8">Connect With Us</h1>
+  <main class="container mx-auto py-12 px-4 max-w-4xl">
+    <h1 class="text-4xl md:text-5xl font-bold text-center text-gray-900 dark:text-gray-50 mb-12">
+      Connect With <span class="bg-gradient-to-r from-yellow-400 to-lime-500 text-transparent bg-clip-text">The Stand</span>
+    </h1>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Listen Section -->
-      <section class="text-center p-4 border border-lime-200 dark:border-lime-800 rounded-lg bg-white dark:bg-gray-800 shadow-sm">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Listen On</h2>
-        <div class="space-y-3">
-          <a href="https://www.youtube.com/@LemonadeStandPodcast" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">YouTube</a>
-          <a href="https://open.spotify.com/show/0Yz44z9z3t8VQu4WRmsrs6" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">Spotify</a>
+      <section class="link-card p-6 border-2 border-lime-200 dark:border-lime-800 rounded-xl bg-white dark:bg-gray-800 shadow-lg">
+        <div class="flex items-center justify-center mb-4">
+          <span class="text-4xl floating-icon">🎧</span>
+        </div>
+        <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-gray-50 mb-6">Listen On</h2>
+        <div class="space-y-4">
+          <a href="https://www.youtube.com/@LemonadeStandPodcast" target="_blank" class="social-link block text-center font-medium">
+            <span class="flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              YouTube
+            </span>
+          </a>
+          <a href="https://open.spotify.com/show/0Yz44z9z3t8VQu4WRmsrs6" target="_blank" class="social-link block text-center font-medium">
+            <span class="flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              Spotify
+            </span>
+          </a>
         </div>
       </section>
 
       <!-- More Platforms -->
-      <section class="text-center p-4 border border-lime-200 dark:border-lime-800 rounded-lg bg-white dark:bg-gray-800 shadow-sm">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">More Platforms</h2>
-        <div class="space-y-3">
-          <a href="https://podcasts.apple.com/us/podcast/lemonade-stand/id1799868725" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">Apple Podcasts</a>
-          <a href="https://music.amazon.com/podcasts/7d7e1f54-49a3-4082-81e8-f70bfe1ace63/lemonade-stand" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">Amazon Music</a>
+      <section class="link-card p-6 border-2 border-lime-200 dark:border-lime-800 rounded-xl bg-white dark:bg-gray-800 shadow-lg">
+        <div class="flex items-center justify-center mb-4">
+          <span class="text-4xl floating-icon">🎙️</span>
+        </div>
+        <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-gray-50 mb-6">More Platforms</h2>
+        <div class="space-y-4">
+          <a href="https://podcasts.apple.com/us/podcast/lemonade-stand/id1799868725" target="_blank" class="social-link block text-center font-medium">
+            <span class="flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.078 23.55c-.473-.316-.893-.703-1.244-1.15-.383-.463-.738-.95-1.064-1.454-.766-1.12-1.365-2.345-1.78-3.636-.5-1.502-.743-2.94-.743-4.347 0-1.57.34-2.94 1.002-4.09.49-.9 1.22-1.653 2.1-2.182.85-.53 1.84-.82 2.84-.84.35 0 .73.05 1.13.15.29.08.64.21 1.07.37.55.21.85.34.95.37.32.12.59.17.8.17.16 0 .39-.05.645-.13.145-.05.42-.14.81-.31.386-.14.692-.26.935-.35.37-.11.728-.21 1.05-.26.39-.06.777-.08 1.148-.05.71.05 1.36.2 1.94.42 1.02.41 1.843 1.05 2.457 1.96-.26.16-.5.346-.725.55-.487.43-.9.94-1.23 1.505-.43.77-.65 1.64-.644 2.52.015 1.083.29 2.035.84 2.86.387.6.904 1.114 1.534 1.536.31.21.582.355.84.45-.12.375-.252.74-.405 1.1-.347.807-.76 1.58-1.25 2.31-.432.63-.772 1.1-1.03 1.41-.402.48-.79.84-1.18 1.097-.43.285-.935.436-1.452.436-.35.015-.7-.03-1.034-.127-.29-.095-.576-.202-.856-.323-.293-.134-.596-.248-.905-.34-.38-.1-.77-.148-1.164-.147-.4 0-.79.05-1.16.145-.31.088-.61.196-.907.325-.42.175-.695.29-.855.34-.324.096-.656.154-.99.175-.52 0-1.004-.15-1.486-.45zm6.854-18.46c-.68.34-1.326.484-1.973.436-.1-.646 0-1.31.27-2.037.24-.62.56-1.18 1-1.68.46-.52 1.01-.95 1.63-1.26.66-.34 1.29-.52 1.89-.55.08.68 0 1.35-.25 2.07-.228.64-.568 1.23-1 1.76-.435.52-.975.95-1.586 1.26z"/></svg>
+              Apple Podcasts
+            </span>
+          </a>
+          <a href="https://music.amazon.com/podcasts/7d7e1f54-49a3-4082-81e8-f70bfe1ace63/lemonade-stand" target="_blank" class="social-link block text-center font-medium">
+            <span class="flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726-1.53.406-3.045.61-4.516.61-2.265 0-4.41-.396-6.435-1.187-2.02-.794-3.82-1.91-5.43-3.35-.1-.074-.15-.15-.15-.22 0-.047.02-.09.05-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.314-1.885-.21-.326-.664-.49-1.37-.49h-.18c-.45.022-.896.07-1.336.144-.44.074-.98.202-1.627.384-.16.045-.37.06-.63.048-.26-.01-.43-.05-.53-.14-.1-.09-.15-.22-.15-.39v-.63c0-.21.06-.37.17-.48.11-.11.29-.22.52-.315.86-.35 1.69-.58 2.49-.69.81-.11 1.57-.17 2.28-.17h.27c1.04 0 1.92.195 2.626.585.706.39 1.156.965 1.35 1.726.06.21.09.42.09.63v7.586c0 .26-.05.45-.16.57-.11.12-.29.18-.54.18h-.81c-.23 0-.4-.05-.52-.15-.12-.1-.19-.25-.21-.45l-.05-.36c-.48.465-1 .82-1.57 1.07-.58.25-1.21.37-1.89.37-.87 0-1.63-.22-2.28-.66-.65-.44-.97-1.08-.97-1.94zm3.975-.945c0 .635.185 1.12.555 1.46.37.34.855.51 1.455.51.235 0 .495-.035.78-.104.285-.07.575-.185.87-.345v-2.904c-.675-.06-1.19-.104-1.545-.13-.77-.06-1.34.07-1.71.39-.37.32-.555.77-.555 1.352zm12.526-1.865c0 .915.275 1.64.825 2.18.55.54 1.295.81 2.235.81.71 0 1.385-.16 2.025-.48v-.63c0-.18-.045-.31-.135-.39-.09-.08-.205-.12-.345-.12-.13 0-.315.03-.555.09-.235.06-.475.09-.72.09-.735 0-1.23-.195-1.485-.584-.255-.39-.383-1.024-.383-1.906v-2.55h3.27c.235 0 .405-.045.51-.135.105-.09.157-.225.157-.405v-.645h-3.936v-1.89c0-.24-.054-.41-.16-.51-.107-.1-.294-.15-.56-.15h-.766c-.235 0-.405.05-.51.15-.105.1-.158.27-.158.51v1.89h-1.785c-.235 0-.405.045-.51.135-.105.09-.157.225-.157.405v.645h2.452v2.79z"/></svg>
+              Amazon Music
+            </span>
+          </a>
         </div>
       </section>
 
       <!-- Social Media -->
-      <section class="text-center p-4 border border-lime-200 dark:border-lime-800 rounded-lg bg-white dark:bg-gray-800 shadow-sm">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Social Media</h2>
-        <div class="space-y-3">
-          <a href="https://x.com/LemonadeCast" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">Twitter</a>
-          <a href="https://www.instagram.com/thelemonadecast/" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">Instagram</a>
+      <section class="link-card p-6 border-2 border-lime-200 dark:border-lime-800 rounded-xl bg-white dark:bg-gray-800 shadow-lg">
+        <div class="flex items-center justify-center mb-4">
+          <span class="text-4xl floating-icon">💬</span>
+        </div>
+        <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-gray-50 mb-6">Social Media</h2>
+        <div class="space-y-4">
+          <a href="https://x.com/LemonadeCast" target="_blank" class="social-link block text-center font-medium">
+            <span class="flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              Twitter
+            </span>
+          </a>
+          <a href="https://www.instagram.com/thelemonadecast/" target="_blank" class="social-link block text-center font-medium">
+            <span class="flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Instagram
+            </span>
+          </a>
         </div>
       </section>
 
       <!-- Meet Aiden -->
-      <section class="text-center p-4 border border-lime-200 dark:border-lime-800 rounded-lg bg-white dark:bg-gray-800 shadow-sm">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Meet Aiden</h2>
-        <div class="space-y-3">
-          <a href="https://x.com/aidencalvin" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">Twitter</a>
-          <a href="https://www.youtube.com/@TheYardPodcast" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">The Yard Podcast</a>
+      <section class="link-card p-6 border-2 border-lime-200 dark:border-lime-800 rounded-xl bg-white dark:bg-gray-800 shadow-lg">
+        <div class="flex items-center justify-center mb-4">
+          <span class="text-4xl floating-icon">🎯</span>
+        </div>
+        <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-gray-50 mb-6">Meet Aiden</h2>
+        <div class="space-y-4">
+          <a href="https://x.com/aidencalvin" target="_blank" class="social-link block text-center font-medium">
+            <span class="flex items-center justify-center gap-2">Twitter</span>
+          </a>
+          <a href="https://www.youtube.com/@TheYardPodcast" target="_blank" class="social-link block text-center font-medium">
+            <span class="flex items-center justify-center gap-2">The Yard Podcast</span>
+          </a>
         </div>
       </section>
 
       <!-- Meet Atrioc -->
-      <section class="text-center p-4 border border-lime-200 dark:border-lime-800 rounded-lg bg-white dark:bg-gray-800 shadow-sm">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Meet Atrioc</h2>
-        <div class="space-y-3">
-          <a href="https://x.com/Atrioc" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">Twitter</a>
-          <a href="https://www.twitch.tv/atrioc" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">Twitch</a>
+      <section class="link-card p-6 border-2 border-lime-200 dark:border-lime-800 rounded-xl bg-white dark:bg-gray-800 shadow-lg">
+        <div class="flex items-center justify-center mb-4">
+          <span class="text-4xl floating-icon">🎮</span>
+        </div>
+        <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-gray-50 mb-6">Meet Atrioc</h2>
+        <div class="space-y-4">
+          <a href="https://x.com/Atrioc" target="_blank" class="social-link block text-center font-medium">
+            <span class="flex items-center justify-center gap-2">Twitter</span>
+          </a>
+          <a href="https://www.twitch.tv/atrioc" target="_blank" class="social-link block text-center font-medium">
+            <span class="flex items-center justify-center gap-2">Twitch</span>
+          </a>
         </div>
       </section>
 
       <!-- Meet DougDoug -->
-      <section class="text-center p-4 border border-lime-200 dark:border-lime-800 rounded-lg bg-white dark:bg-gray-800 shadow-sm">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Meet DougDoug</h2>
-        <div class="space-y-3">
-          <a href="https://x.com/DougDougFood" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">Twitter</a>
-          <a href="https://www.twitch.tv/dougdoug" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">Twitch</a>
+      <section class="link-card p-6 border-2 border-lime-200 dark:border-lime-800 rounded-xl bg-white dark:bg-gray-800 shadow-lg">
+        <div class="flex items-center justify-center mb-4">
+          <span class="text-4xl floating-icon">🎲</span>
+        </div>
+        <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-gray-50 mb-6">Meet DougDoug</h2>
+        <div class="space-y-4">
+          <a href="https://x.com/DougDougFood" target="_blank" class="social-link block text-center font-medium">
+            <span class="flex items-center justify-center gap-2">Twitter</span>
+          </a>
+          <a href="https://www.twitch.tv/dougdoug" target="_blank" class="social-link block text-center font-medium">
+            <span class="flex items-center justify-center gap-2">Twitch</span>
+          </a>
         </div>
       </section>
     </div>
     
-    <!-- Contribute Section - Full Width -->
-    <section class="mt-8 text-center p-4 border border-lime-200 dark:border-lime-800 rounded-lg bg-white dark:bg-gray-800 shadow-sm">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">Contribute</h2>
-      <div class="space-y-3">
-        <a href="https://github.com/LemonadeStandPodcast/LemonadeStandPodcast.github.io" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">GitHub Repository</a>
-        <a href="https://x.com/swapsha96" target="_blank" class="block text-lime-800 dark:text-lime-400 hover:underline">Contact Swapsha96 (DM for suggesting citations)</a>
+    <!-- Contribute Section -->
+    <section class="mt-12 link-card p-6 border-2 border-lime-200 dark:border-lime-800 rounded-xl bg-white dark:bg-gray-800 shadow-lg">
+      <div class="flex items-center justify-center mb-4">
+        <span class="text-4xl floating-icon">🛠️</span>
+      </div>
+      <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-gray-50 mb-6">Contribute</h2>
+      <div class="space-y-4 max-w-lg mx-auto">
+        <a href="https://github.com/LemonadeStandPodcast/LemonadeStandPodcast.github.io" target="_blank" class="social-link block text-center font-medium">
+          <span class="flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            GitHub Repository
+          </span>
+        </a>
+        <a href="https://x.com/swapsha96" target="_blank" class="social-link block text-center font-medium">
+          <span class="flex items-center justify-center gap-2">
+            Contact Swapsha96 (DM for suggesting citations)
+          </span>
+        </a>
       </div>
     </section>
   </main>
