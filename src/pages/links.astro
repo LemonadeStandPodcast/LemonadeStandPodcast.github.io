@@ -40,6 +40,11 @@ import BaseHead from '../components/BaseHead.astro';
       transition: all 0.3s ease;
       padding: 0.5rem 1rem;
       border-radius: 9999px;
+      color: rgb(55, 65, 81);
+    }
+
+    :global(.dark) .social-link {
+      color: rgb(209, 213, 219);
     }
 
     .social-link::before {
@@ -60,6 +65,18 @@ import BaseHead from '../components/BaseHead.astro';
 
     .social-link:hover::before {
       opacity: 1;
+    }
+
+    .social-link svg {
+      transition: fill 0.3s ease;
+    }
+
+    :global(.dark) .social-link svg {
+      fill: rgb(209, 213, 219);
+    }
+
+    .social-link:hover svg {
+      fill: white;
     }
 
     @keyframes float {
