@@ -4,8 +4,7 @@ description: "This week Atrioc gives us the low-down on \"Liberation Day\" tarif
 pubDate: 2025-04-02
 youtubeId: "PWUVPc5FJiw"
 episodeNumber: 5
-summary: |
-  In this episode, we discuss the implications of the new "Liberation Day" tariffs on international trade, the coordinated response from Asian economies, and potential market impacts. We also cover the latest in the Deel vs. Rippling lawsuit drama, examine America's infrastructure challenges through the lens of the Abundance book, and introduce a new lightning round segment for rapid-fire debates on current events.
+summary: ""
 tags:
   - "Liberation Day"
   - "Tariffs"
@@ -30,17 +29,3 @@ citations:
   - title: "Deficit Tracker - Bipartisan Policy Center"
     url: "https://bipartisanpolicy.org/report/deficit-tracker/"
 ---
-
-This week we cover several major developments in business and politics:
-
-## Liberation Day Tariffs
-Atrioc breaks down the implications of the new "Liberation Day" tariffs and what they mean for international trade. We discuss the coordinated response from Asian economies and potential impact on global markets.
-
-## Tech Industry Drama
-We dive into the ongoing Deel vs. Rippling lawsuit, examining the latest developments and what they mean for the HR tech space.
-
-## America's Building Crisis
-Doug presents a passionate argument about the challenges in American infrastructure and construction, drawing from insights in the Abundance book and recent policy discussions.
-
-## Lightning Round
-Aiden introduces a new segment - the Lemonade Stand lightning round - where we rapidly discuss and debate current events and market movements.
