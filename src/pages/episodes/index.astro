@@ -69,12 +69,15 @@ const allTags = [...new Set(sortedEpisodes.flatMap(episode => episode.data.tags)
 				<div class="grid gap-8" id="episodesContainer">
 					{sortedEpisodes.map((episode) => (
 						<article class="episode-card flex flex-col md:flex-row bg-white dark:bg-gray-700/50 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300" data-tags={episode.data.tags.join(',')}>
-							<div class="md:w-1/3 shrink-0 flex items-stretch">
-								<img
-									src={`https://img.youtube.com/vi/${episode.data.youtubeId}/maxresdefault.jpg`}
-									alt={episode.data.title}
-									class="w-full h-full object-cover"
-								/>
+							<div class="md:w-1/3 shrink-0">
+								<a href={`/episodes/${episode.slug}/`} class="block relative overflow-hidden h-full">
+									<img
+										src={`https://img.youtube.com/vi/${episode.data.youtubeId}/maxresdefault.jpg`}
+										alt={episode.data.title}
+										class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+									/>
+									<div class="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+								</a>
 							</div>
 							<div class="flex-1 p-4 md:p-6 md:pl-8">
 								<div class="flex justify-between items-start mb-3">
