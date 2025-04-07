@@ -9,119 +9,302 @@ import FormattedDate from '../components/FormattedDate.astro';
 const allEpisodes = await getCollection('episodes');
 const sortedEpisodes = allEpisodes.sort((a, b) => b.data.episodeNumber - a.data.episodeNumber);
 const latestEpisode = sortedEpisodes[0];
-const recentEpisodes = sortedEpisodes.slice(1, 4);
+const recentEpisodes = sortedEpisodes.slice(1, 3);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.gradient-text {
+				background: linear-gradient(90deg, #FFD166 0%, #EF476F 50%, #06D6A0 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+			
+			.hero-gradient {
+				background: radial-gradient(circle at 10% 20%, rgba(255, 209, 102, 0.2) 0%, rgba(6, 214, 160, 0.1) 90%);
+			}
+			
+			.animate-float {
+				animation: float 6s ease-in-out infinite;
+			}
+			
+			@keyframes float {
+				0% { transform: translateY(0px); }
+				50% { transform: translateY(-20px); }
+				100% { transform: translateY(0px); }
+			}
+			
+			.metric-card {
+				transition: all 0.3s ease;
+			}
+			
+			.metric-card:hover {
+				transform: translateY(-10px);
+			}
+		</style>
 	</head>
-	<body class="min-h-screen bg-white dark:bg-gray-800">
+	<body class="min-h-screen bg-white dark:bg-gray-900">
 		<Header />
 		
-		<main class="min-h-screen">
-			{latestEpisode && (
-				<section class="border-b border-gray-200 dark:border-gray-700">
-					<div class="container max-w-6xl mx-auto px-4 py-8">
-						<div class="text-lime dark:text-lime-400 text-xl font-bold mb-4">LATEST EPISODE</div>
-						<div class="w-full aspect-video mb-6">
-							<iframe
-								src={`https://www.youtube.com/embed/${latestEpisode.data.youtubeId}`}
-								title={latestEpisode.data.title}
-								class="w-full h-full"
-								frameborder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-								allowfullscreen
-							/>
-						</div>
-						<div>
-							<div class="flex justify-between items-start mb-4">
-								<h1 class="text-4xl font-bold text-gray-900 dark:text-gray-50">
-									<a href={`/episodes/${latestEpisode.slug}/`} class="text-gray-900 dark:text-gray-50 hover:text-lime dark:hover:text-lime-400">
-										#{latestEpisode.data.episodeNumber} {latestEpisode.data.title}
-									</a>
-								</h1>
-								<p class="text-lime-600 dark:text-lime-400 font-medium whitespace-nowrap ml-4">
-									<FormattedDate date={latestEpisode.data.pubDate} />
+		<main>
+			<!-- Hero Section -->
+			<section class="hero-gradient py-24 border-b border-gray-200 dark:border-gray-700">
+				<div class="container max-w-6xl mx-auto px-4">
+					<div class="flex flex-col md:flex-row items-center">
+						<div class="md:w-1/2 mb-10 md:mb-0">
+							<h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-gray-900 dark:text-white">
+								<span class="gradient-text">Disrupting</span> the 
+								<br>Lemonade Industry
+							</h1>
+							<p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
+								Three entrepreneurs. $10M in VC funding. One lemonade stand.
+								What could possibly go wrong?
+							</p>
+							<div class="flex flex-wrap gap-4">
+								<a href="/episodes" class="px-8 py-3 bg-gradient-to-r from-yellow-400 to-lime-500 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+									Listen Now
+								</a>
+								<a href="#latestEpisode" class="px-8 py-3 border-2 border-gray-800 dark:border-gray-200 text-gray-800 dark:text-gray-200 font-medium rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
+									Latest Episode
+								</a>
+							</div>
+							<div class="flex items-center gap-6 mt-8">
+								<div class="flex -space-x-2">
+									<img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800" src="/public/avatar-1.png" alt="Co-founder" onerror="this.src='/public/blog-placeholder-1.jpg'">
+									<img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800" src="/public/avatar-2.png" alt="Co-founder" onerror="this.src='/public/blog-placeholder-2.jpg'">
+									<img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800" src="/public/avatar-3.png" alt="Co-founder" onerror="this.src='/public/blog-placeholder-3.jpg'">
+								</div>
+								<p class="text-sm text-gray-600 dark:text-gray-400">
+									Join <span class="font-semibold">10,000+</span> listeners revolutionizing lemonade
 								</p>
 							</div>
-							<p class="text-lg text-gray-700 dark:text-gray-300 mb-6">{latestEpisode.data.description}</p>
-							<div class="flex flex-wrap gap-2 mb-6">
-								{latestEpisode.data.tags.map((tag) => (
-									<a
-										href={`/episodes?tag=${tag}`}
-										class="bg-lime-100 dark:bg-lime-900/30 text-lime-800 dark:text-lime-300 px-3 py-1 rounded-full text-sm font-medium hover:bg-lime-200 dark:hover:bg-lime-800/50 transition-colors flex items-center gap-1"
-									>
-										<span class="inline-block w-2 h-2 rounded-full bg-lime-500 dark:bg-lime-400"></span>
-										{tag}
-									</a>
-								))}
+						</div>
+						<div class="md:w-1/2 relative">
+							<div class="relative w-full max-w-md mx-auto animate-float">
+								<div class="absolute inset-0 bg-gradient-to-br from-yellow-300 to-lime-400 rounded-3xl blur-xl opacity-30"></div>
+								<div class="relative bg-white dark:bg-gray-800 rounded-3xl p-1 shadow-2xl overflow-hidden">
+									{latestEpisode && (
+										<img
+											src={`https://img.youtube.com/vi/${latestEpisode.data.youtubeId}/maxresdefault.jpg`}
+											alt={latestEpisode.data.title}
+											class="w-full aspect-video object-cover rounded-2xl"
+										/>
+									)}
+								</div>
+								<div class="absolute -bottom-4 -right-4 bg-yellow-400 text-gray-900 font-bold px-4 py-2 rounded-lg shadow-lg">
+									NEW!
+								</div>
 							</div>
-							<a
-								href={`/episodes/${latestEpisode.slug}/`}
-								class="inline-block bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-lime hover:text-white dark:hover:bg-lime dark:hover:text-white transition-all duration-200"
-							>
-								Episode Details
-							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Metrics Section -->
+			<section class="py-16 bg-gray-50 dark:bg-gray-800/50">
+				<div class="container max-w-6xl mx-auto px-4">
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+						<div class="metric-card bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
+							<div class="text-5xl font-bold mb-2 gradient-text">$10M</div>
+							<p class="text-gray-600 dark:text-gray-400">Series A Funding</p>
+							<p class="text-sm text-gray-500 dark:text-gray-500 mt-2">For a single lemonade stand</p>
+						</div>
+						<div class="metric-card bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
+							<div class="text-5xl font-bold mb-2 gradient-text">3254%</div>
+							<p class="text-gray-600 dark:text-gray-400">Growth Potential</p>
+							<p class="text-sm text-gray-500 dark:text-gray-500 mt-2">According to our completely real data</p>
+						</div>
+						<div class="metric-card bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
+							<div class="text-5xl font-bold mb-2 gradient-text">0</div>
+							<p class="text-gray-600 dark:text-gray-400">Cups Sold</p>
+							<p class="text-sm text-gray-500 dark:text-gray-500 mt-2">But we're focusing on user acquisition first</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Latest Episode Section -->
+			{latestEpisode && (
+				<section id="latestEpisode" class="py-16">
+					<div class="container max-w-6xl mx-auto px-4">
+						<div class="flex flex-col md:flex-row items-start gap-8">
+							<div class="md:w-1/2">
+								<div class="mb-6">
+									<span class="bg-gradient-to-r from-yellow-400 to-lime-500 text-white px-4 py-1 rounded-full text-sm font-semibold tracking-wide">LATEST RELEASE</span>
+								</div>
+								<h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+									#{latestEpisode.data.episodeNumber} {latestEpisode.data.title}
+								</h2>
+								<p class="text-lime-600 dark:text-lime-400 font-medium mb-4">
+									<FormattedDate date={latestEpisode.data.pubDate} />
+								</p>
+								<p class="text-lg text-gray-700 dark:text-gray-300 mb-6">{latestEpisode.data.description}</p>
+								<div class="flex flex-wrap gap-2 mb-6">
+									{latestEpisode.data.tags.map((tag) => (
+										<a
+											href={`/episodes?tag=${tag}`}
+											class="bg-gradient-to-r from-yellow-100 to-lime-100 dark:from-yellow-900/30 dark:to-lime-900/30 text-gray-800 dark:text-lime-300 px-4 py-1 rounded-full text-sm font-medium hover:shadow-md transition-all"
+										>
+											<span class="inline-block w-2 h-2 rounded-full bg-lime-500 dark:bg-lime-400 mr-1"></span>
+											{tag}
+										</a>
+									))}
+								</div>
+								<a
+									href={`/episodes/${latestEpisode.slug}/`}
+									class="inline-block bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300 text-white dark:text-gray-900 px-6 py-3 rounded-xl font-medium hover:shadow-xl transition-all duration-200"
+								>
+									Episode Details
+								</a>
+							</div>
+							<div class="md:w-1/2">
+								<div class="bg-gradient-to-br from-yellow-300/20 to-lime-300/20 p-1 rounded-2xl shadow-xl">
+									<div class="w-full aspect-video">
+										<iframe
+											src={`https://www.youtube.com/embed/${latestEpisode.data.youtubeId}`}
+											title={latestEpisode.data.title}
+											class="w-full h-full rounded-2xl"
+											frameborder="0"
+											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+											allowfullscreen
+										/>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</section>
 			)}
 
+			<!-- Team Section -->
+			<section class="py-16 bg-gray-50 dark:bg-gray-800/50">
+				<div class="container max-w-6xl mx-auto px-4">
+					<div class="text-center mb-12">
+						<h2 class="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Meet Our <span class="gradient-text">Visionaries</span></h2>
+						<p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Three entrepreneurs on a mission to disrupt the lemonade industry with tech-enabled, blockchain-verified, AI-optimized lemonade.</p>
+					</div>
+					
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+						<div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
+							<div class="h-80 overflow-hidden"> <!-- Increased height to show more of the image -->
+								<img 
+									src="/public/aidencalvin.jpg" 
+									alt="Aiden Calvin" 
+									class="w-full h-full object-cover"
+								/>
+							</div>
+							<div class="p-6">
+								<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Aiden Calvin</h3>
+								<p class="text-lime-600 dark:text-lime-400 font-medium text-sm mb-3">CEO & Lemonade Visionary</p>
+								<div class="flex gap-4">
+									<a href="https://x.com/aidencalvin" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline">Twitter</a>
+									<a href="https://www.twitch.tv/calvinaiden" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline">Twitch</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
+							<div class="h-80 overflow-hidden"> <!-- Increased height to show more of the image -->
+								<img 
+									src="/public/atrioc.jpg" 
+									alt="Atrioc" 
+									class="w-full h-full object-cover"
+								/>
+							</div>
+							<div class="p-6">
+								<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Atrioc</h3>
+								<p class="text-lime-600 dark:text-lime-400 font-medium text-sm mb-3">CMO & Meme Strategist</p>
+								<div class="flex gap-4">
+									<a href="https://x.com/Atrioc" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline">Twitter</a>
+									<a href="https://www.twitch.tv/atrioc" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline">Twitch</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
+							<div class="h-80 overflow-hidden"> <!-- Increased height to match other cards -->
+								<img 
+									src="/public/dougdoug.jpg" 
+									alt="DougDoug" 
+									class="w-full h-full object-cover"
+								/>
+							</div>
+							<div class="p-6">
+								<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">DougDoug</h3>
+								<p class="text-lime-600 dark:text-lime-400 font-medium text-sm mb-3">CTO & Algorithm Whisperer</p>
+								<a href="https://x.com/dougdougfood" class="text-lime-600 dark:text-lime-400 font-medium text-sm hover:underline">Follow on Twitter</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Previous Episodes Section -->
 			{recentEpisodes.length > 0 && (
-				<section class="container max-w-6xl mx-auto px-4 py-12">
-					<h2 class="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-8">Previous Episodes</h2>
-					<div class="grid gap-8">
+				<section class="container max-w-6xl mx-auto px-4 py-16">
+					<div class="flex justify-between items-center mb-10">
+						<h2 class="text-3xl font-bold text-gray-900 dark:text-white">Previous Episodes</h2>
+						<a href="/episodes" class="text-lime-600 dark:text-lime-400 font-medium hover:underline">View All →</a>
+					</div>
+					
+					<div class="grid md:grid-cols-2 gap-8">
 						{recentEpisodes.map((episode) => (
-							<article class="flex flex-row bg-white dark:bg-gray-700/50 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
-								<div class="w-1/3 shrink-0 flex items-stretch">
+							<article class="bg-white dark:bg-gray-800/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col">
+								<div class="relative">
 									<img
 										src={`https://img.youtube.com/vi/${episode.data.youtubeId}/maxresdefault.jpg`}
 										alt={episode.data.title}
-										class="w-full h-full object-cover"
+										class="w-full aspect-video object-cover"
 									/>
-								</div>
-								<div class="flex-1 p-4 md:p-6 md:pl-8">
-									<div class="flex justify-between items-start mb-2">
-										<h3 class="text-xl font-bold text-gray-900 dark:text-gray-50">
-											<a href={`/episodes/${episode.slug}/`} class="text-gray-900 dark:text-gray-50 hover:text-lime-600 dark:hover:text-lime-300">
-												#{episode.data.episodeNumber} {episode.data.title}
-											</a>
-										</h3>
-										<p class="text-lime-600 dark:text-lime-400 font-medium whitespace-nowrap text-sm ml-4">
+									<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+										<p class="text-white text-sm font-medium">
 											<FormattedDate date={episode.data.pubDate} />
 										</p>
 									</div>
-									<p class="text-gray-700 dark:text-gray-200 mb-4">
+								</div>
+								
+								<div class="p-6 flex-1 flex flex-col">
+									<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+										<a href={`/episodes/${episode.slug}/`} class="text-white hover:text-lime-600 dark:hover:text-lime-400 transition-colors">
+											#{episode.data.episodeNumber} {episode.data.title}
+										</a>
+									</h3>
+									
+									<p class="text-gray-700 dark:text-gray-300 mb-4 flex-1">
 										{episode.data.description}
 									</p>
-									<div class="flex flex-wrap gap-2">
+									
+									<div class="flex flex-wrap gap-2 mb-4">
 										{episode.data.tags.map((tag) => (
 											<a 
 												href={`/episodes?tag=${tag}`}
-												class="bg-lime-100 dark:bg-lime-900/30 text-lime-800 dark:text-lime-300 px-3 py-1 rounded-full text-sm font-medium hover:bg-lime-200 dark:hover:bg-lime-800/50 transition-colors flex items-center gap-1"
+												class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-xs font-medium hover:bg-lime-100 dark:hover:bg-lime-900/30 transition-colors flex items-center gap-1"
 											>
 												<span class="inline-block w-2 h-2 rounded-full bg-lime-500 dark:bg-lime-400"></span>
 												{tag}
 											</a>
 										))}
 									</div>
+									
+									<a 
+										href={`/episodes/${episode.slug}/`} 
+										class="text-lime-600 dark:text-lime-400 font-medium hover:underline flex items-center"
+									>
+										Listen now 
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+										</svg>
+									</a>
 								</div>
 							</article>
 						))}
 					</div>
-					
-					<div class="mt-12 text-center">
-						<a 
-							href="/episodes" 
-							class="inline-block bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-lime hover:text-white dark:hover:bg-lime dark:hover:text-white transition-all duration-200"
-						>
-							View All Episodes
-						</a>
-					</div>
 				</section>
-			)}
+				)}
 		</main>
 		<Footer />
 	</body>
