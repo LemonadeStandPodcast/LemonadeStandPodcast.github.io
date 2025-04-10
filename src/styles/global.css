@@ -23,11 +23,11 @@ body {
 
 .container {
   width: 100%;
-  max-width: 72rem;
+  max-width: 65rem; /* Reducing from 72rem for narrower content */
   margin-left: auto;
   margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 2rem; /* Reduced from 4rem */
+  padding-right: 2rem; /* Reduced from 4rem */
 }
 
 .tag {
@@ -101,6 +101,9 @@ footer {
 article {
   display: flex;
   flex-direction: column;
+  max-width: 60rem; /* Even narrower content area */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 article .aspect-video {

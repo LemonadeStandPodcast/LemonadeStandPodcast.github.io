@@ -18,96 +18,94 @@ const allTags = [...new Set(sortedEpisodes.flatMap(episode => episode.data.tags)
 	<head>
 		<BaseHead title={`Episodes | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 	</head>
-	<body class="min-h-screen bg-white dark:bg-gray-800">
+	<body class="bg-white dark:bg-gray-900">
 		<Header />
-		<main class="min-h-screen">
-			<div class="container max-w-6xl mx-auto px-4 py-8">
-				<div class="mb-8">
-					<h1 id="episodeTitle" class="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
-						All Episodes
-					</h1>
+		<main class="container max-w-3xl mx-auto px-6 py-8">
+			<div class="mb-8">
+				<h1 id="episodeTitle" class="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
+					All Episodes
+				</h1>
 
-					<div class="flex items-center gap-3 mb-6">
-						<a 
-							href="/episodes" 
-							id="allEpisodesBtn"
-							class="btn btn-primary"
+				<div class="flex items-center gap-3 mb-6">
+					<a 
+						href="/episodes" 
+						id="allEpisodesBtn"
+						class="btn btn-primary"
+					>
+							All Episodes
+					</a>
+					
+					<div class="relative">
+						<select 
+							id="tagSelect" 
+							class="appearance-none bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 pr-8 rounded-lg border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-lime-500 cursor-pointer"
 						>
-								All Episodes
-						</a>
-						
-						<div class="relative">
-							<select 
-								id="tagSelect" 
-								class="appearance-none bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 pr-8 rounded-lg border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-lime-500 cursor-pointer"
-							>
-								<option value="">Filter by tag...</option>
-								{allTags.map(tag => (
-									<option value={tag}>
-										{tag}
-									</option>
-								))}
-							</select>
-							<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-200">
-								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-								</svg>
-							</div>
-						</div>
-						
-						<div id="activeFilter" class="hidden bg-lime-100 dark:bg-lime-900/30 text-lime-800 dark:text-lime-200 px-3 py-1 rounded-full text-sm flex items-center gap-1">
-							<span id="activeFilterText">Current filter: </span>
-							<a href="/episodes" class="ml-1 hover:text-lime-600 dark:hover:text-lime-400">
-								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-								</svg>
-							</a>
+							<option value="">Filter by tag...</option>
+							{allTags.map(tag => (
+								<option value={tag}>
+									{tag}
+								</option>
+							))}
+						</select>
+						<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-200">
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+							</svg>
 						</div>
 					</div>
+					
+					<div id="activeFilter" class="hidden bg-lime-100 dark:bg-lime-900/30 text-lime-800 dark:text-lime-200 px-3 py-1 rounded-full text-sm flex items-center gap-1">
+						<span id="activeFilterText">Current filter: </span>
+						<a href="/episodes" class="ml-1 hover:text-lime-600 dark:hover:text-lime-400">
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+							</svg>
+						</a>
+					</div>
 				</div>
+			</div>
 
-				<div class="grid gap-8" id="episodesContainer">
-					{sortedEpisodes.map((episode) => (
-						<article class="episode-card flex flex-col md:flex-row bg-white dark:bg-gray-700/50 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300" data-tags={episode.data.tags.join(',')}>
-							<div class="md:w-1/3 shrink-0">
-								<a href={`/episodes/${episode.slug}/`} class="block relative overflow-hidden h-full">
-									<img
-										src={`https://img.youtube.com/vi/${episode.data.youtubeId}/maxresdefault.jpg`}
-										alt={episode.data.title}
-										class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-									/>
-									<div class="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-								</a>
-							</div>
-							<div class="flex-1 p-4 md:p-6 md:pl-8">
-								<div class="flex justify-between items-start mb-3">
-									<h3 class="text-xl font-bold text-gray-900 dark:text-gray-50">
-										<a href={`/episodes/${episode.slug}/`} class="text-gray-900 dark:text-gray-50 hover:text-lime-600 dark:hover:text-lime-300">
-											#{episode.data.episodeNumber} {episode.data.title}
-										</a>
-									</h3>
-									<p class="text-lime-600 dark:text-lime-400 font-medium whitespace-nowrap text-sm ml-4">
-										<FormattedDate date={episode.data.pubDate} />
-									</p>
-								</div>
-								<p class="text-gray-700 dark:text-gray-200 mb-4">
-									{episode.data.description}
+			<div class="grid gap-8" id="episodesContainer">
+				{sortedEpisodes.map((episode) => (
+					<article class="episode-card flex flex-col md:flex-row bg-white dark:bg-gray-700/50 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300" data-tags={episode.data.tags.join(',')}>
+						<div class="md:w-1/3 shrink-0">
+							<a href={`/episodes/${episode.slug}/`} class="block relative overflow-hidden h-full">
+								<img
+									src={`https://img.youtube.com/vi/${episode.data.youtubeId}/maxresdefault.jpg`}
+									alt={episode.data.title}
+									class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+								/>
+								<div class="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+							</a>
+						</div>
+						<div class="flex-1 p-4 md:p-6 md:pl-8">
+							<div class="flex justify-between items-start mb-3">
+								<h3 class="text-xl font-bold text-gray-900 dark:text-gray-50">
+									<a href={`/episodes/${episode.slug}/`} class="text-gray-900 dark:text-gray-50 hover:text-lime-600 dark:hover:text-lime-300">
+										#{episode.data.episodeNumber} {episode.data.title}
+									</a>
+								</h3>
+								<p class="text-lime-600 dark:text-yellow-400 font-medium whitespace-nowrap text-sm ml-4">
+									<FormattedDate date={episode.data.pubDate} />
 								</p>
-								<div class="flex flex-wrap gap-2">
-									{episode.data.tags.map((tag) => (
-										<button 
-											class="tag-btn bg-lime-100 dark:bg-lime-900/30 text-lime-800 dark:text-lime-300 px-3 py-1 rounded-full text-sm font-medium hover:bg-lime-200 dark:hover:bg-lime-800/50 transition-colors flex items-center gap-1"
-											data-tag={tag}
-										>
-											<span class="inline-block w-2 h-2 rounded-full bg-lime-500 dark:bg-lime-400"></span>
-											{tag}
-										</button>
-									))}
-								</div>
 							</div>
-						</article>
-					))}
-				</div>
+							<p class="text-gray-700 dark:text-gray-200 mb-4">
+								{episode.data.description}
+							</p>
+							<div class="flex flex-wrap gap-2">
+								{episode.data.tags.map((tag) => (
+									<button 
+										class="tag-btn bg-lime-100 dark:bg-lime-900/30 text-lime-800 dark:text-lime-300 px-3 py-1 rounded-full text-sm font-medium hover:bg-lime-200 dark:hover:bg-lime-800/50 transition-colors flex items-center gap-1"
+										data-tag={tag}
+									>
+										<span class="inline-block w-2 h-2 rounded-full bg-lime-500 dark:bg-lime-400"></span>
+										{tag}
+									</button>
+								))}
+							</div>
+						</div>
+					</article>
+				))}
 			</div>
 		</main>
 		<Footer />

@@ -19,68 +19,75 @@ const { data, slug } = Astro.props;
 
 	<body class="bg-white dark:bg-gray-900">
 		<Header />
-		<main class="container max-w-4xl mx-auto px-4 py-8">
-			<article class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
-				<div class="w-full aspect-video mb-6">
-					<iframe
-						src={`https://www.youtube.com/embed/${data.youtubeId}`}
-						title={data.title}
-						class="w-full h-full"
-						frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-						allowfullscreen
-					/>
-				</div>
-				<div class="px-6 pb-6">
-					<div class="flex justify-between items-start mb-4">
-						<h1 class="text-4xl font-bold text-gray-900 dark:text-white">#{data.episodeNumber} {data.title}</h1>
-						<p class="text-lime-600 dark:text-lime-400 font-medium whitespace-nowrap ml-4">
+		<main class="container max-w-3xl mx-auto px-6 py-8">
+			<article class="bg-gradient-to-br from-yellow-50 to-lime-50 dark:from-gray-800/50 dark:to-gray-700/50 rounded-2xl p-6 md:p-8 mb-8">
+				<div class="mb-6">
+					<div class="flex flex-wrap items-center gap-4 mb-4">
+						<span class="bg-gradient-to-r from-yellow-500 via-lime-500 to-green-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+							Episode #{data.episodeNumber}
+						</span>
+						<span class="text-yellow-600 dark:text-yellow-400 font-medium">
 							<FormattedDate date={data.pubDate} />
-						</p>
+						</span>
 					</div>
-					
-					<div class="flex flex-wrap gap-2 mb-8">
+					<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">{data.title}</h1>
+					<div class="flex flex-wrap gap-2 mb-6">
 						{data.tags.map((tag) => (
 							<a
 								href={`/episodes?tag=${tag}`}
-								class="bg-lime-100 dark:bg-lime-900/30 text-lime-800 dark:text-lime-300 px-3 py-1 rounded-full text-sm font-medium hover:bg-lime-200 dark:hover:bg-lime-800/50 transition-colors flex items-center gap-1"
+								class="bg-gradient-to-r from-yellow-100 to-lime-100 dark:from-yellow-900/30 dark:to-lime-900/30 text-yellow-800 dark:text-yellow-300 px-4 py-1 rounded-full text-sm font-medium hover:bg-yellow-200 dark:hover:bg-yellow-800/50 transition-colors flex items-center gap-1"
 							>
-								<span class="inline-block w-2 h-2 rounded-full bg-lime-500 dark:bg-lime-400"></span>
+								<span class="inline-block w-2 h-2 rounded-full bg-yellow-500 dark:bg-yellow-400"></span>
 								{tag}
 							</a>
 						))}
 					</div>
+				</div>
 
-					<div class="prose prose-lg max-w-none mb-8 dark:prose-invert">
-						<slot />
+				<div class="prose prose-lg max-w-none mb-8 dark:prose-invert">
+					<slot />
+				</div>
+
+				{data.citations && (
+					<div class="border-t border-gray-200 dark:border-gray-700 pt-6 mb-8">
+						<h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Sources & References</h2>
+						<ul class="space-y-2">
+							{data.citations.map((citation) => (
+								<li>
+									<a
+										href={citation.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="text-lime-600 dark:text-lime-400 font-medium flex items-center hover:text-lime-800 dark:hover:text-lime-300 transition-colors"
+									>
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+										</svg>
+										{citation.title}
+									</a>
+								</li>
+							))}
+						</ul>
 					</div>
+				)}
 
-					{data.citations && (
-						<div class="border-t border-gray-200 dark:border-gray-700 pt-6 mb-8">
-							<h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Sources & References</h2>
-							<ul class="space-y-2">
-								{data.citations.map((citation) => (
-									<li>
-										<a
-											href={citation.url}
-											target="_blank"
-											rel="noopener noreferrer"
-											class="text-lime-600 dark:text-lime-400 font-medium flex items-center hover:text-lime-800 dark:hover:text-lime-300 transition-colors"
-										>
-											<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-											</svg>
-											{citation.title}
-										</a>
-									</li>
-								))}
-							</ul>
-						</div>
-					)}
-
+				<div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
 					<ShareButtons title={data.title} url={`/episodes/${slug}`} />
 				</div>
 			</article>
+
+			<div class="prose dark:prose-invert max-w-none">
+				<slot />
+			</div>
+
+			<div class="mt-8">
+				<a href="/episodes" class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 via-lime-500 to-green-500 text-white px-6 py-3 rounded-xl font-medium hover:shadow-lg transition-all duration-300">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+					</svg>
+					Back to Episodes
+				</a>
+			</div>
 		</main>
 		<Footer />
 	</body>

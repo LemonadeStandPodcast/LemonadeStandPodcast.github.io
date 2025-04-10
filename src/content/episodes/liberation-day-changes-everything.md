@@ -9,6 +9,8 @@ tags:
   - "Liberation Day"
   - "Tariffs"
   - "Deel vs. Rippling Lawsuit"
+  - "Abundance"
+  - "Housing Crisis"
 citations:
   - title: "Tweets by Parker Conrad - Deel vs. Rippling lawsuit"
     url: "https://x.com/parkerconrad/status/1907444819598999622"
