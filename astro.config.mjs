@@ -6,7 +6,8 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	site: 'https://lemonadestandpodcast.github.io',
+	base: '/lemonade-stand-podcast',
 	integrations: [
 		mdx(),
 		sitemap(),
