@@ -5,6 +5,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 export async function GET(context) {
 	const episodes = await getCollection('episodes');
 	const sortedEpisodes = episodes.sort((a, b) => b.data.episodeNumber - a.data.episodeNumber);
+	const baseUrl = import.meta.env.BASE_URL;
 
 	return rss({
 		title: SITE_TITLE,
@@ -14,7 +15,7 @@ export async function GET(context) {
 			title: episode.data.title,
 			pubDate: episode.data.pubDate,
 			description: episode.data.description,
-			link: `/episodes/${episode.slug}/`,
+			link: `${baseUrl}/episodes/${episode.slug}/`,
 			customData: `
 				<enclosure url="https://img.youtube.com/vi/${episode.data.youtubeId}/maxresdefault.jpg" length="0" type="image/jpeg" />
 				<itunes:subtitle>${episode.data.description}</itunes:subtitle>

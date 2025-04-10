@@ -78,7 +78,7 @@ const { data, slug } = Astro.props;
 						<div class="flex flex-wrap gap-2">
 							{data.tags.map((tag) => (
 								<a
-									href={`/episodes?tag=${tag.replace(/ /g, '+')}`}
+									href={`${import.meta.env.BASE_URL}/episodes?tag=${tag.replace(/ /g, '+')}`}
 									class="bg-gradient-to-r from-yellow-100 to-lime-100 dark:from-yellow-900/30 dark:to-lime-900/30 text-yellow-800 dark:text-yellow-300 px-4 py-1 rounded-full text-sm font-medium hover:bg-yellow-200 dark:hover:bg-yellow-800/50 transition-colors flex items-center gap-1"
 								>
 									<span class="inline-block w-2 h-2 rounded-full bg-yellow-500 dark:bg-yellow-400"></span>
@@ -95,7 +95,7 @@ const { data, slug } = Astro.props;
 			</article>
 
 			<div class="mt-8">
-				<a href="/episodes" class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 via-lime-500 to-green-500 text-white px-6 py-3 rounded-xl font-medium hover:shadow-lg transition-all duration-300">
+				<a href={`${import.meta.env.BASE_URL}/episodes`} class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 via-lime-500 to-green-500 text-white px-6 py-3 rounded-xl font-medium hover:shadow-lg transition-all duration-300">
 					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
 					</svg>

@@ -7,9 +7,10 @@ const { href, class: className, ...props } = Astro.props;
 
 const { pathname } = Astro.url;
 const isActive = href === pathname || href === pathname.replace(/\/$/, '');
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<a href={href} class:list={[
+<a href={`${baseUrl}${href}`} class:list={[
 	'text-gray-700 dark:text-gray-300 hover:text-lime transition-colors',
 	isActive && 'font-semibold text-lime dark:text-lime',
 	className

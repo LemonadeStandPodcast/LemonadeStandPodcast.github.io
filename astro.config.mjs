@@ -11,9 +11,6 @@ export default defineConfig({
 	integrations: [
 		mdx(),
 		sitemap(),
-		tailwind({
-			// Disable the default base styles
-			applyBaseStyles: false,
-		}),
+		tailwind()
 	],
 });
