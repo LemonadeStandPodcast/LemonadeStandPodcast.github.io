@@ -8,25 +8,70 @@ import FormattedDate from '../../components/FormattedDate.astro';
 
 const episodes = await getCollection('episodes');
 const sortedEpisodes = episodes.sort((a, b) => b.data.episodeNumber - a.data.episodeNumber);
+const allTags = [...new Set(episodes.flatMap(episode => episode.data.tags))].sort();
+
+// Get the current tag from URL params if available
+const params = new URL(Astro.url).searchParams;
+const currentTag = params.get('tag');
+
+// Initial filtered episodes based on URL params
+const initialFilteredEpisodes = currentTag
+    ? sortedEpisodes.filter(episode => episode.data.tags.includes(currentTag))
+    : sortedEpisodes;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={`Episodes | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<style>
+			select {
+				appearance: none;
+				background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+				background-position: right 0.5rem center;
+				background-repeat: no-repeat;
+				background-size: 1.5em 1.5em;
+			}
+			.episode-hidden {
+				display: none;
+			}
+		</style>
 	</head>
 	<body class="bg-white dark:bg-gray-900">
 		<Header />
 		<main class="container max-w-3xl mx-auto px-6 py-8">
 			<div class="mb-8">
-				<h1 class="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">
-					All Episodes
+				<h1 class="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6" id="episodeTitle">
+					{currentTag ? `Episodes tagged "${currentTag}"` : 'All Episodes'}
 				</h1>
+                
+                <!-- Tag filters -->
+                <div class="relative mb-6">
+                    <select
+                        id="tagFilter"
+                        class="w-full md:w-64 px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-lime-500 dark:focus:ring-lime-400 focus:border-transparent"
+                    >
+                        <option value="all" selected={!currentTag}>
+                            All Tags
+                        </option>
+                        {allTags.map((tag) => (
+                            <option 
+                                value={tag}
+                                selected={currentTag === tag}
+                            >
+                                {tag}
+                            </option>
+                        ))}
+                    </select>
+                </div>
 			</div>
 
 			<div class="grid gap-8" id="episodesContainer">
-				{sortedEpisodes.map((episode) => (
-					<article class="episode-card flex flex-col md:flex-row bg-white dark:bg-gray-700/50 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
+				{initialFilteredEpisodes.map((episode) => (
+					<article 
+						class="episode-card flex flex-col md:flex-row bg-white dark:bg-gray-700/50 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+						data-tags={episode.data.tags.join(',')}
+					>
 						<div class="md:w-[56.25%] shrink-0 h-full">
 							<a href={`/episodes/${episode.slug}/`} class="block h-full relative">
 								<img
@@ -81,5 +126,61 @@ const sortedEpisodes = episodes.sort((a, b) => b.data.episodeNumber - a.data.epi
 			</div>
 		</main>
 		<Footer />
+
+		<script>
+			function filterEpisodes() {
+				const tagFilter = document.getElementById('tagFilter') as HTMLSelectElement;
+				const episodeTitle = document.getElementById('episodeTitle');
+				
+				if (!tagFilter || !episodeTitle) return;
+				
+				const selectedTag = tagFilter.value;
+				const episodes = document.querySelectorAll('.episode-card');
+				
+				episodes.forEach(episode => {
+					const tags = episode.getAttribute('data-tags');
+					if (!tags) return;
+					
+					const episodeTags = tags.split(',');
+					if (selectedTag === 'all' || episodeTags.includes(selectedTag)) {
+						episode.classList.remove('episode-hidden');
+					} else {
+						episode.classList.add('episode-hidden');
+					}
+				});
+
+				// Update the title
+				episodeTitle.textContent = selectedTag === 'all' ? 'All Episodes' : `Episodes tagged "${selectedTag}"`;
+
+				// Update URL without page reload
+				const url = new URL(window.location.href);
+				if (selectedTag === 'all') {
+					url.searchParams.delete('tag');
+				} else {
+					url.searchParams.set('tag', selectedTag);
+				}
+				window.history.pushState({}, '', url.toString());
+			}
+
+			// Set up event listener for tag filter
+			const tagFilter = document.getElementById('tagFilter');
+			tagFilter?.addEventListener('change', filterEpisodes);
+
+			// Handle browser back/forward buttons
+			window.addEventListener('popstate', () => {
+				const tagFilter = document.getElementById('tagFilter') as HTMLSelectElement;
+				if (!tagFilter) return;
+				
+				const params = new URLSearchParams(window.location.search);
+				const tag = params.get('tag') || 'all';
+				tagFilter.value = tag;
+				filterEpisodes();
+			});
+
+			// Initial filter on page load if there's a tag in the URL
+			if (window.location.search) {
+				filterEpisodes();
+			}
+		</script>
 	</body>
 </html>
