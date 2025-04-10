@@ -82,7 +82,7 @@ const initialFilteredEpisodes = currentTag
 				</div>
                 
                 <!-- Tag filters -->
-                <div class="relative mb-6">
+                <div class="relative mb-6 flex gap-2 items-center">
                     <select
                         id="tagFilter"
                         class="w-full md:w-64 px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-lime-500 dark:focus:ring-lime-400 focus:border-transparent"
@@ -99,6 +99,13 @@ const initialFilteredEpisodes = currentTag
                             </option>
                         ))}
                     </select>
+                    <button
+                        id="resetTagFilter"
+                        class="px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-200"
+                        style="display: none;"
+                    >
+                        Reset Filter
+                    </button>
                 </div>
 			</div>
 
@@ -189,9 +196,10 @@ const initialFilteredEpisodes = currentTag
 		<script>
 			function filterEpisodes(selectedTag?: string) {
 				const tagFilter = document.getElementById('tagFilter') as HTMLSelectElement;
+				const resetTagFilter = document.getElementById('resetTagFilter') as HTMLButtonElement;
 				const episodeTitle = document.getElementById('episodeTitle');
 				
-				if (!tagFilter || !episodeTitle) return;
+				if (!tagFilter || !episodeTitle || !resetTagFilter) return;
 				
 				// Use the provided tag or get it from the select
 				const tagToFilter = selectedTag || tagFilter.value;
@@ -211,11 +219,13 @@ const initialFilteredEpisodes = currentTag
 					}
 				});
 
-				// Update the title
+				// Update the title with consistent styling
 				if (tagToFilter === 'all') {
 					episodeTitle.innerHTML = `<span>All <span class="bg-gradient-to-r from-yellow-400 to-lime-500 text-transparent bg-clip-text">Episodes</span></span>`;
+					resetTagFilter.style.display = 'none';
 				} else {
-					episodeTitle.textContent = `Episodes tagged "${tagToFilter}"`;
+					episodeTitle.innerHTML = `Episodes tagged "<span class="bg-gradient-to-r from-yellow-400 to-lime-500 text-transparent bg-clip-text">${tagToFilter}</span>"`;
+					resetTagFilter.style.display = 'inline-block';
 				}
 
 				// Update URL without page reload
@@ -266,6 +276,12 @@ const initialFilteredEpisodes = currentTag
 			tagFilter?.addEventListener('change', () => {
 				const select = tagFilter as HTMLSelectElement;
 				filterEpisodes(select.value);
+			});
+
+			 // Set up event listener for reset button
+			const resetTagFilter = document.getElementById('resetTagFilter');
+			resetTagFilter?.addEventListener('click', () => {
+				filterEpisodes('all');
 			});
 
 			// Handle browser back/forward buttons
