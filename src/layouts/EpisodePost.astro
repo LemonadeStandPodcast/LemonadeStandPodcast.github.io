@@ -14,7 +14,14 @@ const { data, slug } = Astro.props;
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={data.title} description={data.description} />
+		<BaseHead 
+			title={data.title} 
+			description={data.description}
+			youtubeId={data.youtubeId}
+			ogType="article"
+			publishDate={data.pubDate}
+			tags={data.tags}
+		/>
 	</head>
 
 	<body class="bg-white dark:bg-gray-900">
@@ -38,7 +45,7 @@ const { data, slug } = Astro.props;
 								Episode #{data.episodeNumber}
 							</span>
 							<span class="text-yellow-600 dark:text-yellow-400 font-medium">
-								<FormattedDate date={data.pubDate} />
+								Recorded on <FormattedDate date={data.pubDate} />
 							</span>
 						</div>
 						<h1 class="text-4xl font-bold text-gray-900 dark:text-white">{data.title}</h1>

@@ -10,6 +10,7 @@ interface Props {
 	ogType?: 'website' | 'article';
 	publishDate?: Date;
 	tags?: string[];
+	youtubeId?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -20,8 +21,14 @@ const {
 	image = '/podcast-cover.jpg',
 	ogType = 'website',
 	publishDate,
-	tags = []
+	tags = [],
+	youtubeId
 } = Astro.props;
+
+// Use YouTube thumbnail if youtubeId is available
+const socialImage = youtubeId 
+	? `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`
+	: image;
 ---
 
 <!-- Global Metadata -->
@@ -44,14 +51,14 @@ const {
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={new URL(socialImage, Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={new URL(socialImage, Astro.url)} />
 
 <!-- Podcast Specific Meta -->
 <meta property="og:audio" content={`${canonicalURL}`} />
@@ -67,7 +74,7 @@ const {
 	"name": "The Lemonade Stand Podcast",
 	"description": description,
 	"url": canonicalURL,
-	"image": new URL(image, Astro.url),
+	"image": new URL(socialImage, Astro.url),
 	...(publishDate && {
 		"datePublished": publishDate.toISOString(),
 	}),
