@@ -41,9 +41,11 @@ const initialFilteredEpisodes = currentTag
 		<Header />
 		<main class="container max-w-3xl mx-auto px-6 py-8">
 			<div class="mb-8">
-				<h1 class="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6" id="episodeTitle">
-					{currentTag ? `Episodes tagged "${currentTag}"` : 'All Episodes'}
-				</h1>
+				<div class="flex justify-between items-center">
+					<h1 class="text-3xl font-bold mb-6" id="episodeTitle">
+						{currentTag ? `Episodes tagged "${currentTag}"` : (<span>All <span class="bg-gradient-to-r from-yellow-400 to-lime-500 text-transparent bg-clip-text">Episodes</span></span>)}
+					</h1>
+				</div>
                 
                 <!-- Tag filters -->
                 <div class="relative mb-6">
@@ -150,7 +152,11 @@ const initialFilteredEpisodes = currentTag
 				});
 
 				// Update the title
-				episodeTitle.textContent = selectedTag === 'all' ? 'All Episodes' : `Episodes tagged "${selectedTag}"`;
+				if (selectedTag === 'all') {
+					episodeTitle.innerHTML = `<span>All <span class="bg-gradient-to-r from-yellow-400 to-lime-500 text-transparent bg-clip-text">Episodes</span></span>`;
+				} else {
+					episodeTitle.textContent = `Episodes tagged "${selectedTag}"`;
+				}
 
 				// Update URL without page reload
 				const url = new URL(window.location.href);
