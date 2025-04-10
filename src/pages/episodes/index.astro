@@ -34,6 +34,40 @@ const initialFilteredEpisodes = currentTag
 			}
 			.episode-hidden {
 				display: none;
+				}
+			.tag-badge {
+				@apply inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full transition-colors duration-200 cursor-pointer whitespace-nowrap;
+				@apply bg-gray-100 text-gray-700 hover:bg-lime-100 hover:text-lime-700;
+				@apply dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-lime-900 dark:hover:text-lime-300;
+			}
+
+			.tag-badge.active {
+				@apply bg-lime-500 text-white hover:bg-lime-600;
+				@apply dark:bg-lime-600 dark:text-white dark:hover:bg-lime-700;
+			}
+
+			.tags-container {
+				@apply relative flex gap-2 flex-wrap;
+				max-height: 2.5rem;
+				overflow-y: hidden;
+				mask-image: linear-gradient(to bottom, black calc(100% - 5px), transparent);
+			}
+
+			.tags-container.expanded {
+				max-height: none;
+				mask-image: none;
+			}
+
+			.show-more-tags {
+				@apply text-xs text-lime-600 dark:text-lime-400 hover:text-lime-700 dark:hover:text-lime-300 cursor-pointer font-medium mt-1;
+			}
+
+			.tags-wrapper {
+				@apply flex flex-col;
+			}
+
+			.episode-card-content {
+				@apply flex flex-col min-h-[200px];
 			}
 		</style>
 	</head>
@@ -84,43 +118,66 @@ const initialFilteredEpisodes = currentTag
 								<div class="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
 							</a>
 						</div>
-						<div class="flex-1 p-4 md:p-6 md:pl-8 flex flex-col">
-							<div class="flex justify-between items-start mb-3">
-								<h3 class="text-xl font-bold text-gray-900 dark:text-gray-50">
-									<a href={`/episodes/${episode.slug}/`} class="text-gray-900 dark:text-gray-50 hover:text-lime-600 dark:hover:text-lime-300">
-										#{episode.data.episodeNumber} {episode.data.title}
-									</a>
-								</h3>
-								<p class="text-lime-600 dark:text-yellow-400 font-medium whitespace-nowrap text-sm ml-4">
-									<FormattedDate date={episode.data.pubDate} />
+						<div class="flex-1 p-4 md:p-6 md:pl-8">
+							<div class="episode-card-content">
+								<div class="flex justify-between items-start mb-3">
+									<h3 class="text-xl font-bold text-gray-900 dark:text-gray-50">
+										<a href={`/episodes/${episode.slug}/`} class="text-gray-900 dark:text-gray-50 hover:text-lime-600 dark:hover:text-lime-300">
+											#{episode.data.episodeNumber} {episode.data.title}
+										</a>
+									</h3>
+									<p class="text-lime-600 dark:text-yellow-400 font-medium whitespace-nowrap text-sm ml-4">
+										<FormattedDate date={episode.data.pubDate} />
+									</p>
+								</div>
+								<p class="text-gray-700 dark:text-gray-200 mb-4">
+									{episode.data.description}
 								</p>
-							</div>
-							<p class="text-gray-700 dark:text-gray-200 mb-4">
-								{episode.data.description}
-							</p>
-							<div class="mt-auto">
-								<a href={`/episodes/${episode.slug}/`} 
-									class="group relative inline-flex items-center justify-center px-6 py-2.5 font-medium transition-all duration-300 ease-in-out rounded-md overflow-hidden bg-lime-600 hover:bg-white text-white hover:text-lime-600 border-2 border-transparent hover:border-lime-600 dark:hover:bg-gray-900 dark:hover:text-lime-400 dark:hover:border-lime-400"
-								>
-									<span class="relative flex items-center gap-2">
-										Details
-										<svg 
-											class="w-4 h-4 transition-transform duration-300 ease-out transform translate-x-0 group-hover:translate-x-1" 
-											fill="none" 
-											stroke="currentColor" 
-											viewBox="0 0 24 24" 
-											xmlns="http://www.w3.org/2000/svg"
-										>
-											<path 
-												stroke-linecap="round" 
-												stroke-linejoin="round" 
-												stroke-width="2" 
-												d="M13 7l5 5m0 0l-5 5m5-5H6"
+								<div class="mt-auto space-y-4">
+									<div class="tags-wrapper" data-episode-id={episode.slug}>
+										<div class="tags-container">
+											{episode.data.tags.map((tag) => (
+												<span 
+													class="tag-badge"
+													data-tag={tag}
+												>
+													<span class="inline-block w-1.5 h-1.5 rounded-full bg-lime-500 dark:bg-lime-400 mr-1"></span>
+													{tag}
+												</span>
+											))}
+										</div>
+										{episode.data.tags.length > 3 && (
+											<button 
+												type="button"
+												class="show-more-tags"
 											>
-											</path>
-										</svg>
-									</span>
-								</a>
+												Show more tags
+											</button>
+										)}
+									</div>
+									<a href={`/episodes/${episode.slug}/`} 
+										class="group relative inline-flex items-center justify-center px-6 py-2.5 font-medium transition-all duration-300 ease-in-out rounded-md overflow-hidden bg-lime-600 hover:bg-white text-white hover:text-lime-600 border-2 border-transparent hover:border-lime-600 dark:hover:bg-gray-900 dark:hover:text-lime-400 dark:hover:border-lime-400"
+									>
+										<span class="relative flex items-center gap-2">
+											Details
+											<svg 
+												class="w-4 h-4 transition-transform duration-300 ease-out transform translate-x-0 group-hover:translate-x-1" 
+												fill="none" 
+												stroke="currentColor" 
+												viewBox="0 0 24 24" 
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path 
+													stroke-linecap="round" 
+													stroke-linejoin="round" 
+													stroke-width="2" 
+													d="M13 7l5 5m0 0l-5 5m5-5H6"
+												>
+												</path>
+											</svg>
+										</span>
+									</a>
+								</div>
 							</div>
 						</div>
 					</article>
@@ -130,13 +187,16 @@ const initialFilteredEpisodes = currentTag
 		<Footer />
 
 		<script>
-			function filterEpisodes() {
+			function filterEpisodes(selectedTag?: string) {
 				const tagFilter = document.getElementById('tagFilter') as HTMLSelectElement;
 				const episodeTitle = document.getElementById('episodeTitle');
 				
 				if (!tagFilter || !episodeTitle) return;
 				
-				const selectedTag = tagFilter.value;
+				// Use the provided tag or get it from the select
+				const tagToFilter = selectedTag || tagFilter.value;
+				tagFilter.value = tagToFilter; // Update select if tag was provided
+				
 				const episodes = document.querySelectorAll('.episode-card');
 				
 				episodes.forEach(episode => {
@@ -144,7 +204,7 @@ const initialFilteredEpisodes = currentTag
 					if (!tags) return;
 					
 					const episodeTags = tags.split(',');
-					if (selectedTag === 'all' || episodeTags.includes(selectedTag)) {
+					if (tagToFilter === 'all' || episodeTags.includes(tagToFilter)) {
 						episode.classList.remove('episode-hidden');
 					} else {
 						episode.classList.add('episode-hidden');
@@ -152,41 +212,55 @@ const initialFilteredEpisodes = currentTag
 				});
 
 				// Update the title
-				if (selectedTag === 'all') {
+				if (tagToFilter === 'all') {
 					episodeTitle.innerHTML = `<span>All <span class="bg-gradient-to-r from-yellow-400 to-lime-500 text-transparent bg-clip-text">Episodes</span></span>`;
 				} else {
-					episodeTitle.textContent = `Episodes tagged "${selectedTag}"`;
+					episodeTitle.textContent = `Episodes tagged "${tagToFilter}"`;
 				}
 
 				// Update URL without page reload
 				const url = new URL(window.location.href);
-				if (selectedTag === 'all') {
+				if (tagToFilter === 'all') {
 					url.searchParams.delete('tag');
 				} else {
-					url.searchParams.set('tag', selectedTag);
+					url.searchParams.set('tag', tagToFilter);
 				}
 				window.history.pushState({}, '', url.toString());
 			}
 
-			// Set up event listener for tag filter
+			// Initialize page with URL params
+			document.addEventListener('DOMContentLoaded', () => {
+				const params = new URLSearchParams(window.location.search);
+				const tag = params.get('tag');
+				if (tag) {
+					filterEpisodes(tag);
+				}
+			});
+
+			// Handle tag clicks for filtering
+			document.querySelectorAll('.tag-badge').forEach(tag => {
+				tag.addEventListener('click', (e) => {
+					const target = e.currentTarget as HTMLElement;
+					const selectedTag = target.getAttribute('data-tag');
+					if (selectedTag) {
+						filterEpisodes(selectedTag);
+					}
+				});
+			});
+
+			// Set up event listener for tag filter dropdown
 			const tagFilter = document.getElementById('tagFilter');
-			tagFilter?.addEventListener('change', filterEpisodes);
+			tagFilter?.addEventListener('change', () => {
+				const select = tagFilter as HTMLSelectElement;
+				filterEpisodes(select.value);
+			});
 
 			// Handle browser back/forward buttons
 			window.addEventListener('popstate', () => {
-				const tagFilter = document.getElementById('tagFilter') as HTMLSelectElement;
-				if (!tagFilter) return;
-				
 				const params = new URLSearchParams(window.location.search);
 				const tag = params.get('tag') || 'all';
-				tagFilter.value = tag;
-				filterEpisodes();
+				filterEpisodes(tag);
 			});
-
-			// Initial filter on page load if there's a tag in the URL
-			if (window.location.search) {
-				filterEpisodes();
-			}
 		</script>
 	</body>
 </html>

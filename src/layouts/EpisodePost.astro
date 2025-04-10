@@ -78,7 +78,7 @@ const { data, slug } = Astro.props;
 						<div class="flex flex-wrap gap-2">
 							{data.tags.map((tag) => (
 								<a
-									href={`/episodes?tag=${encodeURIComponent(tag)}`}
+									href={`/episodes?tag=${tag.replace(/ /g, '+')}`}
 									class="bg-gradient-to-r from-yellow-100 to-lime-100 dark:from-yellow-900/30 dark:to-lime-900/30 text-yellow-800 dark:text-yellow-300 px-4 py-1 rounded-full text-sm font-medium hover:bg-yellow-200 dark:hover:bg-yellow-800/50 transition-colors flex items-center gap-1"
 								>
 									<span class="inline-block w-2 h-2 rounded-full bg-yellow-500 dark:bg-yellow-400"></span>
