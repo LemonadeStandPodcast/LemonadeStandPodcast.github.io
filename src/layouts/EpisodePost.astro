@@ -44,6 +44,16 @@ const { data, slug } = Astro.props;
 					</div>
 				</div>
 
+				<div class="mb-8 aspect-video w-full">
+					<iframe
+						class="w-full h-full rounded-xl"
+						src={`https://www.youtube.com/embed/${data.youtubeId}`}
+						title={data.title}
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen
+					></iframe>
+				</div>
+
 				<div class="prose prose-lg max-w-none mb-8 dark:prose-invert">
 					<slot />
 				</div>
