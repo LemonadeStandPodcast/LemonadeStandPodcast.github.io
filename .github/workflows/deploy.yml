@@ -7,7 +7,6 @@ on:
   # Allow you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
-# Allow this job to clone the repo and create a page deployment
 permissions:
   contents: read
   pages: write
@@ -19,17 +18,23 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          path: .
-          package-manager: npm
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          name: github-pages
           path: dist
-          if-no-files-found: error
 
   deploy:
     needs: build
