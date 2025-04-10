@@ -161,7 +161,7 @@ const recentEpisodes = sortedEpisodes.slice(1, 3);
 								<a href="/episodes" class="px-8 py-4 bg-gradient-to-r from-yellow-400 via-lime-500 to-yellow-400 bg-size-200 animate-gradient-x text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
 									Taste the Future 🤖
 								</a>
-								<a href="#latestEpisode" class="px-8 py-4 border-2 border-gray-800 dark:border-gray-200 text-gray-800 dark:text-gray-200 font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1">
+								<a href={`/episodes/${latestEpisode.slug}/`} class="px-8 py-4 border-2 border-gray-800 dark:border-gray-200 text-gray-800 dark:text-gray-200 font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1">
 									Latest Episode 🎙️
 								</a>
 							</div>
