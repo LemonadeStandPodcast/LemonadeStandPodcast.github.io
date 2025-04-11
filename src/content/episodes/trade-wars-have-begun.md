@@ -34,4 +34,6 @@ citations:
     url: "https://apnews.com/article/argentina-milei-trump-tariffs-trade-maralago-imf-f32bdc39d79632dfa9fdd3a1e05fb0a3"
   - title: "US top court instructs Trump to return man wrongly deported to El Salvador"
     url: "https://bbc.com/news/articles/c62gnzzeg34o"
+  - title: "China’s Global Mega-Projects Are Falling Apart"
+    url: "https://www.wsj.com/articles/china-global-mega-projects-infrastructure-falling-apart-11674166180"
 ---
