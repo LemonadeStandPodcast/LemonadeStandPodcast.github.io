@@ -12,6 +12,7 @@ tags:
   - "Peter Navarro"
   - "US Treasury Bonds"
   - "Chinese Trade"
+  - "Deportation"
 citations:
   - title: "Trump’s tariff-driven market crash, briefly explained (News is mentioned not the article)"
     url: "https://www.vox.com/the-logoff-newsletter-trump/407468/trump-tariff-market-crash-economy-recession"
@@ -29,4 +30,6 @@ citations:
     url: "https://www.aljazeera.com/news/2023/12/11/argentinas-javier-milei-tells-nation-to-brace-for-painful-economic-shock"
   - title: "Argentina’s Milei doubles down on Trump bromance as the world reels from trade shock"
     url: "https://apnews.com/article/argentina-milei-trump-tariffs-trade-maralago-imf-f32bdc39d79632dfa9fdd3a1e05fb0a3"
+  - title: "US top court instructs Trump to return man wrongly deported to El Salvador"
+    url: "https://bbc.com/news/articles/c62gnzzeg34o"
 ---
