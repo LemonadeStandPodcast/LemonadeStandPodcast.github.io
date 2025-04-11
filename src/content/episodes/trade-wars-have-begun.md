@@ -36,4 +36,6 @@ citations:
     url: "https://bbc.com/news/articles/c62gnzzeg34o"
   - title: "China’s Global Mega-Projects Are Falling Apart"
     url: "https://www.wsj.com/articles/china-global-mega-projects-infrastructure-falling-apart-11674166180"
+  - title: "China's Built a Railroad to Nowhere in Kenya"
+    url: "https://www.bloomberg.com/news/features/2019-07-19/china-s-belt-and-road-leaves-kenya-with-a-railroad-to-nowhere?embedded-checkout=true"
 ---
