@@ -23,4 +23,10 @@ citations:
     url: "https://www.ft.com/content/c4bce44e-9c66-4d74-bebd-0f35f0ea007f"
   - title: "Prime Minister responds to Trump's tariff announcement"
     url: "https://www.youtube.com/watch?v=ZW0G7-CXYCg"
+  - title: "Ronald Reagan vs. #tariffs : 1987 speech finds new relevance in 2025 @ChineseEmbinUS"
+    url: "https://x.com/ChineseEmbinUS/status/1909243694336581747"
+  - title: "Argentina’s Javier Milei tells nation to brace for painful economic shock (News is mentioned not the article)"
+    url: "https://www.aljazeera.com/news/2023/12/11/argentinas-javier-milei-tells-nation-to-brace-for-painful-economic-shock"
+  - title: "Argentina’s Milei doubles down on Trump bromance as the world reels from trade shock"
+    url: "https://apnews.com/article/argentina-milei-trump-tariffs-trade-maralago-imf-f32bdc39d79632dfa9fdd3a1e05fb0a3"
 ---
