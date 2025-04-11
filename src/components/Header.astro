@@ -77,19 +77,16 @@ import { SITE_TITLE } from '../consts';
 		<!-- Mobile Menu -->
 		<div id="mobile-menu" class="md:hidden h-0 overflow-hidden transition-all duration-300">
 			<div class="py-4 space-y-2">
-				<a href="/" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-200">
+				<a href="/" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
 					Home
 				</a>
-				<a href="/episodes" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:text-lime-500 dark:hover:text-lime-400 transition-colors duration-200">
+				<a href="/episodes" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:text-lime-500 dark:hover:text-lime-400 transition-colors duration-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
 					Episodes
 				</a>
-				<a href="/lemonade-costs" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:text-lime-500 dark:hover:text-lime-400 transition-colors duration-200">
-					Costs
-				</a>
-				<a href="/pricing" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:text-lime-500 dark:hover:text-lime-400 transition-colors duration-200">
+				<a href="/pricing" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:text-lime-500 dark:hover:text-lime-400 transition-colors duration-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
 					Pricing
 				</a>
-				<a href="/links" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200">
+				<a href="/links" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
 					Links
 				</a>
 			</div>
@@ -130,7 +127,8 @@ import { SITE_TITLE } from '../consts';
 	}
 
 	#mobile-menu.active {
-		height: 180px;
+		height: auto;
+		max-height: 300px;
 	}
 </style>
 
