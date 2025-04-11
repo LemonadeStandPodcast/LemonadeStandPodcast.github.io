@@ -13,8 +13,8 @@ const episodes = defineCollection({
 		citations: z.array(z.object({
 			title: z.string(),
 			url: z.string().url()
-		})),
-		summary: z.string(),
+		})).optional(),
+		summary: z.string().default(""),
 		heroImage: z.string().optional(),
 	}),
 });

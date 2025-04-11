@@ -48,7 +48,8 @@ const { data, slug } = Astro.props;
 								Recorded on <FormattedDate date={data.pubDate} />
 							</span>
 						</div>
-						<h1 class="text-4xl font-bold text-gray-900 dark:text-white">{data.title}</h1>
+						<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">{data.title}</h1>
+						<p class="text-lg text-gray-700 dark:text-gray-300">{data.description}</p>
 					</div>
 
 					<div class="w-full h-px bg-gradient-to-r from-yellow-200 via-lime-200 to-green-200 dark:from-yellow-900/30 dark:via-lime-900/30 dark:to-green-900/30 mb-6"></div>
@@ -57,7 +58,7 @@ const { data, slug } = Astro.props;
 						<slot />
 					</div>
 
-					{data.citations && (
+					{data.citations && data.citations.length > 0 && (
 						<div class="pt-4">
 							<h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Sources & References</h2>
 							<ul class="space-y-2">
