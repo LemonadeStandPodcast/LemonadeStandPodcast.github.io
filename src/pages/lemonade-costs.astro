@@ -1,0 +1,214 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Lemonade Cost Analysis | ${SITE_TITLE}`} description="A detailed breakdown of our highly sophisticated lemonade production costs and tariffs." />
+		<style>
+			.ingredient-card {
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+				position: relative;
+				overflow: hidden;
+			}
+
+			.ingredient-card:hover {
+				transform: translateY(-5px);
+			}
+
+			.ingredient-card::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(45deg, rgba(255,209,102,0.1), rgba(0,137,76,0.1));
+				opacity: 0;
+				transition: opacity 0.3s ease;
+			}
+
+			.ingredient-card:hover::before {
+				opacity: 1;
+			}
+
+			@keyframes float {
+				0%, 100% { transform: translateY(0px); }
+				50% { transform: translateY(-5px); }
+			}
+
+			.floating-icon {
+				animation: float 3s ease-in-out infinite;
+			}
+
+			.tariff-badge {
+				@apply px-2 py-1 rounded-full text-xs font-bold;
+			}
+
+			.tariff-low {
+				@apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300;
+			}
+
+			.tariff-medium {
+				@apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300;
+			}
+
+			.tariff-high {
+				@apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300;
+			}
+		</style>
+	</head>
+	<body class="bg-white dark:bg-gray-900">
+		<Header />
+		<main class="container max-w-6xl mx-auto px-4 py-16">
+			<!-- Hero Section -->
+			<div class="text-center mb-16">
+				<h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
+					The Great <span class="bg-gradient-to-r from-yellow-400 to-lime-500 text-transparent bg-clip-text">Lemonade</span> Equation
+				</h1>
+				<p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+					Breaking down our revolutionary lemonade-making process, one tariff at a time.
+				</p>
+			</div>
+
+			<!-- Ingredients Breakdown -->
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+				<!-- Water Component -->
+				<div class="ingredient-card bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700">
+					<div class="flex items-center justify-center mb-4">
+						<span class="text-4xl floating-icon">💧</span>
+					</div>
+					<h2 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-4">The Water</h2>
+					<div class="text-center mb-6">
+						<span class="tariff-badge tariff-low">2% Tariff</span>
+					</div>
+					<ul class="space-y-4 mb-8">
+						<li class="flex items-center text-gray-600 dark:text-gray-400">
+							<span class="mr-2">📊</span> Sourced from artisanal cloud computing servers
+						</li>
+						<li class="flex items-center text-gray-600 dark:text-gray-400">
+							<span class="mr-2">🌡️</span> Temperature-controlled by quantum algorithms
+						</li>
+						<li class="flex items-center text-gray-600 dark:text-gray-400">
+							<span class="mr-2">🤖</span> AI-certified H2O purity
+						</li>
+					</ul>
+					<div class="text-center text-sm text-gray-500 dark:text-gray-400">
+						* May contain traces of blockchain
+					</div>
+				</div>
+
+				<!-- Lemon Component -->
+				<div class="ingredient-card bg-gradient-to-br from-yellow-50 to-lime-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 border-2 border-yellow-400 dark:border-lime-600 transform scale-105">
+					<div class="absolute top-4 right-4">
+						<span class="bg-gradient-to-r from-yellow-400 to-lime-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+							CORE INGREDIENT
+						</span>
+					</div>
+					<div class="flex items-center justify-center mb-4">
+						<span class="text-4xl floating-icon">🍋</span>
+					</div>
+					<h2 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-4">The Lemons</h2>
+					<div class="text-center mb-6">
+						<span class="tariff-badge tariff-high">15% Tariff</span>
+					</div>
+					<ul class="space-y-4 mb-8">
+						<li class="flex items-center text-gray-600 dark:text-gray-400">
+							<span class="mr-2">🌟</span> Free-range, grass-fed lemons
+						</li>
+						<li class="flex items-center text-gray-600 dark:text-gray-400">
+							<span class="mr-2">📱</span> Each lemon has its own NFT
+						</li>
+						<li class="flex items-center text-gray-600 dark:text-gray-400">
+							<span class="mr-2">🎓</span> PhD in Citrus Economics
+						</li>
+					</ul>
+					<div class="text-center text-sm text-gray-500 dark:text-gray-400">
+						* Warning: May cause market volatility
+					</div>
+				</div>
+
+				<!-- Sugar Component -->
+				<div class="ingredient-card bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700">
+					<div class="flex items-center justify-center mb-4">
+						<span class="text-4xl floating-icon">🧂</span>
+					</div>
+					<h2 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-4">The Sugar</h2>
+					<div class="text-center mb-6">
+						<span class="tariff-badge tariff-medium">8% Tariff</span>
+					</div>
+					<ul class="space-y-4 mb-8">
+						<li class="flex items-center text-gray-600 dark:text-gray-400">
+							<span class="mr-2">🔬</span> Lab-grown crystal technology
+						</li>
+						<li class="flex items-center text-gray-600 dark:text-gray-400">
+							<span class="mr-2">✨</span> Metaverse-approved sweetness
+						</li>
+						<li class="flex items-center text-gray-600 dark:text-gray-400">
+							<span class="mr-2">📈</span> Web3-enabled glucose molecules
+						</li>
+					</ul>
+					<div class="text-center text-sm text-gray-500 dark:text-gray-400">
+						* Compatible with most smart contracts
+					</div>
+				</div>
+			</div>
+
+			<!-- Cost Analysis Section -->
+			<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 mb-16">
+				<h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+					Cost <span class="bg-gradient-to-r from-yellow-400 to-lime-500 text-transparent bg-clip-text">Analysis</span>
+				</h2>
+				
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div class="space-y-6">
+						<div class="flex justify-between items-center pb-2 border-b border-gray-200 dark:border-gray-700">
+							<span class="text-gray-600 dark:text-gray-400">Base Production Cost</span>
+							<span class="font-bold text-gray-900 dark:text-white">$0.42/glass</span>
+						</div>
+						<div class="flex justify-between items-center pb-2 border-b border-gray-200 dark:border-gray-700">
+							<span class="text-gray-600 dark:text-gray-400">AI Supervision Fee</span>
+							<span class="font-bold text-gray-900 dark:text-white">$4.20/glass</span>
+						</div>
+						<div class="flex justify-between items-center pb-2 border-b border-gray-200 dark:border-gray-700">
+							<span class="text-gray-600 dark:text-gray-400">Blockchain Validation</span>
+							<span class="font-bold text-gray-900 dark:text-white">$69.00/glass</span>
+						</div>
+					</div>
+					
+					<div class="space-y-6">
+						<div class="flex justify-between items-center pb-2 border-b border-gray-200 dark:border-gray-700">
+							<span class="text-gray-600 dark:text-gray-400">Smart Contract Fees</span>
+							<span class="font-bold text-gray-900 dark:text-white">$42.00/glass</span>
+						</div>
+						<div class="flex justify-between items-center pb-2 border-b border-gray-200 dark:border-gray-700">
+							<span class="text-gray-600 dark:text-gray-400">NFT Minting Cost</span>
+							<span class="font-bold text-gray-900 dark:text-white">$420.69/glass</span>
+						</div>
+						<div class="flex justify-between items-center pb-2 border-b border-gray-200 dark:border-gray-700">
+							<span class="text-gray-600 dark:text-gray-400">Total Cost</span>
+							<span class="font-bold text-lime-600 dark:text-lime-400">$536.31/glass</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Call to Action -->
+			<div class="text-center">
+				<a href="/pricing" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-yellow-500 via-lime-500 to-green-500 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+					View Our Pricing Plans
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+					</svg>
+				</a>
+				<p class="text-sm text-gray-500 dark:text-gray-400 mt-4">
+					* All prices are theoretical and may be hallucinated by our AI
+					<br />
+					** Actual lemonade may or may not exist in your dimension
+				</p>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
