@@ -1,0 +1,16 @@
+{
+  "name": "The Lemonade Stand Podcast",
+  "short_name": "Lemonade Pod",
+  "description": "The world's first AGI-powered lemonade stand podcast",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#84cc16",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

@@ -10,6 +10,7 @@ import { getCollection } from 'astro:content';
 type Props = CollectionEntry<'episodes'>;
 
 const { data, slug } = Astro.props;
+const { episodeNumber, title, description, pubDate, tags, youtubeId } = data;
 
 // Get all episodes and sort them by episode number
 const allEpisodes = await getCollection('episodes');
@@ -21,19 +22,45 @@ const currentIndex = sortedEpisodes.findIndex(episode => episode.slug === slug);
 // Get previous and next episodes
 const previousEpisode = currentIndex < sortedEpisodes.length - 1 ? sortedEpisodes[currentIndex + 1] : null;
 const nextEpisode = currentIndex > 0 ? sortedEpisodes[currentIndex - 1] : null;
+
+// Enhanced structured data for podcast episode
+const episodeSchema = {
+	"@context": "https://schema.org",
+	"@type": "PodcastEpisode",
+	"episodeNumber": episodeNumber,
+	"name": title,
+	"description": description,
+	"datePublished": pubDate.toISOString(),
+	"keywords": tags.join(','),
+	"url": Astro.url,
+	"partOfSeries": {
+		"@type": "PodcastSeries",
+		"name": "The Lemonade Stand Podcast",
+		"url": new URL('/', Astro.url)
+	},
+	"video": {
+		"@type": "VideoObject",
+		"name": title,
+		"description": description,
+		"thumbnailUrl": `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`,
+		"uploadDate": pubDate.toISOString(),
+		"embedUrl": `https://www.youtube.com/embed/${youtubeId}`
+	}
+};
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead 
-			title={data.title} 
-			description={data.description}
-			youtubeId={data.youtubeId}
+			title={title} 
+			description={description}
+			youtubeId={youtubeId}
 			ogType="article"
-			publishDate={data.pubDate}
-			tags={data.tags}
+			publishDate={pubDate}
+			tags={tags}
 		/>
+		<script type="application/ld+json" set:html={JSON.stringify(episodeSchema)} />
 	</head>
 
 	<body class="bg-white dark:bg-gray-900">
@@ -43,10 +70,11 @@ const nextEpisode = currentIndex > 0 ? sortedEpisodes[currentIndex - 1] : null;
 				<div class="aspect-video w-full">
 					<iframe
 						class="w-full h-full"
-						src={`https://www.youtube.com/embed/${data.youtubeId}`}
-						title={data.title}
+						src={`https://www.youtube.com/embed/${youtubeId}`}
+						title={title}
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen
+						loading="lazy"
 					></iframe>
 				</div>
 
@@ -54,14 +82,14 @@ const nextEpisode = currentIndex > 0 ? sortedEpisodes[currentIndex - 1] : null;
 					<div class="mb-6">
 						<div class="flex flex-wrap items-center gap-4 mb-4">
 							<span class="bg-gradient-to-r from-yellow-500 via-lime-500 to-green-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-								Episode #{data.episodeNumber}
+								Episode #{episodeNumber}
 							</span>
 							<span class="text-yellow-600 dark:text-yellow-400 font-medium">
-								Recorded on <FormattedDate date={data.pubDate} />
+								Recorded on <FormattedDate date={pubDate} />
 							</span>
 						</div>
-						<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">{data.title}</h1>
-						<p class="text-lg text-gray-700 dark:text-gray-300">{data.description}</p>
+						<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">{title}</h1>
+						<p class="text-lg text-gray-700 dark:text-gray-300">{description}</p>
 					</div>
 
 					<div class="w-full h-px bg-gradient-to-r from-yellow-200 via-lime-200 to-green-200 dark:from-yellow-900/30 dark:via-lime-900/30 dark:to-green-900/30 mb-6"></div>
@@ -96,7 +124,7 @@ const nextEpisode = currentIndex > 0 ? sortedEpisodes[currentIndex - 1] : null;
 					<div class="pt-6">
 						<h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Tags</h2>
 						<div class="flex flex-wrap gap-2">
-							{data.tags.map((tag) => (
+								{tags.map((tag) => (
 								<a
 									href={`/episodes?tag=${tag.replace(/ /g, '+')}`}
 									class="bg-gradient-to-r from-yellow-100 to-lime-100 dark:from-yellow-900/30 dark:to-lime-900/30 text-yellow-800 dark:text-yellow-300 px-4 py-1 rounded-full text-sm font-medium hover:bg-yellow-200 dark:hover:bg-yellow-800/50 transition-colors flex items-center gap-1"
@@ -109,7 +137,7 @@ const nextEpisode = currentIndex > 0 ? sortedEpisodes[currentIndex - 1] : null;
 					</div>
 
 					<div class="mt-4">
-						<ShareButtons title={data.title} url={`/episodes/${slug}`} />
+						<ShareButtons title={title} url={`/episodes/${slug}`} />
 					</div>
 				</div>
 			</article>
