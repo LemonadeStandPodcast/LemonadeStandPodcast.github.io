@@ -11,13 +11,23 @@ import { SITE_TITLE } from '../consts';
 		<BaseHead title={`Pricing | ${SITE_TITLE}`} description="Choose your perfect AI-powered subscription tier. Warning: May contain actual lemons." />
 		<style>
 			.pricing-card {
-				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+				transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 				position: relative;
 				overflow: hidden;
+				animation: fadeInUp 0.8s ease-out backwards;
+			}
+
+			.pricing-card:nth-child(2) {
+				animation-delay: 0.2s;
+			}
+
+			.pricing-card:nth-child(3) {
+				animation-delay: 0.4s;
 			}
 
 			.pricing-card:hover {
 				transform: translateY(-10px);
+				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 			}
 
 			.pricing-card::before {
@@ -34,13 +44,59 @@ import { SITE_TITLE } from '../consts';
 			}
 
 			@keyframes float {
-				0%, 100% { transform: translateY(0px); }
-				50% { transform: translateY(-5px); }
+				0%, 100% { transform: translateY(0px) rotate(0deg); }
+				50% { transform: translateY(-8px) rotate(5deg); }
+			}
+
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes pulse {
+				0%, 100% { transform: scale(1); }
+				50% { transform: scale(1.05); }
+			}
+
+			@keyframes shimmer {
+				0% { background-position: -200% center; }
+				100% { background-position: 200% center; }
 			}
 
 			.floating-icon {
 				animation: float 3s ease-in-out infinite;
+				display: inline-block;
 			}
+
+			.gradient-button {
+				background-size: 200% auto;
+				animation: shimmer 3s linear infinite;
+			}
+
+			.popular-badge {
+				animation: pulse 2s infinite;
+			}
+
+			.pricing-feature {
+				opacity: 0;
+				animation: fadeInUp 0.5s ease forwards;
+			}
+
+			.pricing-card:hover .pricing-feature {
+				animation-play-state: running;
+			}
+
+			/* Applying animations to features with delays */
+			.pricing-feature:nth-child(1) { animation-delay: 0.1s; }
+			.pricing-feature:nth-child(2) { animation-delay: 0.2s; }
+			.pricing-feature:nth-child(3) { animation-delay: 0.3s; }
+			.pricing-feature:nth-child(4) { animation-delay: 0.4s; }
 		</style>
 	</head>
 	<body class="bg-white dark:bg-gray-900">
@@ -67,17 +123,17 @@ import { SITE_TITLE } from '../consts';
 						<span class="text-gray-600 dark:text-gray-400">/month</span>
 					</div>
 					<ul class="space-y-4 mb-8">
-						<li class="flex items-center text-gray-600 dark:text-gray-400">
+						<li class="pricing-feature flex items-center text-gray-600 dark:text-gray-400">
 							<span class="mr-2">✓</span> Access to episode summaries written by GPT-2
 						</li>
-						<li class="flex items-center text-gray-600 dark:text-gray-400">
+						<li class="pricing-feature flex items-center text-gray-600 dark:text-gray-400">
 							<span class="mr-2">✓</span> Ad-supported virtual lemonade
 						</li>
-						<li class="flex items-center text-gray-600 dark:text-gray-400">
+						<li class="pricing-feature flex items-center text-gray-600 dark:text-gray-400">
 							<span class="mr-2">✓</span> YouTube comments existential crisis
 						</li>
 					</ul>
-					<button class="w-full px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+					<button class="gradient-button w-full px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
 						Start Free Forever
 					</button>
 				</div>
@@ -85,7 +141,7 @@ import { SITE_TITLE } from '../consts';
 				<!-- Pro Tier -->
 				<div class="pricing-card bg-gradient-to-br from-yellow-50 to-lime-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 border-2 border-yellow-400 dark:border-lime-600 transform scale-105">
 					<div class="absolute top-4 right-4">
-						<span class="bg-gradient-to-r from-yellow-400 to-lime-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+						<span class="popular-badge bg-gradient-to-r from-yellow-400 to-lime-500 text-white px-3 py-1 rounded-full text-sm font-medium">
 							MOST POPULAR
 						</span>
 					</div>
@@ -98,20 +154,20 @@ import { SITE_TITLE } from '../consts';
 						<span class="text-gray-600 dark:text-gray-400">/month</span>
 					</div>
 					<ul class="space-y-4 mb-8">
-						<li class="flex items-center text-gray-600 dark:text-gray-400">
+						<li class="pricing-feature flex items-center text-gray-600 dark:text-gray-400">
 							<span class="mr-2">✓</span> Early access to episodes (2ms earlier)
 						</li>
-						<li class="flex items-center text-gray-600 dark:text-gray-400">
+						<li class="pricing-feature flex items-center text-gray-600 dark:text-gray-400">
 							<span class="mr-2">✓</span> AI-personalized virtual lemonade
 						</li>
-						<li class="flex items-center text-gray-600 dark:text-gray-400">
+						<li class="pricing-feature flex items-center text-gray-600 dark:text-gray-400">
 							<span class="mr-2">✓</span> Neural network writes your comments
 						</li>
-						<li class="flex items-center text-gray-600 dark:text-gray-400">
+						<li class="pricing-feature flex items-center text-gray-600 dark:text-gray-400">
 							<span class="mr-2">✓</span> Quantum-encrypted emoji reactions
 						</li>
 					</ul>
-					<button class="w-full px-6 py-3 bg-gradient-to-r from-yellow-500 via-lime-500 to-green-500 text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300">
+					<button class="gradient-button w-full px-6 py-3 bg-gradient-to-r from-yellow-500 via-lime-500 to-green-500 text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300">
 						Upgrade to AI Alchemist
 					</button>
 				</div>
@@ -127,20 +183,20 @@ import { SITE_TITLE } from '../consts';
 						<span class="text-gray-600 dark:text-gray-400">/seed round</span>
 					</div>
 					<ul class="space-y-4 mb-8">
-						<li class="flex items-center text-gray-600 dark:text-gray-400">
+						<li class="pricing-feature flex items-center text-gray-600 dark:text-gray-400">
 							<span class="mr-2">✓</span> Personal podcast on the blockchain
 						</li>
-						<li class="flex items-center text-gray-600 dark:text-gray-400">
+						<li class="pricing-feature flex items-center text-gray-600 dark:text-gray-400">
 							<span class="mr-2">✓</span> Web3-enabled virtual lemonade NFTs
 						</li>
-						<li class="flex items-center text-gray-600 dark:text-gray-400">
+						<li class="pricing-feature flex items-center text-gray-600 dark:text-gray-400">
 							<span class="mr-2">✓</span> AGI writes your business plan
 						</li>
-						<li class="flex items-center text-gray-600 dark:text-gray-400">
+						<li class="pricing-feature flex items-center text-gray-600 dark:text-gray-400">
 							<span class="mr-2">✓</span> Lifetime supply of hopium
 						</li>
 					</ul>
-					<button class="w-full px-6 py-3 border-2 border-lime-500 dark:border-lime-400 text-lime-500 dark:text-lime-400 rounded-xl font-medium hover:bg-lime-50 dark:hover:bg-lime-950 transition-colors">
+					<button class="gradient-button w-full px-6 py-3 border-2 border-lime-500 dark:border-lime-400 text-lime-500 dark:text-lime-400 rounded-xl font-medium hover:bg-lime-50 dark:hover:bg-lime-950 transition-colors">
 						Contact Our AI Sales Team
 					</button>
 				</div>
