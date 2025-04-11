@@ -13,6 +13,8 @@ tags:
   - "US Treasury Bonds"
   - "Chinese Trade"
   - "Deportation"
+  - "Abundance"
+  - "China Housing Market Crisis"
 citations:
   - title: "Trump’s tariff-driven market crash, briefly explained (News is mentioned not the article)"
     url: "https://www.vox.com/the-logoff-newsletter-trump/407468/trump-tariff-market-crash-economy-recession"
