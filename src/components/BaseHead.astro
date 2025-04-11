@@ -129,7 +129,11 @@ const socialImage = youtubeId
 <!-- Image Optimization Meta -->
 <link rel="preload" as="image" href={socialImage} />
 {youtubeId && (
-  <link rel="preload" as="image" href={`https://img.youtube.com/vi/${youtubeId}/mqdefault.jpg`} media="(max-width: 600px)" />
+  <>
+    <link rel="preload" as="image" href={`https://img.youtube.com/vi/${youtubeId}/mqdefault.jpg`} media="(max-width: 480px)" />
+    <link rel="preload" as="image" href={`https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`} media="(min-width: 481px) and (max-width: 720px)" />
+    <link rel="preload" as="image" href={`https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`} media="(min-width: 721px)" />
+  </>
 )}
 
 <!-- PWA Manifest -->

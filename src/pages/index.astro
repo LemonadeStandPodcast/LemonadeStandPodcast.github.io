@@ -134,7 +134,7 @@ const recentEpisodes = sortedEpisodes.slice(1, 3);
 						class="lemon" 
 						style={`top: ${Math.random() * 100}%; left: ${Math.random() * 100}%; animation-delay: -${i * 3}s;`}
 					>
-																															🍋
+																																		🍋
 					</div>
 				))}
 			</div>
@@ -146,7 +146,7 @@ const recentEpisodes = sortedEpisodes.slice(1, 3);
 						<div class="md:w-1/2 mb-10 md:mb-0 relative z-10">
 							<div class="mb-4">
 								<span class="funding-badge text-gray-900 px-4 py-2 rounded-full text-sm font-bold inline-block">
-																																	🚀 Series A Funded!
+																																				🚀 Series A Funded!
 								</span>
 							</div>
 							<h1 class="text-5xl md:text-7xl font-extrabold mb-4 text-gray-900 dark:text-white">
@@ -429,19 +429,26 @@ const recentEpisodes = sortedEpisodes.slice(1, 3);
 					<div class="grid md:grid-cols-2 gap-8">
 						{recentEpisodes.map((episode) => (
 							<article class="bg-white dark:bg-gray-800/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col">
-								<div class="md:w-full shrink-0">
-									<a href={`/episodes/${episode.slug}/`} class="block relative overflow-hidden h-full">
-										<img
-											src={`https://img.youtube.com/vi/${episode.data.youtubeId}/maxresdefault.jpg`}
+								<div class="relative aspect-video">
+									<a href={`/episodes/${episode.slug}/`} class="block">
+										<picture>
+											<source 
+												media="(max-width: 480px)" 
+												srcset={`https://img.youtube.com/vi/${episode.data.youtubeId}/mqdefault.jpg`}
+											/>
+											<source 
+												media="(max-width: 720px)" 
+												srcset={`https://img.youtube.com/vi/${episode.data.youtubeId}/hqdefault.jpg`}
+											/>
+											<img
+												src={`https://img.youtube.com/vi/${episode.data.youtubeId}/maxresdefault.jpg`}
 												alt={`Thumbnail for episode ${episode.data.episodeNumber}: ${episode.data.title}`}
-												class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-												width="1280"
-												height="720"
-												loading="eager"
-												decoding="async"
-										/>
-										<div class="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-										<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+												class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
+												loading="lazy"
+											/>
+										</picture>
+										<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60"></div>
+										<div class="absolute bottom-0 left-0 right-0 p-4">
 											<p class="text-white text-sm font-medium">
 												<FormattedDate date={episode.data.pubDate} />
 											</p>
@@ -451,7 +458,7 @@ const recentEpisodes = sortedEpisodes.slice(1, 3);
 								
 								<div class="p-6 flex-1 flex flex-col">
 									<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
-										<a href={`/episodes/${episode.slug}/`} class="text-white hover:text-lime-600 dark:hover:text-lime-400 transition-colors">
+										<a href={`/episodes/${episode.slug}/`} class="text-gray-900 dark:text-white hover:text-lime-600 dark:hover:text-lime-400 transition-colors">
 											#{episode.data.episodeNumber} {episode.data.title}
 										</a>
 									</h3>
@@ -498,7 +505,7 @@ const recentEpisodes = sortedEpisodes.slice(1, 3);
 				<div class="container max-w-6xl mx-auto px-4 relative">
 					<div class="text-center mb-12">
 						<span class="inline-block px-4 py-1 bg-gradient-to-r from-yellow-100 to-lime-100 dark:from-yellow-900/50 dark:to-lime-900/50 rounded-full text-sm font-medium text-yellow-800 dark:text-yellow-200 mb-4">
-							🚀 LAUNCHING SOON
+								🚀 LAUNCHING SOON
 						</span>
 						<h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
 							Ready to <span class="bg-gradient-to-r from-yellow-400 to-lime-500 text-transparent bg-clip-text">Level Up</span> Your Lemonade Game?

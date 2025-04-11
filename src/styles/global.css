@@ -121,12 +121,3 @@ article img {
 article .p-6 {
   padding: 1.5rem; /* Ensure proper spacing for text */
 }
-
-/* Improving readability of episode titles */
-article h3 {
-  color: white; /* Set titles to white */
-}
-
-article h3 a:hover {
-  color: var(--color-lime); /* Ensure hover state is distinct */
-}
