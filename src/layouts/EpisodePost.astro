@@ -5,10 +5,22 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import ShareButtons from '../components/ShareButtons.astro';
+import { getCollection } from 'astro:content';
 
 type Props = CollectionEntry<'episodes'>;
 
 const { data, slug } = Astro.props;
+
+// Get all episodes and sort them by episode number
+const allEpisodes = await getCollection('episodes');
+const sortedEpisodes = allEpisodes.sort((a, b) => b.data.episodeNumber - a.data.episodeNumber);
+
+// Find current episode index
+const currentIndex = sortedEpisodes.findIndex(episode => episode.slug === slug);
+
+// Get previous and next episodes
+const previousEpisode = currentIndex < sortedEpisodes.length - 1 ? sortedEpisodes[currentIndex + 1] : null;
+const nextEpisode = currentIndex > 0 ? sortedEpisodes[currentIndex - 1] : null;
 ---
 
 <!doctype html>
@@ -102,13 +114,23 @@ const { data, slug } = Astro.props;
 				</div>
 			</article>
 
-			<div class="mt-8">
-				<a href="/episodes" class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 via-lime-500 to-green-500 text-white px-6 py-3 rounded-xl font-medium hover:shadow-lg transition-all duration-300">
-					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-					</svg>
-					Back to Episodes
-				</a>
+			<div class="mt-8 flex justify-between items-center gap-3">
+				{previousEpisode && (
+					<a href={`/episodes/${previousEpisode.slug}/`} class="group inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 via-lime-500 to-green-500 text-white px-4 py-3 rounded-xl font-medium hover:shadow-lg max-w-[45%] transition-all duration-300">
+						<svg class="w-5 h-5 flex-shrink-0 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+						</svg>
+						<span class="line-clamp-1 min-w-0">#{previousEpisode.data.episodeNumber} {previousEpisode.data.title}</span>
+					</a>
+				)}
+				{nextEpisode && (
+					<a href={`/episodes/${nextEpisode.slug}/`} class="group inline-flex items-center justify-end gap-2 bg-gradient-to-r from-yellow-500 via-lime-500 to-green-500 text-white px-4 py-3 rounded-xl font-medium hover:shadow-lg max-w-[45%] transition-all duration-300">
+						<span class="line-clamp-1 min-w-0">#{nextEpisode.data.episodeNumber} {nextEpisode.data.title}</span>
+						<svg class="w-5 h-5 flex-shrink-0 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+						</svg>
+					</a>
+				)}
 			</div>
 		</main>
 		<Footer />
