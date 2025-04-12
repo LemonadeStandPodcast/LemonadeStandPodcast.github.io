@@ -2,6 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import { SITE_TITLE, SITE_TAGLINE, HOSTS } from '../consts';
 
 interface Props {
 	title: string;
@@ -61,6 +62,7 @@ const socialImage = youtubeId
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="subtitle" content={SITE_TAGLINE} />
 {tags.length > 0 && <meta name="keywords" content={tags.join(', ')} />}
 
 <!-- Canonical URL -->
@@ -91,16 +93,33 @@ const socialImage = youtubeId
 <script type="application/ld+json" set:html={JSON.stringify({
 	"@context": "https://schema.org",
 	"@type": "PodcastSeries",
-	"name": "The Lemonade Stand Podcast",
+	"name": SITE_TITLE,
 	"description": description,
 	"url": canonicalURL,
 	"image": new URL(socialImage, Astro.url),
+	"author": [
+		{
+			"@type": "Person",
+			"name": HOSTS.aiden.name,
+			"sameAs": `https://twitter.com/${HOSTS.aiden.twitter.substring(1)}`
+		},
+		{
+			"@type": "Person",
+			"name": HOSTS.atrioc.name,
+			"sameAs": `https://twitter.com/${HOSTS.atrioc.twitter.substring(1)}`
+		},
+		{
+			"@type": "Person",
+			"name": HOSTS.dougdoug.name,
+			"sameAs": `https://twitter.com/${HOSTS.dougdoug.twitter.substring(1)}`
+		}
+	],
 	...(publishDate && {
 		"datePublished": publishDate.toISOString(),
 	}),
 	"publisher": {
 		"@type": "Organization",
-		"name": "The Lemonade Stand Podcast",
+		"name": SITE_TITLE,
 		"logo": {
 			"@type": "ImageObject",
 			"url": new URL("/logo.png", Astro.url)
@@ -114,7 +133,7 @@ const socialImage = youtubeId
 
 <!-- Additional SEO Meta Tags -->
 <meta name="robots" content="index, follow" />
-<meta name="author" content="The Lemonade Stand Podcast" />
+<meta name="author" content={`${HOSTS.aiden.twitter}, ${HOSTS.atrioc.twitter}, ${HOSTS.dougdoug.twitter}`} />
 {publishDate && <meta name="date" content={publishDate.toISOString()} />}
 
 <!-- Additional Open Graph Tags -->

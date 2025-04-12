@@ -1,0 +1,120 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_SCHEDULE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead 
+			title={`Meet the Hosts | ${SITE_TITLE}`} 
+			description="Meet Aiden, Atrioc, and DougDoug - three guys who explain the world of business through the lens of a lemonade stand."
+		/>
+	</head>
+	<body class="bg-white dark:bg-gray-900">
+		<Header />
+		<main class="container max-w-4xl mx-auto px-6 py-12">
+			<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8">
+				Meet <span class="bg-gradient-to-r from-yellow-400 to-lime-500 text-transparent bg-clip-text">The Hosts</span>
+			</h1>
+
+			<div class="prose prose-lg dark:prose-invert max-w-none">
+				<div class="mb-12">
+					<h2 class="text-3xl font-bold mb-6">Our Story</h2>
+					<p class="text-gray-700 dark:text-gray-300">
+						What happens when three guys with a knack for breaking down complex topics decide to explain the world of business? You get The Lemonade Stand Podcast. Every {SITE_SCHEDULE}, we bring you fresh perspectives on business, tech, and the world at large - all explained through the refreshingly simple lens of running a lemonade stand.
+					</p>
+				</div>
+
+				<div class="grid gap-8">
+					<!-- Aiden -->
+					<div class="bg-gradient-to-br from-yellow-50 to-lime-50 dark:from-gray-800/50 dark:to-gray-700/50 rounded-2xl p-6">
+						<div class="flex flex-col md:flex-row gap-6 items-start">
+							<div class="w-full md:w-1/3">
+								<img 
+									src="/aidencalvin.jpg" 
+									alt="Aiden Calvin"
+									class="w-full aspect-square rounded-xl object-cover"
+								/>
+							</div>
+							<div class="w-full md:w-2/3">
+								<h3 class="text-3xl font-bold mb-4">Aiden Calvin</h3>
+								<div class="text-gray-700 dark:text-gray-300 space-y-4">
+									<p>
+										From The Yard to Mogul Money, Aiden brings his sharp wit and entertainment industry know-how to the podcast. His talent for breaking down complex topics into digestible content helps make our business discussions both entertaining and enlightening.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Atrioc -->
+					<div class="bg-gradient-to-br from-yellow-50 to-lime-50 dark:from-gray-800/50 dark:to-gray-700/50 rounded-2xl p-6">
+						<div class="flex flex-col md:flex-row gap-6 items-start">
+							<div class="w-full md:w-1/3">
+								<img 
+									src="/atrioc.jpg" 
+									alt="Brandon 'Atrioc' Ewing"
+									class="w-full aspect-square rounded-xl object-cover"
+								/>
+							</div>
+							<div class="w-full md:w-2/3">
+								<h3 class="text-3xl font-bold mb-4">Brandon "Atrioc" Ewing</h3>
+								<div class="text-gray-700 dark:text-gray-300 space-y-4">
+									<p>
+										From Twitch to NVIDIA, Brandon's marketing career has given him a unique perspective on how big businesses operate. His "Marketing Monday" series and business strategy breakdowns help demystify the corporate world for our listeners.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- DougDoug -->
+					<div class="bg-gradient-to-br from-yellow-50 to-lime-50 dark:from-gray-800/50 dark:to-gray-700/50 rounded-2xl p-6">
+						<div class="flex flex-col md:flex-row gap-6 items-start">
+							<div class="w-full md:w-1/3">
+								<img 
+									src="/dougdoug.jpg" 
+									alt="Douglas 'DougDoug' Wreden"
+									class="w-full aspect-square rounded-xl object-cover"
+								/>
+							</div>
+							<div class="w-full md:w-2/3">
+								<h3 class="text-3xl font-bold mb-4">Douglas "DougDoug" Wreden</h3>
+								<div class="text-gray-700 dark:text-gray-300 space-y-4">
+									<p>
+										A UC Berkeley CS grad turned content creator, Doug brings both technical expertise and creative chaos to the mix. His experience at Electronic Arts and in content creation helps bridge the gap between gaming culture and business reality.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-12">
+					<h2 class="text-3xl font-bold mb-6">What We Do</h2>
+					<p class="text-gray-700 dark:text-gray-300">
+						Think of us as your business professors, if business school was actually fun and practical. Every {SITE_SCHEDULE}, we take complex business concepts and break them down using the simplest business model we know - a lemonade stand. Whether we're discussing tech giants, market trends, or entrepreneurship, we keep it refreshing, engaging, and surprisingly educational.
+					</p>
+				</div>
+
+				<div class="mt-12">
+					<h2 class="text-3xl font-bold mb-6">Connect With Us</h2>
+					<div class="bg-gradient-to-br from-yellow-50 to-lime-50 dark:from-gray-800/50 dark:to-gray-700/50 rounded-2xl p-6">
+						<p class="text-gray-700 dark:text-gray-300 mb-4">
+							Want to be part of our lemonade empire? Join our community and catch new episodes every {SITE_SCHEDULE}!
+						</p>
+						<div class="flex flex-wrap gap-4">
+							<a href="/links" class="inline-block px-6 py-3 bg-gradient-to-r from-yellow-500 via-lime-500 to-green-500 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 no-underline">
+								Connect With Us →
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
