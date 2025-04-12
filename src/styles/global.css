@@ -202,7 +202,7 @@ article .p-6 {
   --plyr-color-main: #84cc16;
   --plyr-audio-controls-background: transparent;
   --plyr-audio-control-color: #4b5563;
-  --plyr-audio-control-color-hover: #84cc16;
+  --plyr-audio-control-color-hover: #ffffff;
   border-radius: 0.75rem;
   background: rgba(132, 204, 22, 0.1);
   backdrop-filter: blur(8px);
@@ -210,7 +210,7 @@ article .p-6 {
 
 .dark .plyr--audio {
   --plyr-audio-control-color: #9ca3af;
-  --plyr-audio-control-color-hover: #84cc16;
+  --plyr-audio-control-color-hover: #ffffff;
   background: rgba(132, 204, 22, 0.05);
 }
 
