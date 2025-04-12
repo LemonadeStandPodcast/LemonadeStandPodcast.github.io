@@ -130,6 +130,8 @@ article .p-6 {
   border-radius: 12px;
   background: linear-gradient(90deg, #84cc16, #22c55e);
   overflow: hidden; /* Added to prevent edge bleeding */
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .audio-player-wrapper::before {
@@ -193,6 +195,56 @@ article .p-6 {
 .dark .custom-audio-player::-webkit-media-controls-current-time-display,
 .dark .custom-audio-player::-webkit-media-controls-time-remaining-display {
   color: white;
+}
+
+/* Plyr customization */
+.plyr--audio {
+  --plyr-color-main: #84cc16;
+  --plyr-audio-controls-background: transparent;
+  --plyr-audio-control-color: #4b5563;
+  --plyr-audio-control-color-hover: #84cc16;
+  border-radius: 0.75rem;
+  background: rgba(132, 204, 22, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.dark .plyr--audio {
+  --plyr-audio-control-color: #9ca3af;
+  --plyr-audio-control-color-hover: #84cc16;
+  background: rgba(132, 204, 22, 0.05);
+}
+
+.plyr--audio .plyr__controls {
+  padding: 12px;
+  border-radius: 0.75rem;
+  background: transparent;
+  border: 1px solid rgba(132, 204, 22, 0.2);
+}
+
+/* Time and progress customization */
+.plyr--audio .plyr__time {
+  color: #4b5563;
+}
+
+.dark .plyr--audio .plyr__time {
+  color: #9ca3af;
+}
+
+.plyr--full-ui input[type=range] {
+  color: #84cc16;
+}
+
+.plyr--audio .plyr__progress__buffer {
+  color: rgba(132, 204, 22, 0.3);
+}
+
+/* Volume control customization */
+.plyr--audio .plyr__volume {
+  color: #84cc16;
+}
+
+.dark .plyr--audio .plyr__volume {
+  color: #84cc16;
 }
 
 /* Remove video player styles */
