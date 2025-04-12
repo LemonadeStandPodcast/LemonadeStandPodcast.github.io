@@ -13,9 +13,10 @@ const episodes = defineCollection({
 		citations: z.array(z.object({
 			title: z.string(),
 			url: z.string().url()
-		 })).optional(), // Made citations optional
+		 })).optional(),
 		summary: z.string().optional(),
 		heroImage: z.string().optional(),
+		aiDiscussion: z.string().optional(), // Path to the AI discussion audio file
 	}),
 });
 

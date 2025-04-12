@@ -121,3 +121,83 @@ article img {
 article .p-6 {
   padding: 1.5rem; /* Ensure proper spacing for text */
 }
+
+/* Custom Audio Player Styles */
+.audio-player-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 1px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #84cc16, #22c55e);
+  overflow: hidden; /* Added to prevent edge bleeding */
+}
+
+.audio-player-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 1px; /* Changed from 0 to match new padding */
+  border-radius: 11px; /* Adjusted to be 1px less than parent */
+  background: linear-gradient(90deg, #84cc16, #22c55e);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.custom-audio-player {
+  --player-bg: white;
+  border-radius: 11px; /* Adjusted to match wrapper::before */
+  padding: 8px;
+  width: 100%;
+  background: var(--player-bg);
+}
+
+/* Audio player controls styling */
+.custom-audio-player::-webkit-media-controls-panel {
+  background: var(--player-bg);
+  border-radius: 10px;
+  padding: 0 8px;
+}
+
+.custom-audio-player::-webkit-media-controls-play-button {
+  background-color: #84cc16;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.custom-audio-player::-webkit-media-controls-play-button:hover {
+  transform: scale(1.1);
+}
+
+.custom-audio-player::-webkit-media-controls-timeline {
+  background: linear-gradient(90deg, #84cc16, #22c55e);
+  border-radius: 10px;
+  height: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.custom-audio-player::-webkit-media-controls-current-time-display,
+.custom-audio-player::-webkit-media-controls-time-remaining-display {
+  color: black;
+  font-weight: 500;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+/* Dark mode adjustments */
+.dark .custom-audio-player {
+  --player-bg: #1f2937;
+}
+
+.dark .custom-audio-player::-webkit-media-controls-current-time-display,
+.dark .custom-audio-player::-webkit-media-controls-time-remaining-display {
+  color: white;
+}
+
+/* Remove video player styles */
+.video-player-wrapper,
+.video-player-container {
+  /* Reset any previous styles */
+  all: unset;
+}

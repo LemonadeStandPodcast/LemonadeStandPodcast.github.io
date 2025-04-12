@@ -5,6 +5,7 @@ pubDate: YYYY-MM-DD
 youtubeId: "YOUTUBE_VIDEO_ID"
 episodeNumber: XX
 summary: ""
+aiDiscussion: "/audio/episode-XX-ai-discussion.mp3" # Path to the AI discussion audio file
 tags:
   - "Tag 1"
   - "Tag 2"

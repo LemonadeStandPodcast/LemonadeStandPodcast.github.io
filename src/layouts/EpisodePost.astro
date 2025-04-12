@@ -10,7 +10,7 @@ import { getCollection } from 'astro:content';
 type Props = CollectionEntry<'episodes'>;
 
 const { data, slug } = Astro.props;
-const { episodeNumber, title, description, pubDate, tags, youtubeId } = data;
+const { episodeNumber, title, description, pubDate, tags, youtubeId, aiDiscussion } = data;
 
 // Get all episodes and sort them by episode number
 const allEpisodes = await getCollection('episodes');
@@ -97,6 +97,25 @@ const episodeSchema = {
 					<div class="prose prose-lg max-w-none mb-4 dark:prose-invert">
 						<slot />
 					</div>
+
+						{aiDiscussion && (
+							<div class="pt-4">
+								<h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">AI Overview</h2>
+								<div class="px-4 py-6 rounded-xl">
+									<div class="audio-player-wrapper px-2">
+										<audio
+											class="w-full custom-audio-player"
+											controls
+											preload="metadata"
+											src={aiDiscussion}
+										>
+											<p>Your browser doesn't support HTML5 audio. Here is a <a href={aiDiscussion}>link to the audio</a> instead.</p>
+										</audio>
+									</div>
+									<p class="mt-4 text-sm text-gray-600 dark:text-gray-400">Note: This AI overview was generated using <a href="https://notebooklm.google/" class="text-lime-600 dark:text-lime-400 hover:underline" target="_blank" rel="noopener noreferrer">Google's NotebookLM</a>. The content may contain inaccuracies.</p>
+								</div>
+							</div>
+						)}
 
 					{data.citations && data.citations.length > 0 && (
 						<div class="pt-4">

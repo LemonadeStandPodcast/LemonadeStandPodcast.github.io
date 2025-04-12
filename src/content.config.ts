@@ -16,6 +16,7 @@ const episodes = defineCollection({
 		})).optional(),
 		summary: z.string().default(""),
 		heroImage: z.string().optional(),
+		aiDiscussion: z.string().optional(), // Path to the AI discussion audio file
 	}),
 });
 

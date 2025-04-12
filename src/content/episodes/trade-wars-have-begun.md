@@ -5,6 +5,7 @@ pubDate: 2025-04-09
 youtubeId: "zrI3cNrLFEA"
 episodeNumber: 6
 summary: ""
+aiDiscussion: "/audio/Global Trade Wars and China's Economic Impact.wav"
 tags:
   - "Trade Wars"
   - "Tariffs"
