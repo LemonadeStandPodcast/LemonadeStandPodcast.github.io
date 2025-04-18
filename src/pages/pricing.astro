@@ -37,10 +37,12 @@ import { SITE_TITLE } from '../consts';
 				background: linear-gradient(45deg, rgba(255,209,102,0.1), rgba(0,137,76,0.1));
 				opacity: 0;
 				transition: opacity 0.3s ease;
+				pointer-events: none; /* Allow clicking through the overlay */
 			}
 
-			.pricing-card:hover::before {
-				opacity: 1;
+			.pricing-card > * {
+				position: relative;
+				z-index: 1;
 			}
 
 			@keyframes float {
@@ -77,6 +79,8 @@ import { SITE_TITLE } from '../consts';
 			.gradient-button {
 				background-size: 200% auto;
 				animation: shimmer 3s linear infinite;
+				position: relative;
+				z-index: 1;
 			}
 
 			.popular-badge {
