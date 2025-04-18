@@ -29,4 +29,8 @@ citations:
     url: "https://www.deepseek.com/en/"
   - title: "Mistral AI"
     url: "https://mistral.ai/"
+  - title: "CoCounsel: One GenAI assistant for professionals"
+    url: "https://www.thomsonreuters.com/en/cocounsel"
+  - title: "Using ChatGPT is not bad for the environment"
+    url: "https://andymasley.substack.com/p/individual-ai-use-is-not-bad-for"
 ---
