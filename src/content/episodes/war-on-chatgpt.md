@@ -5,6 +5,7 @@ pubDate: 2025-04-16
 youtubeId: "kPwErvsFr1s"
 episodeNumber: 7
 summary: ""
+aiDiscussion: "/audio/AI Open Source, Vienna Housing_ A Discussion.wav"
 tags:
   - "ChatGPT"
   - "AI"
