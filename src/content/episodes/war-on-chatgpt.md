@@ -15,6 +15,10 @@ tags:
   - "Open Source"
   - "Housing"
 citations:
- - title: "ChatGPT"
-   url: "https://chatgpt.com/"
+  - title: "ChatGPT"
+    url: "https://chatgpt.com/"
+  - title: "How to become an Irish resident through investment in the IIP program (topic discussed in the episode)"
+    url: "https://www.resideinireland.com/blog/how-to-become-an-irish-resident-through-investment-in-the-iip-program"
+  - title: "At $5 Million Each, 1000 ‘Gold Card’ Visas Have Been Sold. Could This Pay Off The US Debt?"
+    url: "https://www.forbes.com/sites/dougmelville/2025/03/26/at-5-million-each-1000-gold-card-visas-have-been-sold-could-this-pay-off-the-us-debt/"
 ---
