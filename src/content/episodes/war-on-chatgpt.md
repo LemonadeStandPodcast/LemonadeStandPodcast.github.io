@@ -9,6 +9,10 @@ aiDiscussion: "/audio/AI Open Source, Vienna Housing_ A Discussion.wav"
 tags:
   - "ChatGPT"
   - "AI"
+  - "Trump"
+  - "Gold Card"
+  - "DeepSeek"
+  - "Open Source"
   - "Housing"
 citations:
  - title: "ChatGPT"
