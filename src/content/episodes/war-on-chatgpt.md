@@ -23,8 +23,10 @@ citations:
     url: "https://www.forbes.com/sites/dougmelville/2025/03/26/at-5-million-each-1000-gold-card-visas-have-been-sold-could-this-pay-off-the-us-debt/"
   - title: "Comparison of open-source and closed-source software"
     url: "https://en.wikipedia.org/wiki/Comparison_of_open-source_and_closed-source_software"
-  - title": "OpenAI plans to release open-weight language model in coming months (topic discussed in the episode)"
+  - title: "OpenAI plans to release open-weight language model in coming months (topic discussed in the episode)"
     url: "https://www.reuters.com/technology/artificial-intelligence/openai-plans-release-open-weight-language-model-coming-months-2025-03-31/"
   - title: "DeepSeek"
     url: "https://www.deepseek.com/en/"
+  - title: "Mistral AI"
+    url: "https://mistral.ai/"
 ---
