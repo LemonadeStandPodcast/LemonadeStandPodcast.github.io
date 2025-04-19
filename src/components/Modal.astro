@@ -1,0 +1,41 @@
+---
+interface Props {
+  id: string;
+  title: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<div
+  id={id}
+  class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden"
+  aria-labelledby={`${id}-title`}
+  role="dialog"
+  aria-modal="true"
+>
+  <div class="relative top-20 mx-auto p-5 border w-[672px] shadow-lg rounded-lg bg-white dark:bg-gray-800">
+    <div class="flex justify-between items-center mb-4">
+      <h3 id={`${id}-title`} class="text-xl font-semibold text-gray-900 dark:text-white">
+        {title}
+      </h3>
+      <button
+        class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
+        onclick={`document.getElementById('${id}').classList.add('hidden')`}
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <slot />
+  </div>
+</div>
+
+<script define:vars={{ id }}>
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.getElementById(id).classList.add('hidden');
+  }
+});
+</script>

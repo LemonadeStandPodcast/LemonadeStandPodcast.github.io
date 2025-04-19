@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import ShareButtons from '../components/ShareButtons.astro';
+import Modal from '../components/Modal.astro';
 import { getCollection } from 'astro:content';
 
 type Props = CollectionEntry<'episodes'>;
@@ -22,6 +23,9 @@ const currentIndex = sortedEpisodes.findIndex(episode => episode.slug === slug);
 // Get previous and next episodes
 const previousEpisode = currentIndex < sortedEpisodes.length - 1 ? sortedEpisodes[currentIndex + 1] : null;
 const nextEpisode = currentIndex > 0 ? sortedEpisodes[currentIndex - 1] : null;
+
+// Add state for modal
+const showModal = false;
 
 // Enhanced structured data for podcast episode
 const episodeSchema = {
@@ -126,7 +130,7 @@ const episodeSchema = {
 								<div class="flex flex-col gap-4">
 									<audio
 										id="audio-player"
-										crossorigin
+										crossorigin="anonymous"
 										playsinline
 									>
 										<source src={aiDiscussion} type="audio/wav" />
@@ -151,7 +155,7 @@ const episodeSchema = {
 					{data.citations && data.citations.length > 0 && (
 						<div class="pt-4">
 							<h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">Sources & References</h2>
-							<ul class="space-y-2">
+							<ul class="space-y-2 mb-6">
 								{data.citations.map((citation) => (
 									<li>
 										<a
@@ -168,6 +172,15 @@ const episodeSchema = {
 									</li>
 								))}
 							</ul>
+							<button
+								onclick="document.getElementById('submit-citation-modal').classList.remove('hidden')"
+								class="group inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-yellow-500 via-lime-500 to-green-500 hover:from-yellow-600 hover:via-lime-600 hover:to-green-600 text-white shadow-sm hover:shadow transition-all duration-200 hover:-translate-y-0.5"
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+								</svg>
+								Add Missing Source
+							</button>
 						</div>
 					)}
 
@@ -212,5 +225,18 @@ const episodeSchema = {
 			</div>
 		</main>
 		<Footer />
+
+		<Modal id="submit-citation-modal" title="Submit Missing Citation">
+			<iframe
+				src="https://docs.google.com/forms/d/e/1FAIpQLSfxnybc0FTtUUuyHDvguxEqUjEX4jTXqfjHiTEmLOHIs8IqFA/viewform?embedded=true"
+				width="640"
+				height="687"
+				class="w-full"
+				style="border:0"
+				loading="lazy"
+			>
+				Loading…
+			</iframe>
+		</Modal>
 	</body>
 </html>
