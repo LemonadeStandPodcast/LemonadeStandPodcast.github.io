@@ -14,4 +14,6 @@ citations:
     url: "https://www.youtube.com/watch?v=vs4cfyyMWhQ"
   - title: "Involuntary collection of defaulted student loans to resume, Education Department says (topic discussed)"
     url: "https://www.nbcnews.com/news/us-news/involuntary-collection-defaulted-student-loans-resume-education-depart-rcna202270"
+  - title: "Many Coachella Attendees Are Buying Tickets Through BNPL (topic discussed)"
+    url: "https://www.paymentsjournal.com/many-coachella-attendees-are-buying-tickets-through-bnpl/"
 ---
