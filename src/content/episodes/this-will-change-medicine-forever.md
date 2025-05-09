@@ -20,4 +20,8 @@ citations:
     url: "https://www.nhs.uk/"
   - title: "AlphaGo to AlphaFold2: Demis Hassabis wins Nobel"
     url: "https://www.usgo.org/content.aspx?page_id=5&club_id=454497&item_id=106671"
+  - title: "Machines of Loving Grace"
+    url: "https://www.darioamodei.com/essay/machines-of-loving-grace"
+  - title: "AI 2027"
+    url: "https://ai-2027.com/"
 ---
