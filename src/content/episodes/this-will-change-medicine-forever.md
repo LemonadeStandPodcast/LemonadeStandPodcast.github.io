@@ -14,6 +14,10 @@ tags:
 citations:
   - title: "Deep learning-based autocontouring"
     url: "https://www.siemens-healthineers.com/en-in/radiotherapy/software-solutions/autocontouring"
+  - title: "National Health Innovation Centre plans to support broader projects as it turns 10"
+    url: "https://www.straitstimes.com/singapore/health/national-health-innovation-centre-plans-to-support-broader-projects-as-it-turns-10"
+  - title: "NHS website for England"
+    url: "https://www.nhs.uk/"
+  - title: "AlphaGo to AlphaFold2: Demis Hassabis wins Nobel"
+    url: "https://www.usgo.org/content.aspx?page_id=5&club_id=454497&item_id=106671"
 ---
-
-<!-- Add any additional episode content, show notes, or transcripts here -->
