@@ -9,7 +9,9 @@ tags:
   - "Tinder"
   - "Gen Z"
   - "Tariffs"
-citations: []
+citations:
+  - title: "Bald Big A"
+    url: "https://www.reddit.com/r/atrioc/comments/qw56w0/has_anybody_else_noticed_big_a_has_been_balding_a/"
+  - title: "Warner Bros. Discovery Announces Max to Become HBO Max this Summer"
+    url: "https://press.wbd.com/us/media-release/max/warner-bros-discovery-announces-max-become-hbo-max-summer"
 ---
-
-<!-- Add any additional episode content, show notes, or transcripts here -->
