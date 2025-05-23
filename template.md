@@ -16,5 +16,3 @@ citations:
   - title: "Citation Title 2"
     url: "https://example.com/citation2"
 ---
-
-<!-- Add any additional episode content, show notes, or transcripts here -->
