@@ -1,36 +1,11 @@
 ---
 title: "The War on ChatGPT"
-description: "This week... Atrioc goes panning for gold, DougDoug is back on the AI train, and Aiden goes house hunting in Vienna"
-pubDate: 2025-04-16
+description: "Lemonade Stand podcast episode 7: The War on ChatGPT."
+pubDate: 1970-01-01
 youtubeId: "kPwErvsFr1s"
 episodeNumber: 7
-summary: ""
-aiDiscussion: "/audio/AI Open Source, Vienna Housing_ A Discussion.wav"
+summary: "Episode 7: The War on ChatGPT."
 tags:
-  - "ChatGPT"
-  - "AI"
-  - "Trump"
-  - "Gold Card"
-  - "DeepSeek"
-  - "Open Source"
-  - "Housing"
-citations:
-  - title: "ChatGPT"
-    url: "https://chatgpt.com/"
-  - title: "How to become an Irish resident through investment in the IIP program (topic discussed in the episode)"
-    url: "https://www.resideinireland.com/blog/how-to-become-an-irish-resident-through-investment-in-the-iip-program"
-  - title: "At $5 Million Each, 1000 ‘Gold Card’ Visas Have Been Sold. Could This Pay Off The US Debt?"
-    url: "https://www.forbes.com/sites/dougmelville/2025/03/26/at-5-million-each-1000-gold-card-visas-have-been-sold-could-this-pay-off-the-us-debt/"
-  - title: "Comparison of open-source and closed-source software"
-    url: "https://en.wikipedia.org/wiki/Comparison_of_open-source_and_closed-source_software"
-  - title: "OpenAI plans to release open-weight language model in coming months (topic discussed in the episode)"
-    url: "https://www.reuters.com/technology/artificial-intelligence/openai-plans-release-open-weight-language-model-coming-months-2025-03-31/"
-  - title: "DeepSeek"
-    url: "https://www.deepseek.com/en/"
-  - title: "Mistral AI"
-    url: "https://mistral.ai/"
-  - title: "CoCounsel: One GenAI assistant for professionals"
-    url: "https://www.thomsonreuters.com/en/cocounsel"
-  - title: "Using ChatGPT is not bad for the environment"
-    url: "https://andymasley.substack.com/p/individual-ai-use-is-not-bad-for"
+  - "Lemonade Stand"
+  - "Podcast"
 ---

@@ -1,13 +1,11 @@
 ---
 title: "It's Been 100 Days..."
-description: "This week... Atrioc reviews Trump's test scores, Aiden returns from his fact finding mission in Canada, and DougDoug tells ChatGPT to stop with the Olympic level glazing"
-pubDate: 2025-04-30
+description: "Lemonade Stand podcast episode 9: It's Been 100 Days...."
+pubDate: 1970-01-01
 youtubeId: "yxjM2nhUOrc"
 episodeNumber: 9
-summary: ""
+summary: "Episode 9: It's Been 100 Days..."
 tags:
-  - "Trump"
-  - "Artificial Intelligence"
-  - "Canada"
-  - "ChatGPT"
+  - "Lemonade Stand"
+  - "Podcast"
 ---

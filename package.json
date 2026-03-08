@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "sync:episodes": "node scripts/sync-episodes-from-youtube.mjs",
+    "sync:episodes:write": "node scripts/sync-episodes-from-youtube.mjs --write"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.3",

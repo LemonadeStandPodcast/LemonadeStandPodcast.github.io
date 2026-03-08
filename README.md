@@ -56,6 +56,20 @@ citations:
 Episode content, show notes, or transcripts go here
 ```
 
+## 🔄 Syncing Episodes From YouTube
+
+To preview changes from the Lemonade Stand YouTube podcast playlist:
+
+```bash
+npm run sync:episodes
+```
+
+To applying the changes and write/update markdown files:
+
+```bash
+npm run sync:episodes:write
+```
+
 ## 🛠️ Available Commands
 
 | Command           | Action                                      |
@@ -64,6 +78,8 @@ Episode content, show notes, or transcripts go here
 | `npm run dev`    | Start dev server at `localhost:4321`        |
 | `npm run build`  | Build for production                        |
 | `npm run preview`| Preview production build                    |
+| `npm run sync:episodes` | Check for updates from YouTube (dry run) |
+| `npm run sync:episodes:write` | Sync episodes and update local files |
 
 ## 💻 Development
 
